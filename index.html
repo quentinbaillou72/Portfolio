@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK CYBER-TECH ULTIMATE & INTERACTIF --- */
+        /* --- STYLE DARK CYBER-TECH ULTIMATE AVEC FOND VIVANT --- */
         * {
             margin: 0;
             padding: 0;
@@ -29,37 +29,106 @@
             position: relative;
         }
 
-        /* --- EFFET LUMIÈRE QUI SUIT LE CURSEUR (SPOTLIGHT) --- */
-        #cursor-light {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 99;
-            transition: width 0.2s, height 0.2s;
-        }
-
-        /* --- FOND ANIMÉ RÉSEAU / PARTICULES --- */
-        .cyber-grid {
+        /* --- ARRIÈRE-PLAN ULTRA ANIMÉ (FOND VIVANT) --- */
+        .cyber-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            animation: gridMove 20s linear infinite;
+            z-index: -2;
+            background: #030712;
+            overflow: hidden;
+        }
+
+        /* Grille perspective animée */
+        .cyber-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 25s linear infinite;
         }
 
         @keyframes gridMove {
             0% { background-position: 0 0; }
-            100% { background-position: 40px 40px; }
+            100% { background-position: 50px 50px; }
+        }
+
+        /* Orbes lumineux flottants en arrière-plan */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: floatOrb 12s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            top: 10%;
+            left: 15%;
+            width: 400px;
+            height: 400px;
+            background: #0284c7;
+        }
+
+        .orb-2 {
+            bottom: 15%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: #7c3aed;
+            animation-delay: -4s;
+        }
+
+        .orb-3 {
+            top: 50%;
+            left: 50%;
+            width: 350px;
+            height: 350px;
+            background: #2563eb;
+            animation-delay: -8s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, -60px) scale(1.15); }
+        }
+
+        /* Particules / Étoiles scintillantes */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(white 1px, transparent 0);
+            background-size: 80px 80px;
+            opacity: 0.15;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.25; }
+        }
+
+        /* --- EFFET LUMIÈRE QUI SUIT LE CURSEUR (SPOTLIGHT) --- */
+        #cursor-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(37, 99, 235, 0.04) 40%, transparent 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.2s, height 0.2s;
         }
 
         /* --- BARRE DE PROGRESSION DE DÉFILEMENT --- */
@@ -121,7 +190,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 14px 30px;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             border-radius: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
@@ -316,7 +385,7 @@
         }
 
         .skill-card, .project-card, .timeline-card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.65);
             backdrop-filter: blur(16px);
             padding: 35px;
             border-radius: 20px;
@@ -403,7 +472,7 @@
 
         /* --- CONTACT & VEILLE --- */
         .contact-box {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.65);
             backdrop-filter: blur(16px);
             padding: 45px;
             border-radius: 25px;
@@ -456,7 +525,7 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
-            .plane-container, #cursor-light {
+            .plane-container, #cursor-light, .glow-orb {
                 display: none;
             }
         }
@@ -464,11 +533,17 @@
 </head>
 <body>
 
-    <!-- Effet de lumière suiveur de curseur -->
-    <div id="cursor-light"></div>
+    <!-- FOND VIVANT ARRIÈRE-PLAN -->
+    <div class="cyber-bg">
+        <div class="cyber-grid"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+        <div class="particles"></div>
+    </div>
 
-    <!-- Fond animé grille réseau -->
-    <div class="cyber-grid"></div>
+    <!-- Lumière suiveuse de curseur -->
+    <div id="cursor-light"></div>
 
     <!-- Barre de progression -->
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -637,7 +712,7 @@
         </div>
     </section>
 
-    <!-- Scripts JavaScript (Barre de progression + Lumière curseur) -->
+    <!-- Scripts JavaScript -->
     <script>
         // Barre de progression
         window.onscroll = function() {
