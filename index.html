@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK CYBER-TECH ULTIMATE --- */
+        /* --- STYLE DARK CYBER-TECH ULTIMATE & INTERACTIF --- */
         * {
             margin: 0;
             padding: 0;
@@ -26,6 +26,40 @@
             color: #f3f4f6;
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- EFFET LUMIÈRE QUI SUIT LE CURSEUR (SPOTLIGHT) --- */
+        #cursor-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 99;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        /* --- FOND ANIMÉ RÉSEAU / PARTICULES --- */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
         }
 
         /* --- BARRE DE PROGRESSION DE DÉFILEMENT --- */
@@ -37,53 +71,42 @@
             background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
             width: 0%;
             z-index: 9999;
-            transition: width 0.1s ease-out;
-            box-shadow: 0 0 10px #38bdf8;
+            box-shadow: 0 0 12px #38bdf8;
         }
 
-        /* --- ANIMATION DE L'AVION QUI DÉPOSE LE NOM --- */
+        /* --- ANIMATION DE L'AVION --- */
         .plane-container {
             position: fixed;
             top: 0;
             left: -150px;
             width: 100px;
             height: 50px;
-            z-index: 999;
+            z-index: 998;
             pointer-events: none;
-            animation: flyAcross 7s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation: flyAcross 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
         }
 
         .plane-icon {
             font-size: 2.2rem;
             color: #38bdf8;
             transform: rotate(45deg);
-            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
         }
 
         .plane-trail {
             position: absolute;
             top: 15px;
             right: 25px;
-            width: 120px;
+            width: 140px;
             height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8));
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9));
         }
 
         @keyframes flyAcross {
-            0% {
-                transform: translate(-100px, 150px) rotate(-10deg);
-                opacity: 0;
-            }
-            15% {
-                opacity: 1;
-            }
-            85% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(110vw, -100px) rotate(-15deg);
-                opacity: 0;
-            }
+            0% { transform: translate(-100px, 150px) rotate(-10deg); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
         }
 
         /* --- BARRE DE NAVIGATION FLOTTANTE --- */
@@ -98,7 +121,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 14px 30px;
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(16px);
             border-radius: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
@@ -157,6 +180,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            z-index: 2;
         }
 
         .section-title {
@@ -185,7 +210,6 @@
         #accueil {
             text-align: center;
             align-items: center;
-            position: relative;
         }
 
         .status-badge {
@@ -283,7 +307,7 @@
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
         }
 
-        /* --- CARTES INTERACTIVES AVEC EFFET SPOTLIGHT --- */
+        /* --- CARTES ET GRILLES INTERACTIVES --- */
         .skills-grid, .projects-grid, .timeline-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -432,18 +456,24 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
-            .plane-container {
-                display: none; /* Masqué sur mobile pour éviter les bugs d'affichage */
+            .plane-container, #cursor-light {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Effet de lumière suiveur de curseur -->
+    <div id="cursor-light"></div>
+
+    <!-- Fond animé grille réseau -->
+    <div class="cyber-grid"></div>
+
     <!-- Barre de progression -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Avion animé qui traverse l'écran -->
+    <!-- Avion animé -->
     <div class="plane-container">
         <div class="plane-trail"></div>
         <i class="fa-solid fa-plane plane-icon"></i>
@@ -607,14 +637,22 @@
         </div>
     </section>
 
-    <!-- Script JavaScript pour la barre de progression -->
+    <!-- Scripts JavaScript (Barre de progression + Lumière curseur) -->
     <script>
+        // Barre de progression
         window.onscroll = function() {
             let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             let scrolled = (winScroll / height) * 100;
             document.getElementById("scrollProgress").style.width = scrolled + "%";
         };
+
+        // Effet Spotlight (Lumière qui suit la souris)
+        const cursorLight = document.getElementById("cursor-light");
+        window.addEventListener("mousemove", (e) => {
+            cursorLight.style.left = e.clientX + "px";
+            cursorLight.style.top = e.clientY + "px";
+        });
     </script>
 </body>
 </html>
