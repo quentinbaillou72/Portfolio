@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE BLEU PASTEL LUMINEUX (Inspiré du modèle) --- */
+        /* --- STYLE & ANIMATIONS DYNAMIQUES --- */
         * {
             margin: 0;
             padding: 0;
@@ -22,7 +22,7 @@
         }
 
         body {
-            background-color: #f0f4fd; /* Fond clair bleuté très doux */
+            background-color: #f0f4fd;
             color: #1e293b;
             line-height: 1.6;
         }
@@ -39,11 +39,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
             border-radius: 50px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             z-index: 1000;
         }
 
@@ -65,11 +65,12 @@
             color: #475569;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
 
         nav a:hover, nav a.active {
             color: #2563eb;
+            transform: translateY(-1px);
         }
 
         .badge-linkdn {
@@ -79,11 +80,13 @@
             border-radius: 20px;
             font-weight: 600;
             font-size: 0.85rem;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
         }
 
         .badge-linkdn:hover {
             background: #1d4ed8;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         /* --- SECTIONS GÉNÉRALES --- */
@@ -114,7 +117,6 @@
         #accueil {
             text-align: center;
             align-items: center;
-            position: relative;
         }
 
         .hero-title-main {
@@ -122,6 +124,7 @@
             font-weight: 700;
             color: #0f172a;
             margin-bottom: 10px;
+            animation: fadeInDown 0.8s ease-out;
         }
 
         .hero-subtitle-main {
@@ -131,6 +134,7 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            animation: fadeIn 1s ease-out;
         }
 
         .hero-desc {
@@ -138,6 +142,7 @@
             font-size: 1.05rem;
             max-width: 700px;
             margin: 0 auto 30px auto;
+            animation: fadeInUp 1s ease-out;
         }
 
         .hero-btns {
@@ -152,7 +157,7 @@
             border-radius: 30px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
@@ -167,7 +172,8 @@
 
         .btn-primary:hover {
             background: #1d4ed8;
-            transform: translateY(-2px);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
         }
 
         .btn-secondary {
@@ -178,10 +184,12 @@
 
         .btn-secondary:hover {
             background: #f8fafc;
-            transform: translateY(-2px);
+            transform: translateY(-4px) scale(1.02);
+            border-color: #2563eb;
+            color: #2563eb;
         }
 
-        /* --- 2. À PROPOS & COMPÉTENCES --- */
+        /* --- 2. À PROPOS & COMPÉTENCES (Effet animé au survol) --- */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -195,26 +203,41 @@
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s;
             text-align: center;
+            /* Animation fluide par défaut */
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Effet de mouvement dynamique au survol des cartes */
         .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.08);
-            border-color: #93c5fd;
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.12);
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
         }
 
         .skill-card h3 {
             font-size: 1.1rem;
             margin-bottom: 8px;
             color: #1e293b;
+            transition: color 0.3s;
+        }
+
+        .skill-card:hover h3 {
+            color: #2563eb;
         }
 
         .skill-card span {
-            color: #2563eb;
+            color: #64748b;
             font-size: 0.85rem;
             font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .skill-card:hover span {
+            color: #1d4ed8;
         }
 
         /* --- 3. PARCOURS & ALTERNANCE --- */
@@ -230,6 +253,13 @@
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             border: 1px solid #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+            border-color: #93c5fd;
         }
 
         .timeline-card h3 {
@@ -254,7 +284,7 @@
             margin-bottom: 8px;
         }
 
-        /* --- 4. PROJETS --- */
+        /* --- 4. PROJETS (Animation dynamique interactive) --- */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -267,18 +297,24 @@
             padding: 25px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             border: 1px solid #e2e8f0;
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 35px rgba(37, 99, 235, 0.1);
+            border-color: #2563eb;
         }
 
         .project-card h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
             color: #0f172a;
+            transition: color 0.3s;
+        }
+
+        .project-card:hover h3 {
+            color: #2563eb;
         }
 
         .project-card p {
@@ -301,6 +337,12 @@
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .project-card:hover .tag {
+            background: #2563eb;
+            color: white;
         }
 
         /* --- 5. VEILLE & CONTACT --- */
@@ -313,6 +355,13 @@
             margin: 0 auto;
             width: 100%;
             text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
         }
 
         .contact-item {
@@ -327,6 +376,25 @@
 
         .contact-item i {
             color: #2563eb;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Animations clés de base */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* RESPONSIVE */
@@ -372,7 +440,7 @@
     <!-- 2. À PROPOS & COMPÉTENCES -->
     <section id="apropos">
         <h2 class="section-title">À propos de moi</h2>
-        <p class="section-subtitle">Mes domaines de compétences techniques</p>
+        <p class="section-subtitle">Survole les cartes pour voir les animations !</p>
         
         <div class="skills-grid">
             <div class="skill-card">
