@@ -7,12 +7,12 @@
     <!-- Police Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icônes FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE & ANIMATIONS DYNAMIQUES --- */
+        /* --- STYLE DARK TECH / NÉON DYNAMIQUE --- */
         * {
             margin: 0;
             padding: 0;
@@ -22,15 +22,16 @@
         }
 
         body {
-            background-color: #f0f4fd;
-            color: #1e293b;
+            background-color: #030712; /* Noir bleuté très profond */
+            color: #f3f4f6;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- BARRE DE NAVIGATION FLOTTANTE --- */
+        /* --- BARRE DE NAVIGATION FLOTTANTE STYLE GLASS-NEON --- */
         header {
             position: fixed;
-            top: 15px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
@@ -38,78 +39,87 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
+            padding: 14px 30px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
             border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.2);
             z-index: 1000;
         }
 
         .logo {
-            font-size: 1.1rem;
-            color: #1d4ed8;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 1.2rem;
+            color: #38bdf8;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         nav {
             display: flex;
-            gap: 18px;
+            gap: 22px;
             align-items: center;
         }
 
         nav a {
             text-decoration: none;
-            color: #475569;
-            font-size: 0.9rem;
+            color: #94a3b8;
+            font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav a:hover, nav a.active {
-            color: #2563eb;
-            transform: translateY(-1px);
+            color: #38bdf8;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+            transform: translateY(-2px);
         }
 
         .badge-linkdn {
-            background: #2563eb;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
             color: white !important;
-            padding: 6px 14px;
+            padding: 8px 18px;
             border-radius: 20px;
             font-weight: 600;
             font-size: 0.85rem;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
             transition: all 0.3s ease;
         }
 
         .badge-linkdn:hover {
-            background: #1d4ed8;
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
         }
 
         /* --- SECTIONS GÉNÉRALES --- */
         section {
             min-height: 100vh;
-            padding: 130px 8% 80px 8%;
+            padding: 140px 8% 80px 8%;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-            color: #0f172a;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            color: #ffffff;
             text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-subtitle {
-            color: #64748b;
-            margin-bottom: 40px;
-            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 50px;
+            font-size: 1.05rem;
             text-align: center;
         }
 
@@ -117,208 +127,218 @@
         #accueil {
             text-align: center;
             align-items: center;
+            position: relative;
         }
 
         .hero-title-main {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
             animation: fadeInDown 0.8s ease-out;
         }
 
         .hero-subtitle-main {
-            font-size: 1.3rem;
-            color: #2563eb;
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #38bdf8, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 25px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: fadeIn 1s ease-out;
+            letter-spacing: 2px;
         }
 
         .hero-desc {
-            color: #475569;
-            font-size: 1.05rem;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-            animation: fadeInUp 1s ease-out;
+            color: #94a3b8;
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+            line-height: 1.7;
         }
 
         .hero-btns {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 30px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .btn-primary {
-            background: #2563eb;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
             color: white;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            border: 1px solid rgba(56, 189, 248, 0.5);
         }
 
         .btn-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.8);
         }
 
         .btn-secondary {
-            background: white;
-            color: #1e293b;
-            border: 1px solid #cbd5e1;
+            background: rgba(15, 23, 42, 0.8);
+            color: #f3f4f6;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: #f8fafc;
-            transform: translateY(-4px) scale(1.02);
-            border-color: #2563eb;
-            color: #2563eb;
+            transform: translateY(-5px) scale(1.03);
+            border-color: #38bdf8;
+            color: #38bdf8;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
 
-        /* --- 2. À PROPOS & COMPÉTENCES (Effet animé au survol) --- */
+        /* --- 2. À PROPOS & COMPÉTENCES (Gros mouvement dynamique) --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
         .skill-card {
-            background: white;
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
-            /* Animation fluide par défaut */
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             position: relative;
-            overflow: hidden;
+            cursor: pointer;
         }
 
-        /* Effet de mouvement dynamique au survol des cartes */
+        /* Animation ultra stylée au survol : Élévation forte + Rotation légère + Bordure néon */
         .skill-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.12);
-            border-color: #2563eb;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+            transform: translateY(-12px) rotate(1deg) scale(1.04);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: #38bdf8;
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.25);
+        }
+
+        .skill-card i {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            margin-bottom: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .skill-card:hover i {
+            transform: scale(1.2) rotate(-5deg);
         }
 
         .skill-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 8px;
-            color: #1e293b;
-            transition: color 0.3s;
-        }
-
-        .skill-card:hover h3 {
-            color: #2563eb;
+            color: #ffffff;
         }
 
         .skill-card span {
-            color: #64748b;
-            font-size: 0.85rem;
+            color: #38bdf8;
+            font-size: 0.9rem;
             font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .skill-card:hover span {
-            color: #1d4ed8;
         }
 
         /* --- 3. PARCOURS & ALTERNANCE --- */
         .timeline-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .timeline-card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            border: 1px solid #e2e8f0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .timeline-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
-            border-color: #93c5fd;
+            transform: translateY(-8px);
+            border-color: #818cf8;
+            box-shadow: 0 20px 40px rgba(129, 140, 248, 0.2);
         }
 
         .timeline-card h3 {
-            color: #2563eb;
-            font-size: 1.25rem;
-            margin-bottom: 5px;
+            color: #38bdf8;
+            font-size: 1.35rem;
+            margin-bottom: 8px;
         }
 
         .timeline-card h4 {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .timeline-card ul {
             padding-left: 18px;
-            color: #475569;
+            color: #cbd5e1;
             font-size: 0.95rem;
         }
 
         .timeline-card li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        /* --- 4. PROJETS (Animation dynamique interactive) --- */
+        /* --- 4. PROJETS (Effet 3D interactif) --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .project-card {
-            background: white;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            border: 1px solid #e2e8f0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .project-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 16px 35px rgba(37, 99, 235, 0.1);
-            border-color: #2563eb;
+            transform: translateY(-12px) scale(1.02);
+            border-color: #38bdf8;
+            box-shadow: 0 25px 50px rgba(56, 189, 248, 0.2);
+            background: rgba(30, 41, 59, 0.7);
         }
 
         .project-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #0f172a;
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            color: #ffffff;
             transition: color 0.3s;
         }
 
         .project-card:hover h3 {
-            color: #2563eb;
+            color: #38bdf8;
         }
 
         .project-card p {
-            color: #64748b;
+            color: #94a3b8;
             font-size: 0.95rem;
             margin-bottom: 20px;
         }
@@ -326,74 +346,70 @@
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 8px;
             margin-bottom: 15px;
         }
 
         .tag {
-            background: #eff6ff;
-            color: #2563eb;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
-            transition: background 0.3s, color 0.3s;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.3s ease;
         }
 
         .project-card:hover .tag {
-            background: #2563eb;
-            color: white;
+            background: #38bdf8;
+            color: #030712;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         /* --- 5. VEILLE & CONTACT --- */
         .contact-box {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            max-width: 700px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            max-width: 750px;
             margin: 0 auto;
             width: 100%;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
         }
 
         .contact-box:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            transform: translateY(-6px);
+            border-color: #38bdf8;
+            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.2);
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            color: #334155;
+            gap: 15px;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
         }
 
         .contact-item i {
-            color: #2563eb;
+            color: #38bdf8;
+            font-size: 1.3rem;
             transition: transform 0.3s ease;
         }
 
         .contact-item:hover i {
-            transform: scale(1.2);
+            transform: scale(1.3) rotate(10deg);
         }
 
-        /* Animations clés de base */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        /* Animations clés */
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -403,7 +419,7 @@
                 display: none;
             }
             .hero-title-main {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -415,7 +431,7 @@
         <div class="logo">Q. BAILLOU</div>
         <nav>
             <a href="#accueil" class="active">Accueil</a>
-            <a href="#apropos">À propos</a>
+            <a href="#apropos">Compétences</a>
             <a href="#parcours">Parcours</a>
             <a href="#projets">Projets</a>
             <a href="#veille">Veille</a>
@@ -429,29 +445,32 @@
         <span class="hero-subtitle-main">BTS SIO 2e année • Option SISR</span>
         <h1 class="hero-title-main">Quentin Baillou</h1>
         <p class="hero-desc">
-            Alternant en Administration Systèmes & Réseaux chez <strong>BUISARD</strong>. Étudiant au Lycée Carcouët, je conçois et sécurise des environnements informatiques performants.
+            Alternant en Administration Systèmes & Réseaux chez <strong>BUISARD</strong>[cite: 1]. Étudiant au Lycée Carcouët[cite: 1], je conçois et sécurise des environnements informatiques performants et évolutifs.
         </p>
         <div class="hero-btns">
-            <a href="#apropos" class="btn btn-primary"><i class="fa-solid fa-user"></i> Découvrir mon profil</a>
+            <a href="#apropos" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Explorer mon profil</a>
             <a href="#projets" class="btn btn-secondary"><i class="fa-solid fa-code"></i> Voir mes projets</a>
         </div>
     </section>
 
     <!-- 2. À PROPOS & COMPÉTENCES -->
     <section id="apropos">
-        <h2 class="section-title">À propos de moi</h2>
-        <p class="section-subtitle">Survole les cartes pour voir les animations !</p>
+        <h2 class="section-title">Mes <span>Compétences</span></h2>
+        <p class="section-subtitle">Survole les cartes pour tester les animations dynamiques</p>
         
         <div class="skills-grid">
             <div class="skill-card">
+                <i class="fa-solid fa-server"></i>
                 <h3>Active Directory</h3>
                 <span>Administration Windows</span>
             </div>
             <div class="skill-card">
+                <i class="fa-solid fa-network-wired"></i>
                 <h3>Cisco Systems</h3>
                 <span>Réseaux & VLAN</span>
             </div>
             <div class="skill-card">
+                <i class="fa-solid fa-terminal"></i>
                 <h3>Systèmes Linux</h3>
                 <span>Debian / Serveurs</span>
             </div>
@@ -464,13 +483,13 @@
 
     <!-- 3. PARCOURS & ALTERNANCE -->
     <section id="parcours">
-        <h2 class="section-title">Mon Parcours</h2>
-        <p class="section-subtitle">Expérience professionnelle et formations</p>
+        <h2 class="section-title">Mon <span>Parcours</span></h2>
+        <p class="section-subtitle">Expérience professionnelle et formations diplômantes</p>
         
         <div class="timeline-container">
             <div class="timeline-card">
                 <h3>Alternance Système & Réseau</h3>
-                <h4>BUISARD • Sablé-sur-Sarthe</h4>
+                <h4>BUISARD • Sablé-sur-Sarthe[cite: 1]</h4>
                 <ul>
                     <li>Gestion et administration des serveurs Windows & Linux.</li>
                     <li>Support utilisateur, maintenance et déploiement de postes.</li>
@@ -479,10 +498,10 @@
             </div>
             <div class="timeline-card">
                 <h3>Formations & Diplômes</h3>
-                <h4>Lycée Carcouët & Raphaël Élizé</h4>
+                <h4>Lycée Carcouët & Raphaël Élizé[cite: 1]</h4>
                 <ul>
-                    <li><strong>BTS SIO SISR :</strong> Lycée Carcouët (En cours, 2e année).</li>
-                    <li><strong>Bac Pro Maintenance (TTR) :</strong> Lycée Raphaël Élizé (2019-2022).</li>
+                    <li><strong>BTS SIO SISR :</strong> Lycée Carcouët (En cours, 2e année)[cite: 1].</li>
+                    <li><strong>Bac Pro Maintenance (TTR) :</strong> Lycée Raphaël Élizé (2019-2022)[cite: 1].</li>
                 </ul>
             </div>
         </div>
@@ -490,8 +509,8 @@
 
     <!-- 4. PROJETS -->
     <section id="projets">
-        <h2 class="section-title">Mes Projets</h2>
-        <p class="section-subtitle">Réalisations professionnelles et académiques (E4 / E6)</p>
+        <h2 class="section-title">Mes <span>Projets</span></h2>
+        <p class="section-subtitle">Réalisations professionnelles et académiques (Épreuve E4 / E6)</p>
         
         <div class="projects-grid">
             <div class="project-card">
@@ -523,15 +542,15 @@
 
     <!-- 5. VEILLE TECHNOLOGIQUE -->
     <section id="veille">
-        <h2 class="section-title">Veille Technologique</h2>
-        <p class="section-subtitle">Suivi des innovations et actualités IT</p>
+        <h2 class="section-title">Veille <span>Technologique</span></h2>
+        <p class="section-subtitle">Suivi des innovations et actualités de la cybersécurité</p>
         
         <div class="contact-box" style="text-align: left;">
-            <h3 style="color: #2563eb; margin-bottom: 10px;">Sécurisation des infrastructures & résilience</h3>
-            <p style="color: #475569; font-size: 0.95rem; margin-bottom: 15px;">
+            <h3 style="color: #38bdf8; margin-bottom: 12px;"><i class="fa-solid fa-shield-halved"></i> Sécurisation des infrastructures & résilience</h3>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px;">
                 Focus sur l'évolution des cybermenaces et les bonnes pratiques de sauvegarde et de protection des réseaux d'entreprise.
             </p>
-            <p style="color: #64748b; font-size: 0.9rem;">
+            <p style="color: #cbd5e1; font-size: 0.9rem;">
                 <strong>Outils :</strong> Flux RSS, newsletters spécialisées et veilles actives sur les alertes CERT-FR.
             </p>
         </div>
@@ -539,21 +558,21 @@
 
     <!-- 6. CONTACT -->
     <section id="contact">
-        <h2 class="section-title">Me Contacter</h2>
+        <h2 class="section-title">Me <span>Contacter</span></h2>
         <p class="section-subtitle">Échangons sur votre projet ou opportunité</p>
         
         <div class="contact-box">
             <div class="contact-item">
                 <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:quentinbailloudu72@gmail.com" style="color: #2563eb; text-decoration: none;">quentinbailloudu72@gmail.com</a>
+                <a href="mailto:quentinbailloudu72@gmail.com" style="color: #38bdf8; text-decoration: none;">quentinbailloudu72@gmail.com</a>
             </div>
             <div class="contact-item">
                 <i class="fa-brands fa-linkedin"></i>
-                <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: #2563eb; text-decoration: none;">Profil LinkedIn de Quentin Baillou</a>
+                <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: #38bdf8; text-decoration: none;">Profil LinkedIn de Quentin Baillou</a>
             </div>
             <div class="contact-item">
                 <i class="fa-solid fa-location-dot"></i>
-                <span>Sablé-sur-Sarthe / Pays de la Loire</span>
+                <span>Sablé-sur-Sarthe / Pays de la Loire[cite: 1]</span>
             </div>
         </div>
     </section>
