@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK PLANETARY TECH & INTERACTIF --- */
+        /* --- STYLE DARK SPATIAL TECH & INTERACTIF --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +31,7 @@
             position: relative;
         }
 
-        /* --- ARRIÈRE-PLAN THÉMATIQUE PLANÈTE / ESPACE --- */
+        /* --- FOND SPATIAL ULTRA RICHE --- */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -43,30 +43,50 @@
             overflow: hidden;
         }
 
+        /* Grande Planète Bleue */
         .planet-sphere {
             position: absolute;
-            bottom: -200px;
-            right: -150px;
-            width: 700px;
-            height: 700px;
+            bottom: -150px;
+            right: -100px;
+            width: 600px;
+            height: 600px;
             background: radial-gradient(circle at 30% 30%, #0284c7, #1e1b4b 60%, #030712 90%);
             border-radius: 50%;
-            box-shadow: inset -50px -50px 100px rgba(0, 0, 0, 0.9), 0 0 80px rgba(56, 189, 248, 0.15);
+            box-shadow: inset -40px -40px 90px rgba(0, 0, 0, 0.9), 0 0 70px rgba(56, 189, 248, 0.2);
             opacity: 0.6;
             animation: planetFloat 20s ease-in-out infinite alternate;
         }
 
+        /* Petite Planète violette lointaine */
+        .small-planet {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 35% 35%, #7c3aed, #0f172a 70%, #030712 95%);
+            border-radius: 50%;
+            box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(124, 58, 237, 0.3);
+            opacity: 0.5;
+            animation: smallPlanetFloat 25s ease-in-out infinite alternate;
+        }
+
         @keyframes planetFloat {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-30px, -20px) scale(1.05); }
+            100% { transform: translate(-25px, -15px) scale(1.04); }
+        }
+
+        @keyframes smallPlanetFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 40px) scale(1.08); }
         }
 
         .planet-ring {
             position: absolute;
-            bottom: 50px;
-            right: -100px;
-            width: 900px;
-            height: 300px;
+            bottom: 80px;
+            right: -60px;
+            width: 780px;
+            height: 250px;
             border: 2px solid rgba(56, 189, 248, 0.15);
             border-radius: 50%;
             transform: rotate(-25deg);
@@ -99,7 +119,7 @@
         }
 
         .orb-1 { top: 10%; left: 10%; width: 500px; height: 500px; background: #0284c7; }
-        .orb-2 { top: 40%; left: 60%; width: 450px; height: 450px; background: #7c3aed; animation-delay: -5s; }
+        .orb-2 { top: 50%; left: 40%; width: 450px; height: 450px; background: #7c3aed; animation-delay: -5s; }
 
         @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); }
@@ -121,6 +141,53 @@
         @keyframes twinkle {
             0% { opacity: 0.15; }
             100% { opacity: 0.35; }
+        }
+
+        /* --- PLUSIEURS VAISSEAUX SPATIAUX EN VOL --- */
+        .plane-container {
+            position: fixed;
+            top: 0;
+            left: -150px;
+            width: 100px;
+            height: 50px;
+            z-index: 998;
+            pointer-events: none;
+            animation: flyAcross 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+
+        .plane-container.ship-2 {
+            animation: flyAcross2 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation-delay: -4s;
+        }
+
+        .plane-icon {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            transform: rotate(45deg);
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
+        }
+
+        .plane-trail {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            width: 140px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9));
+        }
+
+        @keyframes flyAcross {
+            0% { transform: translate(-100px, 150px) rotate(-10deg); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
+        }
+
+        @keyframes flyAcross2 {
+            0% { transform: translate(110vw, 400px) rotate(-35deg); opacity: 0; }
+            15% { opacity: 0.7; }
+            85% { opacity: 0.7; }
+            100% { transform: translate(-100px, 100px) rotate(-25deg); opacity: 0; }
         }
 
         /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
@@ -147,41 +214,6 @@
             width: 0%;
             z-index: 9999;
             box-shadow: 0 0 12px #38bdf8;
-        }
-
-        /* --- ANIMATION DU VAISSEAU / AVION --- */
-        .plane-container {
-            position: fixed;
-            top: 0;
-            left: -150px;
-            width: 100px;
-            height: 50px;
-            z-index: 998;
-            pointer-events: none;
-            animation: flyAcross 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-        }
-
-        .plane-icon {
-            font-size: 2.2rem;
-            color: #38bdf8;
-            transform: rotate(45deg);
-            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
-        }
-
-        .plane-trail {
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            width: 140px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9));
-        }
-
-        @keyframes flyAcross {
-            0% { transform: translate(-100px, 150px) rotate(-10deg); opacity: 0; }
-            15% { opacity: 1; }
-            85% { opacity: 1; }
-            100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
         }
 
         /* --- BOUTON RETOUR EN HAUT --- */
@@ -372,6 +404,12 @@
             max-width: 750px;
             margin: 0 auto 35px auto;
             line-height: 1.7;
+            transition: color 0.3s ease;
+        }
+
+        .hero-desc:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         .hero-btns {
@@ -419,37 +457,39 @@
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
         }
 
-        /* --- BLOCS DE TEXTE INTERACTIFS (EFFET HOVER ÉVOLUÉ) --- */
+        /* --- BLOCS DE TEXTE ULTRA INTERACTIFS (EFFET 3D AU HOVER) --- */
         .skills-grid, .projects-grid, .timeline-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 20px;
+            perspective: 1000px; /* Donne l'effet de relief 3D */
         }
 
         .skill-card, .project-card, .timeline-card {
-            background: rgba(15, 23, 42, 0.65);
+            background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(16px);
             padding: 35px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
 
-        /* Animation interactive des blocs au survol (effet lévitation et zoom de texte subtil) */
+        /* Effet interactif puissant au survol des blocs de texte */
         .skill-card:hover, .project-card:hover, .timeline-card:hover {
-            transform: translateY(-12px) scale(1.03);
+            transform: translateY(-10px) scale(1.03) rotateX(3deg) rotateY(-3deg);
             background: rgba(30, 41, 59, 0.9);
             border-color: #38bdf8;
-            box-shadow: 0 0 45px rgba(56, 189, 248, 0.4), inset 0 0 20px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 15px 50px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(56, 189, 248, 0.2);
         }
 
-        .skill-card:hover p, .project-card:hover p, .timeline-card:hover li {
-            color: #ffffff; /* Le texte s'illumine en blanc pur au survol */
+        .skill-card:hover p, .project-card:hover p, .timeline-card:hover li, .timeline-card:hover h4 {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
         }
 
         .skill-card i, .project-card i {
@@ -460,36 +500,33 @@
         }
 
         .skill-card:hover i, .project-card:hover i {
-            transform: scale(1.25) rotate(-5deg);
-            text-shadow: 0 0 15px #38bdf8;
+            transform: scale(1.3) rotate(-10deg);
+            text-shadow: 0 0 20px #38bdf8;
         }
 
         .skill-card h3, .project-card h3, .timeline-card h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
             color: #ffffff;
-            transition: color 0.3s;
+            transition: color 0.3s, text-shadow 0.3s;
         }
 
         .skill-card:hover h3, .project-card:hover h3, .timeline-card:hover h3 {
             color: #38bdf8;
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
         }
 
         .skill-card span, .timeline-card h4 {
             color: #38bdf8;
             font-size: 0.9rem;
             font-weight: 600;
-        }
-
-        .timeline-card h4 {
-            color: #94a3b8;
-            margin-bottom: 20px;
+            transition: color 0.3s ease;
         }
 
         .timeline-card ul, .project-card p {
             color: #94a3b8;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .timeline-card li {
@@ -518,12 +555,12 @@
         .project-card:hover .tag {
             background: #38bdf8;
             color: #030712;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
         }
 
         /* --- CONTACT & VEILLE --- */
         .contact-box {
-            background: rgba(15, 23, 42, 0.65);
+            background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(16px);
             padding: 45px;
             border-radius: 25px;
@@ -536,9 +573,9 @@
         }
 
         .contact-box:hover {
-            transform: translateY(-6px);
+            transform: translateY(-6px) scale(1.02);
             border-color: #38bdf8;
-            box-shadow: 0 0 35px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
         }
 
         .contact-item {
@@ -576,7 +613,7 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
-            .planet-sphere, .planet-ring, #cursor-light, .glow-orb, .plane-container {
+            .planet-sphere, .small-planet, .planet-ring, #cursor-light, .glow-orb, .plane-container {
                 display: none;
             }
         }
@@ -584,9 +621,10 @@
 </head>
 <body>
 
-    <!-- FOND PLANÉTAIRE EN ARRIÈRE-PLAN -->
+    <!-- FOND SPATIAL RICHE (PLANÈTES ET VAISSEAUX) -->
     <div class="cyber-bg">
         <div class="cyber-grid"></div>
+        <div class="small-planet"></div>
         <div class="planet-sphere"></div>
         <div class="planet-ring"></div>
         <div class="glow-orb orb-1"></div>
@@ -600,10 +638,14 @@
     <!-- Barre de progression -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Vaisseau / Avion animé -->
+    <!-- Vaisseaux spatiaux animés (Trajectoires multiples) -->
     <div class="plane-container">
         <div class="plane-trail"></div>
         <i class="fa-solid fa-plane plane-icon"></i>
+    </div>
+    <div class="plane-container ship-2">
+        <div class="plane-trail"></div>
+        <i class="fa-solid fa-rocket plane-icon" style="color: #c084fc;"></i>
     </div>
 
     <!-- Bouton Retour en haut -->
