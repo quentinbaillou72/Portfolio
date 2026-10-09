@@ -6,7 +6,7 @@
     <title>Portfolio Quentin Baillou | BTS SIO SISR</title>
     <!-- Favicone Planète en SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
-    <!-- Police Google Fonts -->
+    <!-- Police Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE CYBER-SPATIAL PRO & ÉPURÉ --- */
+        /* --- STYLE DARK SPATIAL ULTIMATE & INTERACTIF --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,213 +31,294 @@
             position: relative;
         }
 
-        /* --- FOND VECTORIEL ET NÉBULEUSES DESIGN --- */
-        .cosmic-bg {
+        /* --- FOND SPATIAL AVEC PLANÈTES EN MOUVEMENT ET MÉTÉORITES --- */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            background: #030712;
+            overflow: hidden;
+        }
+
+        /* 1. Planète Bleue (Géante) avec vraie animation de déplacement */
+        .planet-blue {
+            position: absolute;
+            bottom: -150px;
+            right: -100px;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 40%, #030712 85%);
+            border-radius: 50%;
+            box-shadow: inset -40px -40px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(56, 189, 248, 0.25);
+            opacity: 0.65;
+            animation: moveBluePlanet 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveBluePlanet {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(-40px, -30px) scale(1.05) rotate(5deg); }
+            100% { transform: translate(-20px, 20px) scale(0.98) rotate(-5deg); }
+        }
+
+        /* 2. Planète Rouge / Cuivrée (Type Mars) en mouvement */
+        .planet-red {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 50%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.85), 0 0 40px rgba(249, 115, 22, 0.3);
+            opacity: 0.55;
+            animation: moveRedPlanet 30s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveRedPlanet {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, 40px) scale(1.1); }
+            100% { transform: translate(20px, -30px) scale(0.95); }
+        }
+
+        /* 3. Petite Planète Violette / Néon en mouvement rapide */
+        .planet-purple {
+            position: absolute;
+            top: 60%;
+            left: 15%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, #c084fc, #7c3aed 60%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.4);
+            opacity: 0.5;
+            animation: movePurplePlanet 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes movePurplePlanet {
+            0% { transform: translate(0, 0) scale(0.9); }
+            100% { transform: translate(-50px, -60px) scale(1.15); }
+        }
+
+        /* Grille perspective spatiale */
+        .cyber-grid {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            background: linear-gradient(180deg, #030712 0%, #0a0f1d 40%, #050b14 80%, #030712 100%);
-            overflow: hidden;
+            background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 30s linear infinite;
         }
 
-        /* Grille perspective lumineuse style tech */
-        .tech-grid {
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+
+        /* Météorites / Étoiles filantes traversant l'espace */
+        .meteor {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(56, 189, 248, 0.02) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(56, 189, 248, 0.02) 1px, transparent 1px);
-            background-size: 80px 80px;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,1), transparent);
+            transform: rotate(-45deg);
+            opacity: 0;
+            animation: shootMeteor 6s linear infinite;
+            pointer-events: none;
         }
 
-        /* Nébuleuses lumineuses diffuses (très pro) */
-        .nebula {
+        .meteor-1 { top: 10%; left: -10%; animation-delay: 1s; }
+        .meteor-2 { top: 40%; left: -10%; animation-delay: 3.5s; animation-duration: 5s; }
+
+        @keyframes shootMeteor {
+            0% { transform: translate(0, 0) rotate(-45deg); opacity: 1; }
+            30% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
+            100% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Nébuleuses d'ambiance */
+        .glow-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(90px);
-            z-index: -1;
-            pointer-events: none;
+            filter: blur(100px);
+            opacity: 0.25;
+            animation: floatOrb 15s ease-in-out infinite alternate;
         }
-        .nebula-1 { top: 5%; left: 10%; width: 500px; height: 500px; background: rgba(56, 189, 248, 0.07); }
-        .nebula-2 { top: 35%; right: 5%; width: 600px; height: 600px; background: rgba(147, 51, 234, 0.06); }
-        .nebula-3 { top: 70%; left: 15%; width: 550px; height: 550px; background: rgba(14, 165, 233, 0.06); }
 
-        /* --- PLANÈTES MINIMALISTES VECTORIELLES PRO --- */
-        .planet-vector {
+        .orb-1 { top: 10%; left: 30%; width: 500px; height: 500px; background: #0284c7; }
+        .orb-2 { top: 40%; left: 70%; width: 450px; height: 450px; background: #7c3aed; animation-delay: -5s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, -40px) scale(1.12); }
+        }
+
+        .particles {
             position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.85), 0 0 30px rgba(56, 189, 248, 0.15);
-            animation: floatVector 16s ease-in-out infinite alternate;
-        }
-
-        /* 1. Planète Azur Tech (Accueil) */
-        .pv-azure {
-            top: 100px; right: 10%;
-            width: 220px; height: 220px;
-            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 60%, #030712 90%);
-        }
-
-        /* 2. Planète Néon Violette (Compétences) */
-        .pv-purple {
-            top: 1100px; left: 8%;
-            width: 200px; height: 200px;
-            background: radial-gradient(circle at 30% 30%, #c084fc, #7c3aed 60%, #030712 90%);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.85), 0 0 35px rgba(192, 132, 252, 0.2);
-            animation-duration: 20s;
-        }
-
-        /* 3. Planète Dorée à Anneaux Futurs (Parcours) */
-        .pv-gold {
-            top: 2200px; right: 8%;
-            width: 240px; height: 240px;
-            background: radial-gradient(circle at 30% 30%, #facc15, #ca8a04 60%, #030712 90%);
-            box-shadow: inset -25px -25px 40px rgba(0,0,0,0.85), 0 0 35px rgba(250, 204, 21, 0.2);
-        }
-        .pv-ring {
-            position: absolute;
-            top: 2290px; right: calc(8% - 50px);
-            width: 340px; height: 60px;
-            border: 2px solid rgba(250, 204, 21, 0.4);
-            border-radius: 50%;
-            transform: rotate(-25deg);
-            pointer-events: none;
-            box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
-        }
-
-        /* 4. Planète Cyan Émeraude (Projets) */
-        .pv-emerald {
-            top: 3300px; left: 7%;
-            width: 260px; height: 260px;
-            background: radial-gradient(circle at 30% 30%, #2dd4bf, #0d9488 60%, #030712 90%);
-            box-shadow: inset -30px -30px 50px rgba(0,0,0,0.85), 0 0 40px rgba(45, 212, 191, 0.2);
-            animation-duration: 18s;
-        }
-
-        @keyframes floatVector {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(40px) rotate(5deg); }
-        }
-
-        /* --- OBJETS VOLANTS PRO (Satellites & Vaisseaux discrets) --- */
-        .flying-object {
-            position: absolute;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .sat-1 {
-            top: 600px; left: -100px;
-            font-size: 1.6rem; color: #38bdf8;
-            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
-            animation: flyPath 15s linear infinite;
-        }
-
-        .sat-2 {
-            top: 1800px; right: -100px;
-            font-size: 1.8rem; color: #c084fc;
-            transform: scaleX(-1);
-            filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.8));
-            animation: flyPathRev 18s linear infinite;
-            animation-delay: 2s;
-        }
-
-        @keyframes flyPath {
-            0% { transform: translate(0, 0) rotate(10deg); opacity: 0; }
-            15% { opacity: 0.8; }
-            85% { opacity: 0.8; }
-            100% { transform: translate(110vw, 250px) rotate(35deg); opacity: 0; }
-        }
-
-        @keyframes flyPathRev {
-            0% { transform: translate(0, 0) scaleX(-1) rotate(-10deg); opacity: 0; }
-            15% { opacity: 0.8; }
-            85% { opacity: 0.8; }
-            100% { transform: translate(-110vw, 200px) scaleX(-1) rotate(-35deg); opacity: 0; }
-        }
-
-        /* --- BARRE DE PROGRESSION AVEC LA FUSÉE --- */
-        .scroll-progress-container {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 4px;
-            z-index: 9999;
-            background: rgba(15, 23, 42, 0.5);
-        }
-
-        .scroll-progress {
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-            width: 0%;
-            box-shadow: 0 0 12px #38bdf8;
-            position: relative;
+            background-image: radial-gradient(white 1px, transparent 0);
+            background-size: 80px 80px;
+            opacity: 0.25;
+            animation: twinkle 5s ease-in-out infinite alternate;
         }
 
-        .progress-rocket {
+        @keyframes twinkle {
+            0% { opacity: 0.15; }
+            100% { opacity: 0.35; }
+        }
+
+        /* --- VAISSEAUX SPATIAUX EN VOL --- */
+        .plane-container {
+            position: fixed;
+            top: 0;
+            left: -150px;
+            width: 100px;
+            height: 50px;
+            z-index: 998;
+            pointer-events: none;
+            animation: flyAcross 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+
+        .plane-container.ship-2 {
+            animation: flyAcross2 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation-delay: -4s;
+        }
+
+        .plane-icon {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            transform: rotate(45deg);
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
+        }
+
+        .plane-trail {
             position: absolute;
-            right: -14px; top: -10px;
-            font-size: 1.2rem; color: #38bdf8;
-            transform: rotate(90deg);
-            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9));
+            top: 15px;
+            right: 25px;
+            width: 140px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9));
         }
 
-        /* --- CURSEUR & BOUTON RETOUR EN HAUT --- */
+        @keyframes flyAcross {
+            0% { transform: translate(-100px, 150px) rotate(-10deg); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
+        }
+
+        @keyframes flyAcross2 {
+            0% { transform: translate(110vw, 400px) rotate(-35deg); opacity: 0; }
+            15% { opacity: 0.7; }
+            85% { opacity: 0.7; }
+            100% { transform: translate(-100px, 100px) rotate(-25deg); opacity: 0; }
+        }
+
+        /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
         #cursor-light {
             position: fixed;
-            top: 0; left: 0;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(37, 99, 235, 0.02) 40%, transparent 70%);
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: -1;
+            transition: width 0.2s, height 0.2s;
         }
 
+        /* --- BARRE DE PROGRESSION --- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            width: 0%;
+            z-index: 9999;
+            box-shadow: 0 0 12px #38bdf8;
+        }
+
+        /* --- BOUTON RETOUR EN HAUT --- */
         .back-to-top {
             position: fixed;
-            bottom: 30px; right: 30px;
-            width: 45px; height: 45px;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
             background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(56, 189, 248, 0.4);
             color: #38bdf8;
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.1rem;
             cursor: pointer;
             z-index: 999;
-            opacity: 0; visibility: hidden;
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
             text-decoration: none;
         }
-        .back-to-top.show { opacity: 1; visibility: visible; }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .back-to-top:hover {
-            background: #38bdf8; color: #030712;
+            background: #38bdf8;
+            color: #030712;
             transform: translateY(-5px);
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
         }
 
-        /* --- NAVIGATION --- */
+        /* --- BARRE DE NAVIGATION FLOTTANTE --- */
         header {
             position: fixed;
-            top: 20px; left: 50%;
+            top: 20px;
+            left: 50%;
             transform: translateX(-50%);
-            width: 90%; max-width: 1200px;
-            display: flex; justify-content: space-between; align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 14px 30px;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             border-radius: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             z-index: 1000;
         }
 
-        .logo { font-size: 1.2rem; color: #38bdf8; font-weight: 800; letter-spacing: 1px; text-shadow: 0 0 10px rgba(56, 189, 248, 0.6); }
+        .logo {
+            font-size: 1.2rem;
+            color: #38bdf8;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+        }
 
-        nav { display: flex; gap: 22px; align-items: center; }
+        nav {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
         nav a {
             text-decoration: none;
             color: #94a3b8;
@@ -245,6 +326,7 @@
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         nav a:hover, nav a.active {
             color: #38bdf8;
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
@@ -256,199 +338,347 @@
             color: white !important;
             padding: 8px 18px;
             border-radius: 20px;
-            font-weight: 600; font-size: 0.85rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
             transition: all 0.3s ease;
         }
+
         .badge-linkdn:hover {
             transform: scale(1.08) translateY(-2px);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.9);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.9);
         }
 
-        /* --- SECTIONS --- */
+        /* --- SECTIONS GÉNÉRALES --- */
         section {
             min-height: 100vh;
             padding: 140px 8% 80px 8%;
-            display: flex; flex-direction: column; justify-content: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             position: relative;
             z-index: 2;
         }
 
         .section-title {
-            font-size: 2.5rem; margin-bottom: 10px; font-weight: 800; color: #ffffff; text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            color: #ffffff;
+            text-align: center;
             letter-spacing: -0.5px;
         }
+
         .section-title span {
             background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .section-subtitle { color: #94a3b8; margin-bottom: 50px; font-size: 1.05rem; text-align: center; }
 
-        /* --- ACCUEIL --- */
-        #accueil { text-align: center; align-items: center; }
+        .section-subtitle {
+            color: #94a3b8;
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        /* --- 1. ACCUEIL (HERO) --- */
+        #accueil {
+            text-align: center;
+            align-items: center;
+        }
 
         .status-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(56, 189, 248, 0.08);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            padding: 6px 16px; border-radius: 20px;
-            color: #38bdf8; font-size: 0.85rem; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            padding: 6px 16px;
+            border-radius: 20px;
+            color: #38bdf8;
+            font-size: 0.85rem;
+            font-weight: 600;
             margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
-        }
-        .status-dot {
-            width: 8px; height: 8px; background-color: #38bdf8; border-radius: 50%;
-            box-shadow: 0 0 8px #38bdf8; animation: pulse 2s infinite;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
 
-        .hero-title-main { font-size: 3.5rem; font-weight: 800; color: #ffffff; margin-bottom: 15px; }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #38bdf8;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #38bdf8;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title-main {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
         .hero-subtitle-main {
             font-size: 1.2rem;
             background: linear-gradient(135deg, #38bdf8, #60a5fa);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            font-weight: 700; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        .hero-desc { color: #94a3b8; font-size: 1.15rem; max-width: 750px; margin: 0 auto 35px auto; line-height: 1.7; transition: color 0.3s; }
-        .hero-desc:hover { color: #ffffff; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
 
-        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .hero-desc {
+            color: #94a3b8;
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+            line-height: 1.7;
+            transition: color 0.3s ease;
+        }
+
+        .hero-desc:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
         .btn {
-            padding: 14px 28px; border-radius: 30px; font-weight: 600; text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1rem;
-            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
+
         .btn-primary {
-            background: linear-gradient(135deg, #0284c7, #2563eb); color: white;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.35); border: 1px solid rgba(56, 189, 248, 0.5);
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: white;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            border: 1px solid rgba(56, 189, 248, 0.6);
         }
-        .btn-primary:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 0 35px rgba(56, 189, 248, 0.8); }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.9);
+        }
 
         .btn-secondary {
-            background: rgba(15, 23, 42, 0.8); color: #f3f4f6;
-            border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            color: #f3f4f6;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
         }
-        .btn-secondary:hover { transform: translateY(-5px) scale(1.04); border-color: #38bdf8; color: #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.25); }
 
-        /* --- BLOCS DE TEXTE INTERACTIFS 3D --- */
+        .btn-secondary:hover {
+            transform: translateY(-5px) scale(1.04);
+            border-color: #38bdf8;
+            color: #38bdf8;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+        }
+
+        /* --- BLOCS DE TEXTE ULTRA INTERACTIFS (EFFET 3D AU HOVER) --- */
         .skills-grid, .projects-grid, .timeline-container {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px; margin-top: 20px; perspective: 1000px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+            perspective: 1000px;
         }
 
         .skill-card, .project-card, .timeline-card {
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(16px);
-            padding: 35px; border-radius: 20px;
+            padding: 35px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.35s, border-color 0.35s, box-shadow 0.35s;
-            position: relative; overflow: hidden; cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
         }
 
         .skill-card:hover, .project-card:hover, .timeline-card:hover {
-            transform: translateY(-12px) scale(1.03) rotateX(4deg) rotateY(-4deg);
+            transform: translateY(-10px) scale(1.03) rotateX(3deg) rotateY(-3deg);
             background: rgba(30, 41, 59, 0.9);
             border-color: #38bdf8;
-            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 15px 50px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(56, 189, 248, 0.2);
         }
 
         .skill-card:hover p, .project-card:hover p, .timeline-card:hover li, .timeline-card:hover h4 {
-            color: #ffffff; text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
         }
 
         .skill-card i, .project-card i {
-            font-size: 2.3rem; color: #38bdf8; margin-bottom: 18px;
+            font-size: 2.3rem;
+            color: #38bdf8;
+            margin-bottom: 18px;
             transition: transform 0.4s ease, text-shadow 0.4s ease;
         }
-        .skill-card:hover i, .project-card:hover i { transform: scale(1.35) rotate(-10deg); text-shadow: 0 0 20px #38bdf8; }
+
+        .skill-card:hover i, .project-card:hover i {
+            transform: scale(1.3) rotate(-10deg);
+            text-shadow: 0 0 20px #38bdf8;
+        }
 
         .skill-card h3, .project-card h3, .timeline-card h3 {
-            font-size: 1.3rem; margin-bottom: 10px; color: #ffffff; transition: color 0.3s, text-shadow 0.3s;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+            transition: color 0.3s, text-shadow 0.3s;
         }
+
         .skill-card:hover h3, .project-card:hover h3, .timeline-card:hover h3 {
-            color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+            color: #38bdf8;
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
         }
 
-        .skill-card span, .timeline-card h4 { color: #38bdf8; font-size: 0.9rem; font-weight: 600; }
-        .timeline-card h4 { color: #94a3b8; margin-bottom: 20px; }
-        .timeline-card ul, .project-card p { color: #94a3b8; font-size: 0.95rem; transition: color 0.3s; }
-        .timeline-card li { margin-bottom: 10px; }
+        .skill-card span, .timeline-card h4 {
+            color: #38bdf8;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
 
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
+        .timeline-card ul, .project-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .timeline-card li {
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
         .tag {
-            background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 5px 12px;
-            border-radius: 8px; font-size: 0.8rem; font-weight: 600;
-            border: 1px solid rgba(56, 189, 248, 0.2); transition: all 0.3s ease;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.3s ease;
         }
-        .project-card:hover .tag { background: #38bdf8; color: #030712; box-shadow: 0 0 12px rgba(56, 189, 248, 0.8); }
+
+        .project-card:hover .tag {
+            background: #38bdf8;
+            color: #030712;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
+        }
 
         /* --- CONTACT & VEILLE --- */
         .contact-box {
-            background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px);
-            padding: 45px; border-radius: 25px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            padding: 45px;
+            border-radius: 25px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            max-width: 750px; margin: 0 auto; width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s ease;
+            max-width: 750px;
+            margin: 0 auto;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
         }
+
         .contact-box:hover {
             transform: translateY(-6px) scale(1.02);
-            border-color: #38bdf8; box-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
+            border-color: #38bdf8;
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
         }
 
         .contact-item {
-            display: flex; align-items: center; justify-content: center;
-            gap: 15px; margin-bottom: 18px; font-size: 1.1rem; color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
         }
-        .contact-item i { color: #38bdf8; font-size: 1.3rem; transition: transform 0.3s ease; }
-        .contact-item:hover i { transform: scale(1.3) rotate(10deg); }
 
+        .contact-item i {
+            color: #38bdf8;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover i {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        /* Animations clés */
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            nav { display: none; }
-            .hero-title-main { font-size: 2.5rem; }
-            .planet-vector, .pv-ring, #cursor-light, .flying-object, .nebula { display: none; }
+            nav {
+                display: none;
+            }
+            .hero-title-main {
+                font-size: 2.5rem;
+            }
+            .planet-blue, .planet-red, .planet-purple, #cursor-light, .glow-orb, .plane-container, .meteor {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- FOND CYBER-SPATIAL PRO VECTORIEL -->
-    <div class="cosmic-bg">
-        <div class="tech-grid"></div>
-        
-        <!-- Nébuleuses lumineuses diffuses (Design Pro) -->
-        <div class="nebula nebula-1"></div>
-        <div class="nebula nebula-2"></div>
-        <div class="nebula nebula-3"></div>
-
-        <!-- Planètes vectorielles minimalistes design -->
-        <div class="planet-vector pv-azure"></div>
-        <div class="planet-vector pv-purple"></div>
-        <div class="planet-vector pv-gold"></div>
-        <div class="pv-ring"></div>
-        <div class="planet-vector pv-emerald"></div>
-
-        <!-- Objets volants pro -->
-        <div class="flying-object sat-1"><i class="fa-solid fa-satellite"></i></div>
-        <div class="flying-object sat-2"><i class="fa-solid fa-space-shuttle"></i></div>
+    <!-- FOND SPATIAL RICHE AVEC PLANÈTES EN MOUVEMENT ET MÉTÉORITES -->
+    <div class="cyber-bg">
+        <div class="cyber-grid"></div>
+        <div class="planet-red"></div>
+        <div class="planet-blue"></div>
+        <div class="planet-purple"></div>
+        <div class="meteor meteor-1"></div>
+        <div class="meteor meteor-2"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="particles"></div>
     </div>
 
-    <!-- Curseur lumineux -->
+    <!-- Lumière suiveuse de curseur -->
     <div id="cursor-light"></div>
 
-    <!-- Barre de progression avec la fusée -->
-    <div class="scroll-progress-container">
-        <div class="scroll-progress" id="scrollProgress">
-            <i class="fa-solid fa-rocket progress-rocket"></i>
-        </div>
+    <!-- Barre de progression -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Vaisseaux spatiaux animés -->
+    <div class="plane-container">
+        <div class="plane-trail"></div>
+        <i class="fa-solid fa-plane plane-icon"></i>
+    </div>
+    <div class="plane-container ship-2">
+        <div class="plane-trail"></div>
+        <i class="fa-solid fa-rocket plane-icon" style="color: #c084fc;"></i>
     </div>
 
     <!-- Bouton Retour en haut -->
@@ -456,7 +686,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- BARRE DE NAVIGATION -->
+    <!-- BARRE DE NAVIGATION FLOTTANTE -->
     <header>
         <div class="logo">Q. BAILLOU</div>
         <nav>
@@ -614,7 +844,7 @@
         </div>
     </section>
 
-    <!-- Scripts -->
+    <!-- Scripts JavaScript -->
     <script>
         const backToTopBtn = document.getElementById("backToTop");
         
