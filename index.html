@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK SPATIAL TECH & INTERACTIF --- */
+        /* --- STYLE DARK SPATIAL ULTIMATE & INTERACTIF --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +31,7 @@
             position: relative;
         }
 
-        /* --- FOND SPATIAL ULTRA RICHE --- */
+        /* --- FOND SPATIAL AVEC PLANÈTES EN MOUVEMENT ET MÉTÉORITES --- */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -43,56 +43,66 @@
             overflow: hidden;
         }
 
-        /* Grande Planète Bleue */
-        .planet-sphere {
+        /* 1. Planète Bleue (Géante) avec vraie animation de déplacement */
+        .planet-blue {
             position: absolute;
             bottom: -150px;
             right: -100px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle at 30% 30%, #0284c7, #1e1b4b 60%, #030712 90%);
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 40%, #030712 85%);
             border-radius: 50%;
-            box-shadow: inset -40px -40px 90px rgba(0, 0, 0, 0.9), 0 0 70px rgba(56, 189, 248, 0.2);
-            opacity: 0.6;
-            animation: planetFloat 20s ease-in-out infinite alternate;
+            box-shadow: inset -40px -40px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(56, 189, 248, 0.25);
+            opacity: 0.65;
+            animation: moveBluePlanet 25s ease-in-out infinite alternate;
         }
 
-        /* Petite Planète violette lointaine */
-        .small-planet {
+        @keyframes moveBluePlanet {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(-40px, -30px) scale(1.05) rotate(5deg); }
+            100% { transform: translate(-20px, 20px) scale(0.98) rotate(-5deg); }
+        }
+
+        /* 2. Planète Rouge / Cuivrée (Type Mars) en mouvement */
+        .planet-red {
             position: absolute;
-            top: 15%;
-            right: 10%;
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle at 35% 35%, #7c3aed, #0f172a 70%, #030712 95%);
+            top: 20%;
+            left: 5%;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 50%, #030712 90%);
             border-radius: 50%;
-            box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(124, 58, 237, 0.3);
+            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.85), 0 0 40px rgba(249, 115, 22, 0.3);
+            opacity: 0.55;
+            animation: moveRedPlanet 30s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveRedPlanet {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, 40px) scale(1.1); }
+            100% { transform: translate(20px, -30px) scale(0.95); }
+        }
+
+        /* 3. Petite Planète Violette / Néon en mouvement rapide */
+        .planet-purple {
+            position: absolute;
+            top: 60%;
+            left: 15%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, #c084fc, #7c3aed 60%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.4);
             opacity: 0.5;
-            animation: smallPlanetFloat 25s ease-in-out infinite alternate;
+            animation: movePurplePlanet 18s ease-in-out infinite alternate;
         }
 
-        @keyframes planetFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-25px, -15px) scale(1.04); }
+        @keyframes movePurplePlanet {
+            0% { transform: translate(0, 0) scale(0.9); }
+            100% { transform: translate(-50px, -60px) scale(1.15); }
         }
 
-        @keyframes smallPlanetFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 40px) scale(1.08); }
-        }
-
-        .planet-ring {
-            position: absolute;
-            bottom: 80px;
-            right: -60px;
-            width: 780px;
-            height: 250px;
-            border: 2px solid rgba(56, 189, 248, 0.15);
-            border-radius: 50%;
-            transform: rotate(-25deg);
-            pointer-events: none;
-        }
-
+        /* Grille perspective spatiale */
         .cyber-grid {
             position: absolute;
             top: 0;
@@ -110,16 +120,38 @@
             100% { background-position: 60px 60px; }
         }
 
+        /* Météorites / Étoiles filantes traversant l'espace */
+        .meteor {
+            position: absolute;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,1), transparent);
+            transform: rotate(-45deg);
+            opacity: 0;
+            animation: shootMeteor 6s linear infinite;
+            pointer-events: none;
+        }
+
+        .meteor-1 { top: 10%; left: -10%; animation-delay: 1s; }
+        .meteor-2 { top: 40%; left: -10%; animation-delay: 3.5s; animation-duration: 5s; }
+
+        @keyframes shootMeteor {
+            0% { transform: translate(0, 0) rotate(-45deg); opacity: 1; }
+            30% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
+            100% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Nébuleuses d'ambiance */
         .glow-orb {
             position: absolute;
             border-radius: 50%;
             filter: blur(100px);
-            opacity: 0.3;
+            opacity: 0.25;
             animation: floatOrb 15s ease-in-out infinite alternate;
         }
 
-        .orb-1 { top: 10%; left: 10%; width: 500px; height: 500px; background: #0284c7; }
-        .orb-2 { top: 50%; left: 40%; width: 450px; height: 450px; background: #7c3aed; animation-delay: -5s; }
+        .orb-1 { top: 10%; left: 30%; width: 500px; height: 500px; background: #0284c7; }
+        .orb-2 { top: 40%; left: 70%; width: 450px; height: 450px; background: #7c3aed; animation-delay: -5s; }
 
         @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); }
@@ -143,7 +175,7 @@
             100% { opacity: 0.35; }
         }
 
-        /* --- PLUSIEURS VAISSEAUX SPATIAUX EN VOL --- */
+        /* --- VAISSEAUX SPATIAUX EN VOL --- */
         .plane-container {
             position: fixed;
             top: 0;
@@ -463,7 +495,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 20px;
-            perspective: 1000px; /* Donne l'effet de relief 3D */
+            perspective: 1000px;
         }
 
         .skill-card, .project-card, .timeline-card {
@@ -479,7 +511,6 @@
             cursor: pointer;
         }
 
-        /* Effet interactif puissant au survol des blocs de texte */
         .skill-card:hover, .project-card:hover, .timeline-card:hover {
             transform: translateY(-10px) scale(1.03) rotateX(3deg) rotateY(-3deg);
             background: rgba(30, 41, 59, 0.9);
@@ -487,352 +518,4 @@
             box-shadow: 0 15px 50px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(56, 189, 248, 0.2);
         }
 
-        .skill-card:hover p, .project-card:hover p, .timeline-card:hover li, .timeline-card:hover h4 {
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
-        }
-
-        .skill-card i, .project-card i {
-            font-size: 2.3rem;
-            color: #38bdf8;
-            margin-bottom: 18px;
-            transition: transform 0.4s ease, text-shadow 0.4s ease;
-        }
-
-        .skill-card:hover i, .project-card:hover i {
-            transform: scale(1.3) rotate(-10deg);
-            text-shadow: 0 0 20px #38bdf8;
-        }
-
-        .skill-card h3, .project-card h3, .timeline-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        .skill-card:hover h3, .project-card:hover h3, .timeline-card:hover h3 {
-            color: #38bdf8;
-            text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
-        }
-
-        .skill-card span, .timeline-card h4 {
-            color: #38bdf8;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .timeline-card ul, .project-card p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .timeline-card li {
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 15px 0;
-        }
-
-        .tag {
-            background: rgba(56, 189, 248, 0.1);
-            color: #38bdf8;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .tag {
-            background: #38bdf8;
-            color: #030712;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
-        }
-
-        /* --- CONTACT & VEILLE --- */
-        .contact-box {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(16px);
-            padding: 45px;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            max-width: 750px;
-            margin: 0 auto;
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s ease;
-        }
-
-        .contact-box:hover {
-            transform: translateY(-6px) scale(1.02);
-            border-color: #38bdf8;
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 18px;
-            font-size: 1.1rem;
-            color: #cbd5e1;
-        }
-
-        .contact-item i {
-            color: #38bdf8;
-            font-size: 1.3rem;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover i {
-            transform: scale(1.3) rotate(10deg);
-        }
-
-        /* Animations clés */
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-            .hero-title-main {
-                font-size: 2.5rem;
-            }
-            .planet-sphere, .small-planet, .planet-ring, #cursor-light, .glow-orb, .plane-container {
-                display: none;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- FOND SPATIAL RICHE (PLANÈTES ET VAISSEAUX) -->
-    <div class="cyber-bg">
-        <div class="cyber-grid"></div>
-        <div class="small-planet"></div>
-        <div class="planet-sphere"></div>
-        <div class="planet-ring"></div>
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="particles"></div>
-    </div>
-
-    <!-- Lumière suiveuse de curseur -->
-    <div id="cursor-light"></div>
-
-    <!-- Barre de progression -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Vaisseaux spatiaux animés (Trajectoires multiples) -->
-    <div class="plane-container">
-        <div class="plane-trail"></div>
-        <i class="fa-solid fa-plane plane-icon"></i>
-    </div>
-    <div class="plane-container ship-2">
-        <div class="plane-trail"></div>
-        <i class="fa-solid fa-rocket plane-icon" style="color: #c084fc;"></i>
-    </div>
-
-    <!-- Bouton Retour en haut -->
-    <a href="#accueil" class="back-to-top" id="backToTop" title="Remonter tout en haut">
-        <i class="fa-solid fa-arrow-up"></i>
-    </a>
-
-    <!-- BARRE DE NAVIGATION FLOTTANTE -->
-    <header>
-        <div class="logo">Q. BAILLOU</div>
-        <nav>
-            <a href="#accueil" class="active">Accueil</a>
-            <a href="#apropos">Compétences</a>
-            <a href="#parcours">Parcours</a>
-            <a href="#projets">Projets</a>
-            <a href="#veille">Veille</a>
-            <a href="#contact">Contact</a>
-            <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" class="badge-linkdn">LinkedIn</a>
-        </nav>
-    </header>
-
-    <!-- 1. ACCUEIL -->
-    <section id="accueil">
-        <div class="status-badge">
-            <span class="status-dot"></span> Alternance en cours chez BUISARD
-        </div>
-        <span class="hero-subtitle-main">BTS SIO 2e année • Option SISR</span>
-        <h1 class="hero-title-main">Quentin Baillou</h1>
-        <p class="hero-desc">
-            Alternant en Administration Systèmes & Réseaux chez BUISARD. Étudiant au Lycée Carcouët, je conçois et sécurise des environnements informatiques performants et évolutifs.
-        </p>
-        <div class="hero-btns">
-            <a href="#apropos" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Explorer mon profil</a>
-            <a href="#projets" class="btn btn-secondary"><i class="fa-solid fa-code"></i> Voir mes projets</a>
-        </div>
-    </section>
-
-    <!-- 2. À PROPOS & COMPÉTENCES -->
-    <section id="apropos">
-        <h2 class="section-title">Mes <span>Compétences</span></h2>
-        <p class="section-subtitle">Domaines d'expertise technique</p>
-        
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fa-solid fa-server"></i>
-                <h3>Active Directory</h3>
-                <span>Administration Windows</span>
-            </div>
-            <div class="skill-card">
-                <i class="fa-solid fa-network-wired"></i>
-                <h3>Cisco Systems</h3>
-                <span>Réseaux & VLAN</span>
-            </div>
-            <div class="skill-card">
-                <i class="fa-solid fa-terminal"></i>
-                <h3>Systèmes Linux</h3>
-                <span>Debian / Serveurs</span>
-            </div>
-            <div class="skill-card">
-                <i class="fa-solid fa-headset"></i>
-                <h3>Support & Matériel</h3>
-                <span>Assistance technique</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. PARCOURS & ALTERNANCE -->
-    <section id="parcours">
-        <h2 class="section-title">Mon <span>Parcours</span></h2>
-        <p class="section-subtitle">Expérience professionnelle et formations diplômantes</p>
-        
-        <div class="timeline-container">
-            <div class="timeline-card">
-                <h3>Alternance Système & Réseau</h3>
-                <h4>BUISARD • Sablé-sur-Sarthe</h4>
-                <ul>
-                    <li>Gestion et administration des serveurs Windows & Linux.</li>
-                    <li>Support utilisateur, maintenance et déploiement de postes.</li>
-                    <li>Sécurisation et suivi des équipements réseaux.</li>
-                </ul>
-            </div>
-            <div class="timeline-card">
-                <h3>Formations & Diplômes</h3>
-                <h4>Lycée Carcouët & Raphaël Élizé</h4>
-                <ul>
-                    <li><strong>BTS SIO SISR :</strong> Lycée Carcouët (En cours, 2e année).</li>
-                    <li><strong>Bac Pro Maintenance (TTR) :</strong> Lycée Raphaël Élizé (2019-2022).</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. PROJETS -->
-    <section id="projets">
-        <h2 class="section-title">Mes <span>Projets</span></h2>
-        <p class="section-subtitle">Réalisations professionnelles et académiques (Épreuve E4 / E6)</p>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>Architecture Active Directory & GPO</h3>
-                <div class="tags">
-                    <span class="tag">Windows Server</span>
-                    <span class="tag">GPO</span>
-                </div>
-                <p>Déploiement d'un domaine sécurisé, structuration des unités d'organisation et application de stratégies de groupe ciblées.</p>
-            </div>
-            <div class="project-card">
-                <i class="fa-solid fa-router"></i>
-                <h3>Commutation & Routage Cisco</h3>
-                <div class="tags">
-                    <span class="tag">Cisco</span>
-                    <span class="tag">VLAN</span>
-                </div>
-                <p>Configuration des équipements réseau, segmentation VLAN et routage inter-VLAN au sein de l'infrastructure.</p>
-            </div>
-            <div class="project-card">
-                <i class="fa-solid fa-laptop-code"></i>
-                <h3>Support & Maintenance Système</h3>
-                <div class="tags">
-                    <span class="tag">Linux</span>
-                    <span class="tag">Support</span>
-                </div>
-                <p>Mise en place de solutions correctives, administration de serveurs de test et assistance technique de niveau 1 et 2.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. VEILLE TECHNOLOGIQUE -->
-    <section id="veille">
-        <h2 class="section-title">Veille <span>Technologique</span></h2>
-        <p class="section-subtitle">Suivi des innovations et actualités de la cybersécurité</p>
-        
-        <div class="contact-box" style="text-align: left;">
-            <h3 style="color: #38bdf8; margin-bottom: 12px;"><i class="fa-solid fa-radar"></i> Sécurisation des infrastructures & résilience</h3>
-            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px;">
-                Focus sur l'évolution des cybermenaces et les bonnes pratiques de sauvegarde et de protection des réseaux d'entreprise.
-            </p>
-            <p style="color: #cbd5e1; font-size: 0.9rem;">
-                <strong>Outils :</strong> Flux RSS, newsletters spécialisées et veilles actives sur les alertes CERT-FR.
-            </p>
-        </div>
-    </section>
-
-    <!-- 6. CONTACT -->
-    <section id="contact">
-        <h2 class="section-title">Me <span>Contacter</span></h2>
-        <p class="section-subtitle">Échangons sur votre projet ou opportunité</p>
-        
-        <div class="contact-box">
-            <div class="contact-item">
-                <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:quentinbailloudu72@gmail.com" style="color: #38bdf8; text-decoration: none;">quentinbailloudu72@gmail.com</a>
-            </div>
-            <div class="contact-item">
-                <i class="fa-brands fa-linkedin"></i>
-                <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: #38bdf8; text-decoration: none;">Profil LinkedIn de Quentin Baillou</a>
-            </div>
-            <div class="contact-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Sablé-sur-Sarthe / Pays de la Loire</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scripts JavaScript -->
-    <script>
-        const backToTopBtn = document.getElementById("backToTop");
-        
-        window.onscroll = function() {
-            let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("scrollProgress").style.width = scrolled + "%";
-
-            if (winScroll > 400) {
-                backToTopBtn.classList.add("show");
-            } else {
-                backToTopBtn.classList.remove("show");
-            }
-        };
-
-        const cursorLight = document.getElementById("cursor-light");
-        window.addEventListener("mousemove", (e) => {
-            cursorLight.style.left = e.clientX + "px";
-            cursorLight.style.top = e.clientY + "px";
-        });
-    </script>
-</body>
-</html>
+        .skill-card:hover p, .project
