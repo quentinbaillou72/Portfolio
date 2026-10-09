@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK VOYAGE SPATIAL --- */
+        /* --- STYLE DARK SYSTÈME SOLAIRE DYNAMIQUE --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,138 +31,156 @@
             position: relative;
         }
 
-        /* --- FOND SPATIAL QUI DÉFILE AVEC LA PAGE (ABSOLUTE) --- */
+        /* --- FOND SYSTÈME SOLAIRE QUI DÉFILE (ABSOLUTE) --- */
         .cyber-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%; /* S'étend sur toute la hauteur de la page et défile ! */
+            height: 100%;
             z-index: -2;
-            background: linear-gradient(180deg, #030712 0%, #0f172a 30%, #020617 70%, #030712 100%);
+            background: linear-gradient(180deg, #020617 0%, #030712 25%, #090d16 50%, #030712 75%, #020617 100%);
             overflow: hidden;
         }
 
-        /* Grille perspective spatiale continue */
-        .cyber-grid {
+        /* Lignes d'orbites du système solaire en arrière-plan */
+        .orbit-line {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-        }
-
-        /* --- NOUVELLES PLANÈTES DISPERSÉES SUR TOUTE LA HAUTEUR DE LA PAGE --- */
-        
-        /* 1. Zone Accueil : Planète Rouge (Mars) */
-        .planet-red {
-            position: absolute;
-            top: 80px;
-            left: 8%;
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 50%, #030712 90%);
+            border: 1px dashed rgba(56, 189, 248, 0.08);
             border-radius: 50%;
-            box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(249, 115, 22, 0.25);
-            opacity: 0.6;
-            animation: floatSlow 12s ease-in-out infinite alternate;
-        }
-
-        /* 2. Zone Compétences : Planète Bleue Azur */
-        .planet-blue {
-            position: absolute;
-            top: 1100px;
-            right: 5%;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 45%, #030712 85%);
-            border-radius: 50%;
-            box-shadow: inset -30px -30px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(56, 189, 248, 0.3);
-            opacity: 0.65;
-            animation: floatSlow 15s ease-in-out infinite alternate-reverse;
-        }
-
-        /* 3. Zone Parcours : Planète Dorée à Anneaux (Type Saturne) */
-        .planet-gold {
-            position: absolute;
-            top: 2100px;
-            left: 6%;
-            width: 240px;
-            height: 240px;
-            background: radial-gradient(circle at 35% 35%, #facc15, #ca8a04 50%, #030712 90%);
-            border-radius: 50%;
-            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.9), 0 0 45px rgba(250, 204, 21, 0.3);
-            opacity: 0.6;
-        }
-        .gold-ring {
-            position: absolute;
-            top: 2185px;
-            left: -10px;
-            width: 380px;
-            height: 70px;
-            border: 3px solid rgba(250, 204, 21, 0.35);
-            border-radius: 50%;
-            transform: rotate(-15deg);
             pointer-events: none;
-            box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+        }
+        .orbit-1 { top: 300px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; }
+        .orbit-2 { top: 1500px; left: 50%; transform: translateX(-50%); width: 1100px; height: 1100px; }
+        .orbit-3 { top: 2800px; left: 50%; transform: translateX(-50%); width: 950px; height: 950px; }
+
+        /* --- LES PLANÈTES DU SYSTÈME SOLAIRE RÉPARTIES SUR LA HAUTEUR --- */
+
+        /* 1. Le Soleil / Étoile lointaine (Zone Accueil) */
+        .solar-sun {
+            position: absolute;
+            top: 50px;
+            right: 10%;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, #f59e0b, #d97706 50%, #78350f 90%);
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(245, 158, 11, 0.4), inset -20px -20px 50px rgba(0,0,0,0.8);
+            animation: pulseSun 6s ease-in-out infinite alternate;
+        }
+        @keyframes pulseSun {
+            0% { transform: scale(1); box-shadow: 0 0 60px rgba(245, 158, 11, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 0 100px rgba(245, 158, 11, 0.6); }
         }
 
-        /* 4. Zone Projets & Veille : Planète Gazeuse Verte / Cyan lointaine */
-        .planet-green {
+        /* 2. Mercure (Petite rocheuse grise) */
+        .planet-mercury {
             position: absolute;
-            top: 3200px;
-            right: 8%;
+            top: 500px;
+            left: 12%;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #9ca3af, #4b5563 70%, #1f2937 95%);
+            border-radius: 50%;
+            box-shadow: inset -8px -8px 15px rgba(0,0,0,0.9), 0 0 15px rgba(156, 163, 175, 0.2);
+            animation: orbitFloat 10s ease-in-out infinite alternate;
+        }
+
+        /* 3. Mars (La rouge) en mouvement */
+        .planet-mars {
+            position: absolute;
+            top: 1250px;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 60%, #431407 95%);
+            border-radius: 50%;
+            box-shadow: inset -20px -20px 40px rgba(0,0,0,0.9), 0 0 30px rgba(249, 115, 22, 0.3);
+            animation: orbitFloat 14s ease-in-out infinite alternate-reverse;
+        }
+
+        /* 4. Jupiter (Géante gazeuse avec bandes) */
+        .planet-jupiter {
+            position: absolute;
+            top: 2200px;
+            left: 8%;
             width: 320px;
             height: 320px;
-            background: radial-gradient(circle at 30% 30%, #2dd4bf, #0d9488 50%, #030712 90%);
+            background: radial-gradient(circle at 30% 30%, #d97706, #92400e 40%, #451a03 80%, #170a01 95%);
             border-radius: 50%;
-            box-shadow: inset -35px -35px 70px rgba(0, 0, 0, 0.9), 0 0 60px rgba(45, 212, 191, 0.3);
-            opacity: 0.6;
-            animation: floatSlow 18s ease-in-out infinite alternate;
+            box-shadow: inset -40px -40px 80px rgba(0,0,0,0.9), 0 0 50px rgba(217, 119, 6, 0.25);
+            animation: slowRotate 25s linear infinite;
         }
 
-        /* 5. Zone Contact : Petite Planète Violette */
-        .planet-purple {
+        /* 5. Saturne (Dorée avec son grand anneau) */
+        .planet-saturn {
             position: absolute;
-            top: 4300px;
-            left: 10%;
-            width: 160px;
-            height: 160px;
-            background: radial-gradient(circle at 30% 30%, #c084fc, #7c3aed 60%, #030712 90%);
+            top: 3300px;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 35% 35%, #fde047, #ca8a04 60%, #713f12 95%);
             border-radius: 50%;
-            box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.4);
-            opacity: 0.55;
+            box-shadow: inset -25px -25px 50px rgba(0,0,0,0.9), 0 0 40px rgba(253, 224, 71, 0.3);
+            animation: orbitFloat 18s ease-in-out infinite alternate;
         }
-
-        @keyframes floatSlow {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(40px) rotate(8deg); }
-        }
-
-        /* Météorites filantes */
-        .meteor {
+        .saturn-ring {
             position: absolute;
-            width: 120px;
+            top: 3385px;
+            right: calc(10% - 60px);
+            width: 320px;
+            height: 60px;
+            border: 3px solid rgba(253, 224, 71, 0.4);
+            border-radius: 50%;
+            transform: rotate(-20deg);
+            pointer-events: none;
+            box-shadow: 0 0 15px rgba(253, 224, 71, 0.2);
+        }
+
+        /* 6. Neptune (Bleue lointaine givrée) */
+        .planet-neptune {
+            position: absolute;
+            top: 4400px;
+            left: 15%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8, #1d4ed8 60%, #1e1b4b 95%);
+            border-radius: 50%;
+            box-shadow: inset -25px -25px 50px rgba(0,0,0,0.9), 0 0 45px rgba(56, 189, 248, 0.35);
+            animation: orbitFloat 16s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes orbitFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(30px, 40px) rotate(10deg); }
+        }
+        @keyframes slowRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- ÉLÉMENTS QUI BOUGENT DERRIÈRE (Astéroïdes, Comètes, Poussières) --- */
+        .comet {
+            position: absolute;
+            width: 150px;
             height: 2px;
-            background: linear-gradient(90deg, rgba(255,255,255,1), transparent);
-            transform: rotate(-45deg);
+            background: linear-gradient(90deg, rgba(255,255,255,1), rgba(56,189,248,0.5), transparent);
+            transform: rotate(-35deg);
             opacity: 0;
-            animation: shootMeteor 6s linear infinite;
+            animation: shootComet 7s linear infinite;
             pointer-events: none;
         }
-        .meteor-1 { top: 15%; left: -10%; animation-delay: 1s; }
-        .meteor-2 { top: 55%; left: -10%; animation-delay: 3.5s; animation-duration: 5s; }
+        .comet-1 { top: 20%; left: -10%; animation-delay: 1.5s; }
+        .comet-2 { top: 50%; left: -10%; animation-delay: 4s; animation-duration: 5s; }
+        .comet-3 { top: 80%; left: -10%; animation-delay: 2.5s; animation-duration: 6s; }
 
-        @keyframes shootMeteor {
-            0% { transform: translate(0, 0) rotate(-45deg); opacity: 1; }
-            30% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
-            100% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
+        @keyframes shootComet {
+            0% { transform: translate(0, 0) rotate(-35deg); opacity: 1; }
+            40% { transform: translate(60vw, 60vh) rotate(-35deg); opacity: 0; }
+            100% { transform: translate(60vw, 60vh) rotate(-35deg); opacity: 0; }
         }
 
-        /* Étoiles et particules d'arrière-plan */
+        /* Champ d'étoiles statique et scintillant */
         .particles {
             position: absolute;
             top: 0;
@@ -170,8 +188,8 @@
             width: 100%;
             height: 100%;
             background-image: radial-gradient(white 1px, transparent 0);
-            background-size: 80px 80px;
-            opacity: 0.25;
+            background-size: 70px 70px;
+            opacity: 0.3;
         }
 
         /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
@@ -488,7 +506,7 @@
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
         }
 
-        /* --- BLOCS DE TEXTE ULTRA INTERACTIFS (EFFET 3D AU HOVER) --- */
+        /* --- BLOCS DE TEXTE INTERACTIFS (EFFET 3D AU HOVER) --- */
         .skills-grid, .projects-grid, .timeline-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -498,7 +516,7 @@
         }
 
         .skill-card, .project-card, .timeline-card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             padding: 35px;
             border-radius: 20px;
@@ -590,7 +608,7 @@
 
         /* --- CONTACT & VEILLE --- */
         .contact-box {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             padding: 45px;
             border-radius: 25px;
@@ -643,7 +661,7 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
-            .planet-red, .planet-blue, .planet-gold, .gold-ring, .planet-green, .planet-purple, #cursor-light, .plane-container, .meteor {
+            .solar-sun, .planet-mercury, .planet-mars, .planet-jupiter, .planet-saturn, .saturn-ring, .planet-neptune, .orbit-line, #cursor-light, .plane-container, .comet {
                 display: none;
             }
         }
@@ -651,17 +669,26 @@
 </head>
 <body>
 
-    <!-- FOND SPATIAL QUI DÉFILE ET RÉVÈLE DE NOUVELLES PLANÈTES -->
+    <!-- FOND SYSTÈME SOLAIRE ANIMÉ ET ÉVOLUTIF AU DÉFILEMENT -->
     <div class="cyber-bg">
-        <div class="cyber-grid"></div>
-        <div class="planet-red"></div>
-        <div class="planet-blue"></div>
-        <div class="planet-gold"></div>
-        <div class="gold-ring"></div>
-        <div class="planet-green"></div>
-        <div class="planet-purple"></div>
-        <div class="meteor meteor-1"></div>
-        <div class="meteor meteor-2"></div>
+        <div class="orbit-line orbit-1"></div>
+        <div class="orbit-line orbit-2"></div>
+        <div class="orbit-line orbit-3"></div>
+        
+        <!-- Éléments du Système Solaire -->
+        <div class="solar-sun"></div>
+        <div class="planet-mercury"></div>
+        <div class="planet-mars"></div>
+        <div class="planet-jupiter"></div>
+        <div class="planet-saturn"></div>
+        <div class="saturn-ring"></div>
+        <div class="planet-neptune"></div>
+
+        <!-- Comètes et astéroïdes filants -->
+        <div class="comet comet-1"></div>
+        <div class="comet comet-2"></div>
+        <div class="comet comet-3"></div>
+        
         <div class="particles"></div>
     </div>
 
