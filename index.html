@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK REALISTIC COSMIC --- */
+        /* --- STYLE DARK SPACE PHOTOREALISTIC --- */
         * {
             margin: 0;
             padding: 0;
@@ -24,14 +24,14 @@
         }
 
         body {
-            background-color: #030712;
+            background-color: #010409;
             color: #f3f4f6;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* --- FOND SPATIAL PROFOND --- */
+        /* --- FOND SPATIAL PROFOND ET IMMERSIF --- */
         .cosmic-bg {
             position: absolute;
             top: 0;
@@ -39,136 +39,167 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: radial-gradient(circle at 50% 20%, #0c1222 0%, #030712 50%, #010308 100%);
+            background: radial-gradient(circle at 50% 15%, #0a1128 0%, #030712 40%, #010204 100%);
             overflow: hidden;
         }
 
-        /* Orbites fines */
+        /* Orbites fines du système */
         .orbit {
             position: absolute;
-            border: 1px solid rgba(56, 189, 248, 0.05);
+            border: 1px dashed rgba(56, 189, 248, 0.04);
             border-radius: 50%;
             pointer-events: none;
         }
-        .orbit-1 { top: 250px; left: 10%; width: 650px; height: 650px; }
-        .orbit-2 { top: 1300px; right: 5%; width: 850px; height: 850px; }
-        .orbit-3 { top: 2600px; left: 15%; width: 950px; height: 950px; }
+        .orbit-1 { top: 200px; left: 5%; width: 700px; height: 700px; }
+        .orbit-2 { top: 1200px; right: 2%; width: 900px; height: 900px; }
+        .orbit-3 { top: 2400px; left: 8%; width: 1000px; height: 1000px; }
+        .orbit-4 { top: 3800px; right: 5%; width: 850px; height: 850px; }
 
-        /* --- PLANÈTES RÉALISTES AVEC CRATÈRES EN CSS & OMBRE 3D --- */
+        /* --- PLANÈTES ULTRA-RÉALISTES TEXTURÉES --- */
         .planet {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            box-shadow: inset -35px -35px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0,0,0,0.5);
+            /* Ombre 3D sphérique lourde pour détacher la planète du fond */
+            box-shadow: inset -50px -50px 90px rgba(0, 0, 0, 0.95), inset 20px 10px 40px rgba(255, 255, 255, 0.1), 0 0 50px rgba(0,0,0,0.8);
             overflow: hidden;
         }
 
-        /* Cratères réalistes générés par des ombres internes multiples */
-        .planet::before {
+        /* Masque de cratères et de relief texturé en surimpression */
+        .planet::after {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
-                radial-gradient(circle at 30% 40%, rgba(0,0,0,0.4) 3%, transparent 4%),
-                radial-gradient(circle at 70% 60%, rgba(0,0,0,0.35) 5%, transparent 6%),
-                radial-gradient(circle at 50% 20%, rgba(0,0,0,0.3) 4%, transparent 5%),
-                radial-gradient(circle at 20% 75%, rgba(0,0,0,0.45) 6%, transparent 7%),
-                radial-gradient(circle at 80% 25%, rgba(0,0,0,0.3) 3%, transparent 4%);
+                radial-gradient(circle at 25% 35%, rgba(0,0,0,0.6) 2%, transparent 3%),
+                radial-gradient(circle at 65% 20%, rgba(0,0,0,0.5) 4%, transparent 5%),
+                radial-gradient(circle at 80% 65%, rgba(0,0,0,0.55) 3%, transparent 4%),
+                radial-gradient(circle at 40% 75%, rgba(0,0,0,0.65) 5%, transparent 6%),
+                radial-gradient(circle at 15% 65%, rgba(0,0,0,0.4) 3%, transparent 4%),
+                radial-gradient(circle at 55% 45%, rgba(255,255,255,0.08) 10%, transparent 15%);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* 1. Terre / Planète Océanique & Atmosphère (Accueil) */
+        .planet-earth {
+            top: 100px;
+            right: 8%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8 0%, #0284c7 40%, #0f172a 80%, #020617 100%);
+            box-shadow: inset -55px -55px 90px rgba(0,0,0,0.95), 0 0 60px rgba(56, 189, 248, 0.3);
+            animation: floatPlanet 16s ease-in-out infinite alternate;
+        }
+
+        /* 2. Mars / Planète Cuivrée et Désertique (Compétences) */
+        .planet-mars {
+            top: 1100px;
+            left: 5%;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle at 35% 35%, #fb923c 0%, #c2410c 45%, #7c2d12 75%, #291105 95%);
+            box-shadow: inset -50px -50px 80px rgba(0,0,0,0.95), 0 0 50px rgba(251, 146, 60, 0.25);
+            animation: floatPlanet 20s ease-in-out infinite alternate-reverse;
+        }
+
+        /* 3. Jupiter / Géante Gazeuse à Bandes (Parcours) */
+        .planet-jupiter {
+            top: 2100px;
+            right: 6%;
+            width: 340px;
+            height: 340px;
+            background: linear-gradient(135deg, #78350f 0%, #b45309 25%, #d97706 40%, #92400e 60%, #451a03 80%, #1c0a00 100%);
+            box-shadow: inset -60px -60px 100px rgba(0,0,0,0.95), 0 0 70px rgba(217, 119, 6, 0.3);
+            animation: floatPlanet 25s ease-in-out infinite alternate;
+        }
+        /* Effet des bandes gazeuses spécifiques à Jupiter */
+        .planet-jupiter::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 15px,
+                rgba(0, 0, 0, 0.25) 15px,
+                rgba(0, 0, 0, 0.25) 30px
+            );
             border-radius: 50%;
             z-index: 1;
         }
 
-        /* 1. Planète Bleue Glacée / Océanique (Accueil) */
-        .planet-azure {
-            top: 120px;
-            right: 10%;
-            width: 260px;
-            height: 260px;
-            background: radial-gradient(circle at 30% 30%, #38bdf8, #0369a1 60%, #0c4a6e 90%);
-            box-shadow: inset -45px -45px 70px rgba(0, 0, 0, 0.95), 0 0 45px rgba(56, 189, 248, 0.25);
-            animation: floatPlanet 14s ease-in-out infinite alternate;
-        }
-
-        /* 2. Planète Rocheuse type Mars (Compétences) */
-        .planet-mars {
-            top: 1150px;
+        /* 4. Saturne / Dorée avec Anneaux (Projets) */
+        .planet-saturn {
+            top: 3200px;
             left: 6%;
-            width: 220px;
-            height: 220px;
-            background: radial-gradient(circle at 35% 35%, #fb923c, #9a3412 60%, #431407 90%);
-            box-shadow: inset -40px -40px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(251, 146, 60, 0.2);
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at 35% 35%, #fde047 0%, #ca8a04 50%, #713f12 85%, #221003 100%);
+            box-shadow: inset -50px -50px 80px rgba(0,0,0,0.95), 0 0 50px rgba(253, 224, 71, 0.3);
             animation: floatPlanet 18s ease-in-out infinite alternate-reverse;
         }
-
-        /* 3. Planète Violette tachetée de cratères (Parcours) */
-        .planet-violet {
-            top: 2200px;
-            right: 8%;
-            width: 240px;
-            height: 240px;
-            background: radial-gradient(circle at 35% 35%, #c084fc, #6b21a8 60%, #3b0764 90%);
-            box-shadow: inset -40px -40px 65px rgba(0, 0, 0, 0.95), 0 0 45px rgba(192, 132, 252, 0.25);
-            animation: floatPlanet 16s ease-in-out infinite alternate;
-        }
-        .ring {
+        .saturn-ring {
             position: absolute;
-            top: 2290px;
-            right: calc(8% - 55px);
-            width: 350px;
-            height: 60px;
-            border: 3px solid rgba(192, 132, 252, 0.35);
-            border-radius: 50%;
-            transform: rotate(-22deg);
-            pointer-events: none;
-            box-shadow: 0 0 15px rgba(192, 132, 252, 0.2);
-        }
-
-        /* 4. Planète Gazeuse Émeraude (Projets) */
-        .planet-emerald {
             top: 3300px;
-            left: 7%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle at 30% 30%, #2dd4bf, #0f766e 60%, #042f2e 90%);
-            box-shadow: inset -50px -50px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(45, 212, 191, 0.25);
-            animation: floatPlanet 20s ease-in-out infinite alternate;
+            left: calc(6% - 75px);
+            width: 400px;
+            height: 80px;
+            border: 5px solid rgba(253, 224, 71, 0.45);
+            border-radius: 50%;
+            transform: rotate(-25deg);
+            pointer-events: none;
+            box-shadow: 0 0 25px rgba(253, 224, 71, 0.3);
+            z-index: 3;
         }
 
-        /* 5. Lune / Planétoïde grise criblée de cratères (Contact) */
-        .planet-moon {
-            top: 4500px;
-            right: 12%;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle at 30% 30%, #cbd5e1, #475569 60%, #1e293b 90%);
-            box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.95), 0 0 30px rgba(203, 213, 225, 0.2);
-            animation: floatPlanet 11s ease-in-out infinite alternate-reverse;
+        /* 5. Neptune / Glacée et Profonde (Veille) */
+        .planet-neptune {
+            top: 4250px;
+            right: 10%;
+            width: 210px;
+            height: 210px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8 0%, #1d4ed8 50%, #1e1b4b 85%, #09090b 100%);
+            box-shadow: inset -45px -45px 70px rgba(0,0,0,0.95), 0 0 45px rgba(56, 189, 248, 0.3);
+            animation: floatPlanet 15s ease-in-out infinite alternate;
+        }
+
+        /* 6. Exoplanète Rocheuse / Sombre (Contact) */
+        .planet-dark {
+            top: 5200px;
+            left: 12%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 30% 30%, #94a3b8 0%, #334155 50%, #0f172a 80%, #020617 100%);
+            box-shadow: inset -40px -40px 60px rgba(0,0,0,0.95), 0 0 35px rgba(148, 163, 184, 0.2);
+            animation: floatPlanet 12s ease-in-out infinite alternate-reverse;
         }
 
         @keyframes floatPlanet {
             0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(40px) rotate(6deg); }
+            100% { transform: translateY(45px) rotate(8deg); }
         }
 
-        /* Météorites et étoiles filantes réalistes */
+        /* Étoiles filantes / Météores ultra-rapides */
         .shooting-star {
             position: absolute;
-            width: 160px;
+            width: 180px;
             height: 2px;
-            background: linear-gradient(90deg, #ffffff, rgba(56,189,248,0.7), transparent);
+            background: linear-gradient(90deg, #ffffff, rgba(56,189,248,0.8), transparent);
             transform: rotate(-40deg);
             opacity: 0;
-            animation: shoot 6s linear infinite;
+            animation: shoot 5s linear infinite;
             pointer-events: none;
         }
-        .star-1 { top: 12%; left: -10%; animation-delay: 1.5s; }
-        .star-2 { top: 48%; left: -10%; animation-delay: 4.5s; animation-duration: 5s; }
-        .star-3 { top: 78%; left: -10%; animation-delay: 3s; animation-duration: 6.5s; }
+        .star-1 { top: 10%; left: -10%; animation-delay: 1s; }
+        .star-2 { top: 35%; left: -10%; animation-delay: 3.5s; animation-duration: 4.5s; }
+        .star-3 { top: 65%; left: -10%; animation-delay: 2s; animation-duration: 6s; }
+        .star-4 { top: 85%; left: -10%; animation-delay: 5s; animation-duration: 5.5s; }
 
         @keyframes shoot {
             0% { transform: translate(0, 0) rotate(-40deg); opacity: 1; }
-            35% { transform: translate(70vw, 70vh) rotate(-40deg); opacity: 0; }
-            100% { transform: translate(70vw, 70vh) rotate(-40deg); opacity: 0; }
+            30% { transform: translate(75vw, 75vh) rotate(-40deg); opacity: 0; }
+            100% { transform: translate(75vw, 75vh) rotate(-40deg); opacity: 0; }
         }
 
         .stardust {
@@ -176,18 +207,18 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             background-image: radial-gradient(white 1px, transparent 0);
-            background-size: 65px 65px;
-            opacity: 0.3;
+            background-size: 55px 55px;
+            opacity: 0.4;
         }
 
-        /* --- VAISSEAU SPATIAL --- */
+        /* --- VAISSEAU SPATIAL EN VOL --- */
         .spaceship {
             position: fixed;
             top: 0; left: -150px;
             width: 100px; height: 50px;
             z-index: 998;
             pointer-events: none;
-            animation: flyShip 11s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation: flyShip 10s cubic-bezier(0.25, 1, 0.5, 1) infinite;
         }
         .ship-icon {
             font-size: 2.2rem;
@@ -209,7 +240,7 @@
             100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
         }
 
-        /* --- CURSEUR LUMINEUX & PROGRESSION --- */
+        /* --- CURSEUR & PROGRESSION --- */
         #cursor-light {
             position: fixed;
             top: 0; left: 0;
@@ -453,30 +484,33 @@
         @media (max-width: 768px) {
             nav { display: none; }
             .hero-title-main { font-size: 2.5rem; }
-            .planet, .ring, .orbit, #cursor-light, .spaceship, .shooting-star { display: none; }
+            .planet, .saturn-ring, .orbit, #cursor-light, .spaceship, .shooting-star { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FOND COSMIQUE AVEC PLANÈTES TEXTURÉES ET CRATÈRES -->
+    <!-- FOND SPATIAL AVEC PLANÈTES TEXTURÉES ET PHOTORÉALISTES -->
     <div class="cosmic-bg">
         <div class="orbit orbit-1"></div>
         <div class="orbit orbit-2"></div>
         <div class="orbit orbit-3"></div>
+        <div class="orbit orbit-4"></div>
 
-        <!-- Planètes ultra-réalistes texturées à cratères -->
-        <div class="planet planet-azure"></div>
+        <!-- Planètes ultra-détaillées avec reliefs et ombres 3D -->
+        <div class="planet planet-earth"></div>
         <div class="planet planet-mars"></div>
-        <div class="planet planet-violet"></div>
-        <div class="ring"></div>
-        <div class="planet planet-emerald"></div>
-        <div class="planet planet-moon"></div>
+        <div class="planet planet-jupiter"></div>
+        <div class="planet planet-saturn"></div>
+        <div class="saturn-ring"></div>
+        <div class="planet planet-neptune"></div>
+        <div class="planet planet-dark"></div>
 
-        <!-- Étoiles filantes / Météorites -->
+        <!-- Étoiles filantes -->
         <div class="shooting-star star-1"></div>
         <div class="shooting-star star-2"></div>
         <div class="shooting-star star-3"></div>
+        <div class="shooting-star star-4"></div>
 
         <div class="stardust"></div>
     </div>
