@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK SPACE HAUTE DÉFINITION --- */
+        /* --- STYLE DARK SPACE FLUIDE & PROPRE --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +31,7 @@
             position: relative;
         }
 
-        /* --- FOND SPATIAL IMMERSIF --- */
+        /* --- FOND PROPRE (SANS POINTS GÊNANTS) --- */
         .cosmic-bg {
             position: absolute;
             top: 0;
@@ -39,128 +39,135 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: radial-gradient(circle at 50% 15%, #0a1128 0%, #030712 40%, #010204 100%);
+            background: linear-gradient(180deg, #020617 0%, #030712 30%, #090d16 70%, #020617 100%);
             overflow: hidden;
         }
 
-        /* --- PLANÈTES AVEC VRAIES IMAGES HD PHOTORÉALISTES --- */
+        /* --- PLANÈTES MOBILES TEXTURÉES --- */
         .planet {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
             background-size: cover;
             background-position: center;
-            box-shadow: inset -40px -40px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(0, 0, 0, 0.7);
-        }
-
-        /* 1. Terre HD (Zone Accueil) */
-        .planet-earth {
-            top: 90px;
-            right: 8%;
-            width: 270px;
-            height: 270px;
-            background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000&auto=format&fit=crop');
-            animation: floatPlanet 16s ease-in-out infinite alternate;
-        }
-
-        /* 2. Mars HD (Zone Compétences) */
-        .planet-mars {
-            top: 1150px;
-            left: 6%;
-            width: 230px;
-            height: 230px;
-            background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000&auto=format&fit=crop'); /* Remplacement texture rouge cuivrée */
-            filter: hue-rotate(300deg) saturate(1.8);
-            animation: floatPlanet 20s ease-in-out infinite alternate-reverse;
-        }
-
-        /* 3. Jupiter HD (Zone Parcours) */
-        .planet-jupiter {
-            top: 2150px;
-            right: 7%;
-            width: 320px;
-            height: 320px;
-            background-image: url('https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?q=80&w=1000&auto=format&fit=crop');
-            animation: floatPlanet 24s ease-in-out infinite alternate;
-        }
-
-        /* 4. Saturne HD avec ses anneaux (Zone Projets) */
-        .planet-saturn {
-            top: 3250px;
-            left: 6%;
-            width: 260px;
-            height: 260px;
-            background-image: url('https://images.unsplash.com/photo-1614732414444-096e5f1122d4?q=80&w=1000&auto=format&fit=crop');
-            animation: floatPlanet 18s ease-in-out infinite alternate-reverse;
-        }
-        .saturn-ring {
-            position: absolute;
-            top: 3330px;
-            left: calc(6% - 70px);
-            width: 400px;
-            height: 90px;
-            border: 6px solid rgba(212, 175, 55, 0.45);
-            border-radius: 50%;
-            transform: rotate(-25deg);
-            pointer-events: none;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-            z-index: 3;
-        }
-
-        /* 5. Neptune HD (Zone Veille) */
-        .planet-neptune {
-            top: 4300px;
-            right: 9%;
-            width: 220px;
-            height: 220px;
-            background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000&auto=format&fit=crop');
-            filter: hue-rotate(180deg) saturate(2);
+            box-shadow: inset -30px -30px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 0, 0, 0.8);
             animation: floatPlanet 15s ease-in-out infinite alternate;
         }
 
-        /* 6. Lune mystique HD (Zone Contact) */
-        .planet-moon {
-            top: 5300px;
-            left: 10%;
+        .planet-earth {
+            top: 80px;
+            right: 8%;
+            width: 250px;
+            height: 250px;
+            background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000&auto=format&fit=crop');
+        }
+
+        .planet-mars {
+            top: 1100px;
+            left: 5%;
+            width: 220px;
+            height: 220px;
+            background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000&auto=format&fit=crop');
+            filter: hue-rotate(300deg) saturate(2);
+            animation-duration: 18s;
+            animation-direction: alternate-reverse;
+        }
+
+        .planet-jupiter {
+            top: 2100px;
+            right: 6%;
+            width: 300px;
+            height: 300px;
+            background-image: url('https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?q=80&w=1000&auto=format&fit=crop');
+            animation-duration: 22s;
+        }
+
+        .planet-saturn {
+            top: 3200px;
+            left: 6%;
+            width: 240px;
+            height: 240px;
+            background-image: url('https://images.unsplash.com/photo-1614732414444-096e5f1122d4?q=80&w=1000&auto=format&fit=crop');
+            animation-duration: 16s;
+        }
+        .saturn-ring {
+            position: absolute;
+            top: 3275px;
+            left: calc(6% - 65px);
+            width: 370px;
+            height: 80px;
+            border: 5px solid rgba(212, 175, 55, 0.4);
+            border-radius: 50%;
+            transform: rotate(-25deg);
+            pointer-events: none;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            z-index: 3;
+        }
+
+        .planet-neptune {
+            top: 4200px;
+            right: 8%;
             width: 200px;
             height: 200px;
-            background-image: url('https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?q=80&w=1000&auto=format&fit=crop');
-            animation: floatPlanet 14s ease-in-out infinite alternate-reverse;
+            background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000&auto=format&fit=crop');
+            filter: hue-rotate(180deg) saturate(2.5);
+            animation-duration: 20s;
         }
 
         @keyframes floatPlanet {
             0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(40px) rotate(6deg); }
+            100% { transform: translateY(50px) rotate(10deg); }
         }
 
-        /* Étoiles filantes */
-        .shooting-star {
+        /* --- OBJETS VOLANTS ANIMÉS (Vaisseaux et Satellites) --- */
+        .flying-object {
             position: absolute;
-            width: 160px;
-            height: 2px;
-            background: linear-gradient(90deg, #ffffff, rgba(56,189,248,0.8), transparent);
-            transform: rotate(-40deg);
-            opacity: 0;
-            animation: shoot 5s linear infinite;
             pointer-events: none;
-        }
-        .star-1 { top: 12%; left: -10%; animation-delay: 1s; }
-        .star-2 { top: 40%; left: -10%; animation-delay: 3s; animation-duration: 4.5s; }
-        .star-3 { top: 70%; left: -10%; animation-delay: 2s; animation-duration: 6s; }
-
-        @keyframes shoot {
-            0% { transform: translate(0, 0) rotate(-40deg); opacity: 1; }
-            30% { transform: translate(75vw, 75vh) rotate(-40deg); opacity: 0; }
-            100% { transform: translate(75vw, 75vh) rotate(-40deg); opacity: 0; }
+            z-index: 1;
         }
 
-        .stardust {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: radial-gradient(white 1px, transparent 0);
-            background-size: 60px 60px;
-            opacity: 0.35;
+        .satellite-1 {
+            top: 600px;
+            left: -100px;
+            font-size: 1.8rem;
+            color: #38bdf8;
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
+            animation: flyAcross1 14s linear infinite;
+        }
+
+        .shuttle-2 {
+            top: 1800px;
+            right: -100px;
+            font-size: 2rem;
+            color: #c084fc;
+            transform: scaleX(-1);
+            filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.8));
+            animation: flyAcross2 18s linear infinite;
+            animation-delay: 3s;
+        }
+
+        .satellite-3 {
+            top: 3700px;
+            left: -100px;
+            font-size: 1.6rem;
+            color: #38bdf8;
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
+            animation: flyAcross1 16s linear infinite;
+            animation-delay: 2s;
+        }
+
+        @keyframes flyAcross1 {
+            0% { transform: translate(0, 0) rotate(15deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(110vw, 300px) rotate(45deg); opacity: 0; }
+        }
+
+        @keyframes flyAcross2 {
+            0% { transform: translate(0, 0) scaleX(-1) rotate(-15deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(-110vw, 250px) scaleX(-1) rotate(-45deg); opacity: 0; }
         }
 
         /* --- BARRE DE PROGRESSION AVEC LA FUSÉE --- */
@@ -182,7 +189,6 @@
             position: relative;
         }
 
-        /* La petite fusée tout au bout de la barre de progression */
         .progress-rocket {
             position: absolute;
             right: -15px;
@@ -193,7 +199,7 @@
             filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9));
         }
 
-        /* --- CURSEUR LUMINEUX & BOUTON RETOUR EN HAUT --- */
+        /* --- CURSEUR & BOUTON RETOUR EN HAUT --- */
         #cursor-light {
             position: fixed;
             top: 0; left: 0;
@@ -426,29 +432,26 @@
         @media (max-width: 768px) {
             nav { display: none; }
             .hero-title-main { font-size: 2.5rem; }
-            .planet, .saturn-ring, #cursor-light, .shooting-star { display: none; }
+            .planet, .saturn-ring, #cursor-light, .flying-object { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FOND COSMIQUE AVEC VRAIES PLANÈTES HD -->
+    <!-- FOND COSMIC PROPRE AVEC PLANÈTES ET OBJETS VOLANTS -->
     <div class="cosmic-bg">
-        <!-- 6 Planètes réelles HD éparpillées sur toute la hauteur -->
+        <!-- Planètes HD mobiles -->
         <div class="planet planet-earth"></div>
         <div class="planet planet-mars"></div>
         <div class="planet planet-jupiter"></div>
         <div class="planet planet-saturn"></div>
         <div class="saturn-ring"></div>
         <div class="planet planet-neptune"></div>
-        <div class="planet planet-moon"></div>
 
-        <!-- Étoiles filantes -->
-        <div class="shooting-star star-1"></div>
-        <div class="shooting-star star-2"></div>
-        <div class="shooting-star star-3"></div>
-
-        <div class="stardust"></div>
+        <!-- Objets volants (Satellites & Navettes) -->
+        <div class="flying-object satellite-1"><i class="fa-solid fa-satellite"></i></div>
+        <div class="flying-object shuttle-2"><i class="fa-solid fa-space-shuttle"></i></div>
+        <div class="flying-object satellite-3"><i class="fa-solid fa-satellite-dish"></i></div>
     </div>
 
     <!-- Curseur lumineux -->
@@ -637,7 +640,6 @@
             if (winScroll > 400) {
                 backToTopBtn.classList.add("show");
             } else {
-                backToTest = false;
                 backToTopBtn.classList.remove("show");
             }
         };
