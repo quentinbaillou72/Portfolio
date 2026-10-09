@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Quentin Baillou | BTS SIO SISR</title>
+    <!-- Favicone High-Tech (SVG en ligne) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/></svg>">
     <!-- Police Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK CYBER-TECH ULTIMATE AVEC FOND VIVANT --- */
+        /* --- STYLE DARK CYBER-TECH ULTIMATE --- */
         * {
             margin: 0;
             padding: 0;
@@ -29,7 +31,7 @@
             position: relative;
         }
 
-        /* --- ARRIÈRE-PLAN ULTRA ANIMÉ (FOND VIVANT) --- */
+        /* --- ARRIÈRE-PLAN VIVANT & THÉMATIQUE AVION / CIEL --- */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -41,15 +43,15 @@
             overflow: hidden;
         }
 
-        /* Grille perspective animée */
+        /* Grille cyber cinétique */
         .cyber-grid {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: gridMove 25s linear infinite;
         }
@@ -59,47 +61,46 @@
             100% { background-position: 50px 50px; }
         }
 
-        /* Orbes lumineux flottants en arrière-plan */
+        /* Orbes lumineux d'ambiance */
         .glow-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.35;
+            filter: blur(90px);
+            opacity: 0.3;
             animation: floatOrb 12s ease-in-out infinite alternate;
         }
 
-        .orb-1 {
-            top: 10%;
-            left: 15%;
-            width: 400px;
-            height: 400px;
-            background: #0284c7;
-        }
-
-        .orb-2 {
-            bottom: 15%;
-            right: 10%;
-            width: 500px;
-            height: 500px;
-            background: #7c3aed;
-            animation-delay: -4s;
-        }
-
-        .orb-3 {
-            top: 50%;
-            left: 50%;
-            width: 350px;
-            height: 350px;
-            background: #2563eb;
-            animation-delay: -8s;
-        }
+        .orb-1 { top: 10%; left: 15%; width: 400px; height: 400px; background: #0284c7; }
+        .orb-2 { bottom: 15%; right: 10%; width: 500px; height: 500px; background: #7c3aed; animation-delay: -4s; }
 
         @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, -60px) scale(1.15); }
+            100% { transform: translate(40px, -50px) scale(1.1); }
         }
 
-        /* Particules / Étoiles scintillantes */
+        /* Traînées de vol et lignes d'altitude en arrière-plan (Style vol d'avion) */
+        .sky-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 150px,
+                rgba(56, 189, 248, 0.015) 150px,
+                rgba(56, 189, 248, 0.015) 152px
+            );
+            animation: skyDrift 30s linear infinite;
+        }
+
+        @keyframes skyDrift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100px, -100px); }
+        }
+
+        /* Étoiles / Particules de haute altitude */
         .particles {
             position: absolute;
             top: 0;
@@ -107,31 +108,31 @@
             width: 100%;
             height: 100%;
             background-image: radial-gradient(white 1px, transparent 0);
-            background-size: 80px 80px;
-            opacity: 0.15;
+            background-size: 70px 70px;
+            opacity: 0.2;
             animation: twinkle 4s ease-in-out infinite alternate;
         }
 
         @keyframes twinkle {
             0% { opacity: 0.1; }
-            100% { opacity: 0.25; }
+            100% { opacity: 0.3; }
         }
 
-        /* --- EFFET LUMIÈRE QUI SUIT LE CURSEUR (SPOTLIGHT) --- */
+        /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
         #cursor-light {
             position: fixed;
             top: 0;
             left: 0;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(37, 99, 235, 0.04) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: -1;
             transition: width 0.2s, height 0.2s;
         }
 
-        /* --- BARRE DE PROGRESSION DE DÉFILEMENT --- */
+        /* --- BARRE DE PROGRESSION --- */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -176,6 +177,43 @@
             15% { opacity: 1; }
             85% { opacity: 1; }
             100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
+        }
+
+        /* --- BOUTON RETOUR EN HAUT --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: #38bdf8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #38bdf8;
+            color: #030712;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
         }
 
         /* --- BARRE DE NAVIGATION FLOTTANTE --- */
@@ -525,7 +563,7 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
-            .plane-container, #cursor-light, .glow-orb {
+            .plane-container, #cursor-light, .glow-orb, .sky-lines {
                 display: none;
             }
         }
@@ -536,9 +574,9 @@
     <!-- FOND VIVANT ARRIÈRE-PLAN -->
     <div class="cyber-bg">
         <div class="cyber-grid"></div>
+        <div class="sky-lines"></div>
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
         <div class="particles"></div>
     </div>
 
@@ -553,6 +591,11 @@
         <div class="plane-trail"></div>
         <i class="fa-solid fa-plane plane-icon"></i>
     </div>
+
+    <!-- Bouton Retour en haut -->
+    <a href="#accueil" class="back-to-top" id="backToTop" title="Remonter tout en haut">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
 
     <!-- BARRE DE NAVIGATION FLOTTANTE -->
     <header>
@@ -699,35 +742,4 @@
         <div class="contact-box">
             <div class="contact-item">
                 <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:quentinbailloudu72@gmail.com" style="color: #38bdf8; text-decoration: none;">quentinbailloudu72@gmail.com</a>
-            </div>
-            <div class="contact-item">
-                <i class="fa-brands fa-linkedin"></i>
-                <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: #38bdf8; text-decoration: none;">Profil LinkedIn de Quentin Baillou</a>
-            </div>
-            <div class="contact-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Sablé-sur-Sarthe / Pays de la Loire</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scripts JavaScript -->
-    <script>
-        // Barre de progression
-        window.onscroll = function() {
-            let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("scrollProgress").style.width = scrolled + "%";
-        };
-
-        // Effet Spotlight (Lumière qui suit la souris)
-        const cursorLight = document.getElementById("cursor-light");
-        window.addEventListener("mousemove", (e) => {
-            cursorLight.style.left = e.clientX + "px";
-            cursorLight.style.top = e.clientY + "px";
-        });
-    </script>
-</body>
-</html>
+                <a href="mailto:quentinbailloudu
