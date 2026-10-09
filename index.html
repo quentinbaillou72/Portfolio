@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STLES GÉNÉRAUX & RESET --- */
+        /* --- STYLES GÉNÉRAUX & RESET --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth; /* Permet le défilement fluide */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -82,7 +82,7 @@
         /* --- SECTIONS COMMUNES --- */
         section {
             min-height: 100vh;
-            padding: 120px 8% 80px 8%;
+            padding: 140px 8% 80px 8%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -336,6 +336,11 @@
             margin-bottom: 10px;
         }
 
+        .veille-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
         /* --- 5. CONTACT --- */
         .contact-container {
             display: flex;
@@ -378,7 +383,7 @@
                 margin-right: auto;
             }
             nav {
-                display: none; /* Version simplifiée pour mobile */
+                display: none;
             }
             .contact-container {
                 flex-direction: column;
@@ -388,7 +393,7 @@
 </head>
 <body>
 
-    <!-- Barre de navigation (Tous les liens fonctionnent !) -->
+    <!-- BARRE DE NAVIGATION -->
     <header>
         <div class="logo">Portfolio.SISR</div>
         <nav>
@@ -430,3 +435,102 @@
                 <p>Scripting PowerShell, Pare-feu, Sauvegardes, Supervision (OCS Inventory)</p>
             </div>
         </div>
+    </section>
+
+    <!-- SECTION 2 : PROJETS -->
+    <section id="projets">
+        <h2 class="section-title">Mes <span>Projets</span></h2>
+        <p class="section-subtitle">Réalisations professionnelles et académiques (Épreuve E4 / E6)</p>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Architecture Active Directory & GPO</h3>
+                <div class="tags">
+                    <span class="tag">Windows Server</span>
+                    <span class="tag">Active Directory</span>
+                    <span class="tag">GPO</span>
+                </div>
+                <p>Déploiement d'un domaine sécurisé, structuration des Unités d'Organisation (OU), gestion des droits d'accès et application de stratégies de groupe ciblées.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Déploiement Serveur LAMP & Base de données</h3>
+                <div class="tags">
+                    <span class="tag">Debian</span>
+                    <span class="tag">Apache</span>
+                    <span class="tag">MariaDB</span>
+                </div>
+                <p>Mise en place d'un serveur web sous Debian, configuration de la pile LAMP, sécurisation des accès et automatisation de l'import de bases de données.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Supervision du Parc Informatique</h3>
+                <div class="tags">
+                    <span class="tag">OCS Inventory</span>
+                    <span class="tag">Réseau</span>
+                    <span class="tag">Debian VM</span>
+                </div>
+                <p>Installation et configuration d'une solution de gestion et d'inventaire du parc matériel et logiciel au sein d'une machine virtuelle dédiée.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 : ALTERNANCE -->
+    <section id="alternance">
+        <h2 class="section-title">Mon <span>Alternance</span></h2>
+        <p class="section-subtitle">Immersion professionnelle en administration systèmes et réseaux</p>
+        
+        <div class="alternance-box">
+            <h3>Administrateur Systèmes & Réseaux (Apprenti)</h3>
+            <p>Au sein de mon entreprise d'accueil, je participe activement à la gestion quotidienne et à l'évolution de l'infrastructure informatique.</p>
+            <ul>
+                <li><strong>Support et assistance technique :</strong> Résolution des incidents de niveau 1 et 2, traitement des demandes utilisateurs.</li>
+                <li><strong>Gestion des serveurs :</strong> Maintenance corrective et évolutive des environnements Windows et Linux.</li>
+                <li><strong>Sécurité & Réseau :</strong> Suivi des sauvegardes, configuration des équipements réseaux et application des politiques de sécurité internes.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECTION 4 : VEILLE TECHNOLOGIQUE -->
+    <section id="veille">
+        <h2 class="section-title">Veille <span>Technologique</span></h2>
+        <p class="section-subtitle">Suivi des innovations et actualités de la cybersécurité</p>
+        
+        <div class="veille-grid">
+            <div class="veille-card">
+                <h3>Sujet de Veille</h3>
+                <p>Focus sur l'évolution des menaces de ransomware et les stratégies de résilience et de sauvegarde immuable pour les entreprises.</p>
+            </div>
+            <div class="veille-card">
+                <h3>Outils de Veille</h3>
+                <p>Utilisation de flux RSS (Feedly), alertes Google Alerts, newsletters spécialisées et veille sur des plateformes comme CERT-FR.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 : CONTACT -->
+    <section id="contact">
+        <h2 class="section-title">Me <span>Contacter</span></h2>
+        <p class="section-subtitle">Une question, un projet ou une opportunité ? Échangons !</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <p>Actuellement en recherche d'opportunités ou ouvert aux échanges dans le domaine des systèmes et réseaux, n'hésitez pas à me contacter directement.</p>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>ton.email@domain.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+33 6 XX XX XX XX</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>France (Mobilité alternance)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
