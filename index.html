@@ -41,6 +41,51 @@
             box-shadow: 0 0 10px #38bdf8;
         }
 
+        /* --- ANIMATION DE L'AVION QUI DÉPOSE LE NOM --- */
+        .plane-container {
+            position: fixed;
+            top: 0;
+            left: -150px;
+            width: 100px;
+            height: 50px;
+            z-index: 999;
+            pointer-events: none;
+            animation: flyAcross 7s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+
+        .plane-icon {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            transform: rotate(45deg);
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
+        }
+
+        .plane-trail {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8));
+        }
+
+        @keyframes flyAcross {
+            0% {
+                transform: translate(-100px, 150px) rotate(-10deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(110vw, -100px) rotate(-15deg);
+                opacity: 0;
+            }
+        }
+
         /* --- BARRE DE NAVIGATION FLOTTANTE --- */
         header {
             position: fixed;
@@ -258,7 +303,6 @@
             overflow: hidden;
         }
 
-        /* Effet de lueur dynamique au survol des cartes */
         .skill-card:hover, .project-card:hover, .timeline-card:hover {
             transform: translateY(-12px) scale(1.03);
             background: rgba(30, 41, 59, 0.85);
@@ -388,6 +432,9 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
+            .plane-container {
+                display: none; /* Masqué sur mobile pour éviter les bugs d'affichage */
+            }
         }
     </style>
 </head>
@@ -395,6 +442,12 @@
 
     <!-- Barre de progression -->
     <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Avion animé qui traverse l'écran -->
+    <div class="plane-container">
+        <div class="plane-trail"></div>
+        <i class="fa-solid fa-plane plane-icon"></i>
+    </div>
 
     <!-- BARRE DE NAVIGATION FLOTTANTE -->
     <header>
