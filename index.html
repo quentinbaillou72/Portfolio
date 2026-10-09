@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Quentin Baillou | BTS SIO SISR</title>
+    <!-- Favicone Planète en SVG -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
     <!-- Police Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK CYBER-TECH ULTIMATE AVEC FOND VIVANT --- */
+        /* --- STYLE DARK PLANETARY TECH --- */
         * {
             margin: 0;
             padding: 0;
@@ -29,7 +31,7 @@
             position: relative;
         }
 
-        /* --- ARRIÈRE-PLAN ULTRA ANIMÉ (FOND VIVANT) --- */
+        /* --- ARRIÈRE-PLAN THÉMATIQUE PLANÈTE / ESPACE --- */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -41,65 +43,75 @@
             overflow: hidden;
         }
 
-        /* Grille perspective animée */
+        /* Grande Planète stylisée en arrière-plan (effet orbe sphérique texturé) */
+        .planet-sphere {
+            position: absolute;
+            bottom: -200px;
+            right: -150px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle at 30% 30%, #0284c7, #1e1b4b 60%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -50px -50px 100px rgba(0, 0, 0, 0.9), 0 0 80px rgba(56, 189, 248, 0.15);
+            opacity: 0.6;
+            animation: planetFloat 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes planetFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-30px, -20px) scale(1.05); }
+        }
+
+        /* Anneau orbital autour de la planète */
+        .planet-ring {
+            position: absolute;
+            bottom: 50px;
+            right: -100px;
+            width: 900px;
+            height: 300px;
+            border: 2px solid rgba(56, 189, 248, 0.15);
+            border-radius: 50%;
+            transform: rotate(-25deg);
+            pointer-events: none;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.05);
+        }
+
+        /* Grille perspective spatiale */
         .cyber-grid {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 25s linear infinite;
+            background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 30s linear infinite;
         }
 
         @keyframes gridMove {
             0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
+            100% { background-position: 60px 60px; }
         }
 
-        /* Orbes lumineux flottants en arrière-plan */
+        /* Nébuleuses / Orbes d'ambiance cosmique */
         .glow-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.35;
-            animation: floatOrb 12s ease-in-out infinite alternate;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: floatOrb 15s ease-in-out infinite alternate;
         }
 
-        .orb-1 {
-            top: 10%;
-            left: 15%;
-            width: 400px;
-            height: 400px;
-            background: #0284c7;
-        }
-
-        .orb-2 {
-            bottom: 15%;
-            right: 10%;
-            width: 500px;
-            height: 500px;
-            background: #7c3aed;
-            animation-delay: -4s;
-        }
-
-        .orb-3 {
-            top: 50%;
-            left: 50%;
-            width: 350px;
-            height: 350px;
-            background: #2563eb;
-            animation-delay: -8s;
-        }
+        .orb-1 { top: 10%; left: 10%; width: 500px; height: 500px; background: #0284c7; }
+        .orb-2 { top: 40%; left: 60%; width: 450px; height: 450px; background: #7c3aed; animation-delay: -5s; }
 
         @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, -60px) scale(1.15); }
+            100% { transform: translate(40px, -40px) scale(1.12); }
         }
 
-        /* Particules / Étoiles scintillantes */
+        /* Étoiles scintillantes */
         .particles {
             position: absolute;
             top: 0;
@@ -108,30 +120,30 @@
             height: 100%;
             background-image: radial-gradient(white 1px, transparent 0);
             background-size: 80px 80px;
-            opacity: 0.15;
-            animation: twinkle 4s ease-in-out infinite alternate;
+            opacity: 0.25;
+            animation: twinkle 5s ease-in-out infinite alternate;
         }
 
         @keyframes twinkle {
-            0% { opacity: 0.1; }
-            100% { opacity: 0.25; }
+            0% { opacity: 0.15; }
+            100% { opacity: 0.35; }
         }
 
-        /* --- EFFET LUMIÈRE QUI SUIT LE CURSEUR (SPOTLIGHT) --- */
+        /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
         #cursor-light {
             position: fixed;
             top: 0;
             left: 0;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(37, 99, 235, 0.04) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: -1;
             transition: width 0.2s, height 0.2s;
         }
 
-        /* --- BARRE DE PROGRESSION DE DÉFILEMENT --- */
+        /* --- BARRE DE PROGRESSION --- */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -143,39 +155,41 @@
             box-shadow: 0 0 12px #38bdf8;
         }
 
-        /* --- ANIMATION DE L'AVION --- */
-        .plane-container {
+        /* --- BOUTON RETOUR EN HAUT --- */
+        .back-to-top {
             position: fixed;
-            top: 0;
-            left: -150px;
-            width: 100px;
-            height: 50px;
-            z-index: 998;
-            pointer-events: none;
-            animation: flyAcross 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-        }
-
-        .plane-icon {
-            font-size: 2.2rem;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 189, 248, 0.4);
             color: #38bdf8;
-            transform: rotate(45deg);
-            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
         }
 
-        .plane-trail {
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            width: 140px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9));
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
         }
 
-        @keyframes flyAcross {
-            0% { transform: translate(-100px, 150px) rotate(-10deg); opacity: 0; }
-            15% { opacity: 1; }
-            85% { opacity: 1; }
-            100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
+        .back-to-top:hover {
+            background: #38bdf8;
+            color: #030712;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
         }
 
         /* --- BARRE DE NAVIGATION FLOTTANTE --- */
@@ -525,7 +539,7 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
-            .plane-container, #cursor-light, .glow-orb {
+            .planet-sphere, .planet-ring, #cursor-light, .glow-orb {
                 display: none;
             }
         }
@@ -533,12 +547,13 @@
 </head>
 <body>
 
-    <!-- FOND VIVANT ARRIÈRE-PLAN -->
+    <!-- FOND PLANÉTAIRE EN ARRIÈRE-PLAN -->
     <div class="cyber-bg">
         <div class="cyber-grid"></div>
+        <div class="planet-sphere"></div>
+        <div class="planet-ring"></div>
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
         <div class="particles"></div>
     </div>
 
@@ -548,11 +563,10 @@
     <!-- Barre de progression -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Avion animé -->
-    <div class="plane-container">
-        <div class="plane-trail"></div>
-        <i class="fa-solid fa-plane plane-icon"></i>
-    </div>
+    <!-- Bouton Retour en haut -->
+    <a href="#accueil" class="back-to-top" id="backToTop" title="Remonter tout en haut">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
 
     <!-- BARRE DE NAVIGATION FLOTTANTE -->
     <header>
@@ -714,15 +728,21 @@
 
     <!-- Scripts JavaScript -->
     <script>
-        // Barre de progression
+        const backToTopBtn = document.getElementById("backToTop");
+        
         window.onscroll = function() {
             let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             let scrolled = (winScroll / height) * 100;
             document.getElementById("scrollProgress").style.width = scrolled + "%";
+
+            if (winScroll > 400) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
         };
 
-        // Effet Spotlight (Lumière qui suit la souris)
         const cursorLight = document.getElementById("cursor-light");
         window.addEventListener("mousemove", (e) => {
             cursorLight.style.left = e.clientX + "px";
