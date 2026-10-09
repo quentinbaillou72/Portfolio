@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK SPATIAL ULTIMATE & INTERACTIF --- */
+        /* --- STYLE DARK VOYAGE SPATIAL --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,78 +31,19 @@
             position: relative;
         }
 
-        /* --- FOND SPATIAL AVEC PLANÈTES EN MOUVEMENT ET MÉTÉORITES --- */
+        /* --- FOND SPATIAL QUI DÉFILE AVEC LA PAGE (ABSOLUTE) --- */
         .cyber-bg {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%; /* S'étend sur toute la hauteur de la page et défile ! */
             z-index: -2;
-            background: #030712;
+            background: linear-gradient(180deg, #030712 0%, #0f172a 30%, #020617 70%, #030712 100%);
             overflow: hidden;
         }
 
-        /* 1. Planète Bleue (Géante) avec vraie animation de déplacement */
-        .planet-blue {
-            position: absolute;
-            bottom: -150px;
-            right: -100px;
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 40%, #030712 85%);
-            border-radius: 50%;
-            box-shadow: inset -40px -40px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(56, 189, 248, 0.25);
-            opacity: 0.65;
-            animation: moveBluePlanet 25s ease-in-out infinite alternate;
-        }
-
-        @keyframes moveBluePlanet {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(-40px, -30px) scale(1.05) rotate(5deg); }
-            100% { transform: translate(-20px, 20px) scale(0.98) rotate(-5deg); }
-        }
-
-        /* 2. Planète Rouge / Cuivrée (Type Mars) en mouvement */
-        .planet-red {
-            position: absolute;
-            top: 20%;
-            left: 5%;
-            width: 220px;
-            height: 220px;
-            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 50%, #030712 90%);
-            border-radius: 50%;
-            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.85), 0 0 40px rgba(249, 115, 22, 0.3);
-            opacity: 0.55;
-            animation: moveRedPlanet 30s ease-in-out infinite alternate;
-        }
-
-        @keyframes moveRedPlanet {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(60px, 40px) scale(1.1); }
-            100% { transform: translate(20px, -30px) scale(0.95); }
-        }
-
-        /* 3. Petite Planète Violette / Néon en mouvement rapide */
-        .planet-purple {
-            position: absolute;
-            top: 60%;
-            left: 15%;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle at 30% 30%, #c084fc, #7c3aed 60%, #030712 90%);
-            border-radius: 50%;
-            box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.4);
-            opacity: 0.5;
-            animation: movePurplePlanet 18s ease-in-out infinite alternate;
-        }
-
-        @keyframes movePurplePlanet {
-            0% { transform: translate(0, 0) scale(0.9); }
-            100% { transform: translate(-50px, -60px) scale(1.15); }
-        }
-
-        /* Grille perspective spatiale */
+        /* Grille perspective spatiale continue */
         .cyber-grid {
             position: absolute;
             top: 0;
@@ -112,15 +53,96 @@
             background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
-            animation: gridMove 30s linear infinite;
         }
 
-        @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 60px 60px; }
+        /* --- NOUVELLES PLANÈTES DISPERSÉES SUR TOUTE LA HAUTEUR DE LA PAGE --- */
+        
+        /* 1. Zone Accueil : Planète Rouge (Mars) */
+        .planet-red {
+            position: absolute;
+            top: 80px;
+            left: 8%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 50%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(249, 115, 22, 0.25);
+            opacity: 0.6;
+            animation: floatSlow 12s ease-in-out infinite alternate;
         }
 
-        /* Météorites / Étoiles filantes traversant l'espace */
+        /* 2. Zone Compétences : Planète Bleue Azur */
+        .planet-blue {
+            position: absolute;
+            top: 1100px;
+            right: 5%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 45%, #030712 85%);
+            border-radius: 50%;
+            box-shadow: inset -30px -30px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(56, 189, 248, 0.3);
+            opacity: 0.65;
+            animation: floatSlow 15s ease-in-out infinite alternate-reverse;
+        }
+
+        /* 3. Zone Parcours : Planète Dorée à Anneaux (Type Saturne) */
+        .planet-gold {
+            position: absolute;
+            top: 2100px;
+            left: 6%;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle at 35% 35%, #facc15, #ca8a04 50%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.9), 0 0 45px rgba(250, 204, 21, 0.3);
+            opacity: 0.6;
+        }
+        .gold-ring {
+            position: absolute;
+            top: 2185px;
+            left: -10px;
+            width: 380px;
+            height: 70px;
+            border: 3px solid rgba(250, 204, 21, 0.35);
+            border-radius: 50%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+        }
+
+        /* 4. Zone Projets & Veille : Planète Gazeuse Verte / Cyan lointaine */
+        .planet-green {
+            position: absolute;
+            top: 3200px;
+            right: 8%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at 30% 30%, #2dd4bf, #0d9488 50%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -35px -35px 70px rgba(0, 0, 0, 0.9), 0 0 60px rgba(45, 212, 191, 0.3);
+            opacity: 0.6;
+            animation: floatSlow 18s ease-in-out infinite alternate;
+        }
+
+        /* 5. Zone Contact : Petite Planète Violette */
+        .planet-purple {
+            position: absolute;
+            top: 4300px;
+            left: 10%;
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle at 30% 30%, #c084fc, #7c3aed 60%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.4);
+            opacity: 0.55;
+        }
+
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(40px) rotate(8deg); }
+        }
+
+        /* Météorites filantes */
         .meteor {
             position: absolute;
             width: 120px;
@@ -131,9 +153,8 @@
             animation: shootMeteor 6s linear infinite;
             pointer-events: none;
         }
-
-        .meteor-1 { top: 10%; left: -10%; animation-delay: 1s; }
-        .meteor-2 { top: 40%; left: -10%; animation-delay: 3.5s; animation-duration: 5s; }
+        .meteor-1 { top: 15%; left: -10%; animation-delay: 1s; }
+        .meteor-2 { top: 55%; left: -10%; animation-delay: 3.5s; animation-duration: 5s; }
 
         @keyframes shootMeteor {
             0% { transform: translate(0, 0) rotate(-45deg); opacity: 1; }
@@ -141,23 +162,7 @@
             100% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
         }
 
-        /* Nébuleuses d'ambiance */
-        .glow-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.25;
-            animation: floatOrb 15s ease-in-out infinite alternate;
-        }
-
-        .orb-1 { top: 10%; left: 30%; width: 500px; height: 500px; background: #0284c7; }
-        .orb-2 { top: 40%; left: 70%; width: 450px; height: 450px; background: #7c3aed; animation-delay: -5s; }
-
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, -40px) scale(1.12); }
-        }
-
+        /* Étoiles et particules d'arrière-plan */
         .particles {
             position: absolute;
             top: 0;
@@ -167,12 +172,32 @@
             background-image: radial-gradient(white 1px, transparent 0);
             background-size: 80px 80px;
             opacity: 0.25;
-            animation: twinkle 5s ease-in-out infinite alternate;
         }
 
-        @keyframes twinkle {
-            0% { opacity: 0.15; }
-            100% { opacity: 0.35; }
+        /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
+        #cursor-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        /* --- BARRE DE PROGRESSION --- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            width: 0%;
+            z-index: 9999;
+            box-shadow: 0 0 12px #38bdf8;
         }
 
         /* --- VAISSEAUX SPATIAUX EN VOL --- */
@@ -220,32 +245,6 @@
             15% { opacity: 0.7; }
             85% { opacity: 0.7; }
             100% { transform: translate(-100px, 100px) rotate(-25deg); opacity: 0; }
-        }
-
-        /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
-        #cursor-light {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            transition: width 0.2s, height 0.2s;
-        }
-
-        /* --- BARRE DE PROGRESSION --- */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-            width: 0%;
-            z-index: 9999;
-            box-shadow: 0 0 12px #38bdf8;
         }
 
         /* --- BOUTON RETOUR EN HAUT --- */
@@ -644,7 +643,7 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
-            .planet-blue, .planet-red, .planet-purple, #cursor-light, .glow-orb, .plane-container, .meteor {
+            .planet-red, .planet-blue, .planet-gold, .gold-ring, .planet-green, .planet-purple, #cursor-light, .plane-container, .meteor {
                 display: none;
             }
         }
@@ -652,16 +651,17 @@
 </head>
 <body>
 
-    <!-- FOND SPATIAL RICHE AVEC PLANÈTES EN MOUVEMENT ET MÉTÉORITES -->
+    <!-- FOND SPATIAL QUI DÉFILE ET RÉVÈLE DE NOUVELLES PLANÈTES -->
     <div class="cyber-bg">
         <div class="cyber-grid"></div>
         <div class="planet-red"></div>
         <div class="planet-blue"></div>
+        <div class="planet-gold"></div>
+        <div class="gold-ring"></div>
+        <div class="planet-green"></div>
         <div class="planet-purple"></div>
         <div class="meteor meteor-1"></div>
         <div class="meteor meteor-2"></div>
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
         <div class="particles"></div>
     </div>
 
