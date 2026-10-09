@@ -6,7 +6,7 @@
     <title>Portfolio Quentin Baillou | BTS SIO SISR</title>
     <!-- Favicone Planète en SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
-    <!-- Police Google Fonts (Inter) -->
+    <!-- Police Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK SYSTÈME SOLAIRE DYNAMIQUE --- */
+        /* --- STYLE DARK COSMIC ULTIMATE --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,182 +31,187 @@
             position: relative;
         }
 
-        /* --- FOND SYSTÈME SOLAIRE QUI DÉFILE (ABSOLUTE) --- */
-        .cyber-bg {
+        /* --- FOND SPATIAL HAUTE QUALITÉ QUI DÉFILE --- */
+        .cosmic-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: linear-gradient(180deg, #020617 0%, #030712 25%, #090d16 50%, #030712 75%, #020617 100%);
+            background: radial-gradient(circle at 50% 20%, #0f172a 0%, #030712 50%, #020617 100%);
             overflow: hidden;
         }
 
-        /* Lignes d'orbites du système solaire en arrière-plan */
-        .orbit-line {
+        /* Orbites cosmiques lumineuses */
+        .orbit {
             position: absolute;
-            border: 1px dashed rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.08);
             border-radius: 50%;
             pointer-events: none;
         }
-        .orbit-1 { top: 300px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; }
-        .orbit-2 { top: 1500px; left: 50%; transform: translateX(-50%); width: 1100px; height: 1100px; }
-        .orbit-3 { top: 2800px; left: 50%; transform: translateX(-50%); width: 950px; height: 950px; }
+        .orbit-1 { top: 200px; left: 10%; width: 600px; height: 600px; }
+        .orbit-2 { top: 1200px; right: 5%; width: 800px; height: 800px; }
+        .orbit-3 { top: 2500px; left: 15%; width: 900px; height: 900px; }
 
-        /* --- LES PLANÈTES DU SYSTÈME SOLAIRE RÉPARTIES SUR LA HAUTEUR --- */
-
-        /* 1. Le Soleil / Étoile lointaine (Zone Accueil) */
-        .solar-sun {
+        /* --- PLANÈTES DYNAMIQUES MULTIPLES --- */
+        .planet {
             position: absolute;
-            top: 50px;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.2));
+        }
+
+        /* Planète 1 : Géante Azur (Accueil) */
+        .planet-azure {
+            top: 100px;
+            right: 8%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 50%, #030712 90%);
+            box-shadow: inset -30px -30px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(56, 189, 248, 0.3);
+            animation: floatPlanet 12s ease-in-out infinite alternate;
+        }
+
+        /* Planète 2 : Ardente Cuivrée (Compétences) */
+        .planet-copper {
+            top: 1100px;
+            left: 5%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 35% 35%, #fb923c, #c2410c 50%, #030712 90%);
+            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.9), 0 0 40px rgba(251, 146, 60, 0.3);
+            animation: floatPlanet 15s ease-in-out infinite alternate-reverse;
+        }
+
+        /* Planète 3 : Néon Violette à Anneau (Parcours) */
+        .planet-ringed {
+            top: 2150px;
             right: 10%;
             width: 220px;
             height: 220px;
-            background: radial-gradient(circle, #f59e0b, #d97706 50%, #78350f 90%);
-            border-radius: 50%;
-            box-shadow: 0 0 80px rgba(245, 158, 11, 0.4), inset -20px -20px 50px rgba(0,0,0,0.8);
-            animation: pulseSun 6s ease-in-out infinite alternate;
+            background: radial-gradient(circle at 35% 35%, #c084fc, #7c3aed 50%, #030712 90%);
+            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.9), 0 0 45px rgba(192, 132, 252, 0.3);
+            animation: floatPlanet 18s ease-in-out infinite alternate;
         }
-        @keyframes pulseSun {
-            0% { transform: scale(1); box-shadow: 0 0 60px rgba(245, 158, 11, 0.3); }
-            100% { transform: scale(1.05); box-shadow: 0 0 100px rgba(245, 158, 11, 0.6); }
+        .ring {
+            position: absolute;
+            top: 2240px;
+            right: calc(10% - 50px);
+            width: 320px;
+            height: 50px;
+            border: 2px solid rgba(192, 132, 252, 0.4);
+            border-radius: 50%;
+            transform: rotate(-25deg);
+            pointer-events: none;
         }
 
-        /* 2. Mercure (Petite rocheuse grise) */
-        .planet-mercury {
-            position: absolute;
-            top: 500px;
-            left: 12%;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle at 30% 30%, #9ca3af, #4b5563 70%, #1f2937 95%);
-            border-radius: 50%;
-            box-shadow: inset -8px -8px 15px rgba(0,0,0,0.9), 0 0 15px rgba(156, 163, 175, 0.2);
-            animation: orbitFloat 10s ease-in-out infinite alternate;
-        }
-
-        /* 3. Mars (La rouge) en mouvement */
-        .planet-mars {
-            position: absolute;
-            top: 1250px;
-            right: 15%;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 60%, #431407 95%);
-            border-radius: 50%;
-            box-shadow: inset -20px -20px 40px rgba(0,0,0,0.9), 0 0 30px rgba(249, 115, 22, 0.3);
-            animation: orbitFloat 14s ease-in-out infinite alternate-reverse;
-        }
-
-        /* 4. Jupiter (Géante gazeuse avec bandes) */
-        .planet-jupiter {
-            position: absolute;
-            top: 2200px;
+        /* Planète 4 : Émeraude Profonde (Projets) */
+        .planet-emerald {
+            top: 3250px;
             left: 8%;
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle at 30% 30%, #d97706, #92400e 40%, #451a03 80%, #170a01 95%);
-            border-radius: 50%;
-            box-shadow: inset -40px -40px 80px rgba(0,0,0,0.9), 0 0 50px rgba(217, 119, 6, 0.25);
-            animation: slowRotate 25s linear infinite;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle at 30% 30%, #2dd4bf, #0d9488 50%, #030712 90%);
+            box-shadow: inset -35px -35px 70px rgba(0, 0, 0, 0.9), 0 0 55px rgba(45, 212, 191, 0.3);
+            animation: floatPlanet 14s ease-in-out infinite alternate;
         }
 
-        /* 5. Saturne (Dorée avec son grand anneau) */
-        .planet-saturn {
-            position: absolute;
-            top: 3300px;
-            right: 10%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle at 35% 35%, #fde047, #ca8a04 60%, #713f12 95%);
-            border-radius: 50%;
-            box-shadow: inset -25px -25px 50px rgba(0,0,0,0.9), 0 0 40px rgba(253, 224, 71, 0.3);
-            animation: orbitFloat 18s ease-in-out infinite alternate;
-        }
-        .saturn-ring {
-            position: absolute;
-            top: 3385px;
-            right: calc(10% - 60px);
-            width: 320px;
-            height: 60px;
-            border: 3px solid rgba(253, 224, 71, 0.4);
-            border-radius: 50%;
-            transform: rotate(-20deg);
-            pointer-events: none;
-            box-shadow: 0 0 15px rgba(253, 224, 71, 0.2);
-        }
-
-        /* 6. Neptune (Bleue lointaine givrée) */
-        .planet-neptune {
-            position: absolute;
+        /* Planète 5 : Petite lune rapide (Contact) */
+        .planet-moon {
             top: 4400px;
-            left: 15%;
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle at 30% 30%, #38bdf8, #1d4ed8 60%, #1e1b4b 95%);
-            border-radius: 50%;
-            box-shadow: inset -25px -25px 50px rgba(0,0,0,0.9), 0 0 45px rgba(56, 189, 248, 0.35);
-            animation: orbitFloat 16s ease-in-out infinite alternate-reverse;
+            right: 15%;
+            width: 130px;
+            height: 130px;
+            background: radial-gradient(circle at 30% 30%, #e2e8f0, #64748b 60%, #0f172a 90%);
+            box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.9), 0 0 30px rgba(226, 232, 240, 0.2);
+            animation: floatPlanet 9s ease-in-out infinite alternate-reverse;
         }
 
-        @keyframes orbitFloat {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(30px, 40px) rotate(10deg); }
-        }
-        @keyframes slowRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes floatPlanet {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(35px) rotate(5deg); }
         }
 
-        /* --- ÉLÉMENTS QUI BOUGENT DERRIÈRE (Astéroïdes, Comètes, Poussières) --- */
-        .comet {
+        /* Météorites et étoiles filantes en mouvement */
+        .shooting-star {
             position: absolute;
-            width: 150px;
+            width: 140px;
             height: 2px;
-            background: linear-gradient(90deg, rgba(255,255,255,1), rgba(56,189,248,0.5), transparent);
-            transform: rotate(-35deg);
+            background: linear-gradient(90deg, #ffffff, rgba(56,189,248,0.6), transparent);
+            transform: rotate(-40deg);
             opacity: 0;
-            animation: shootComet 7s linear infinite;
+            animation: shoot 7s linear infinite;
             pointer-events: none;
         }
-        .comet-1 { top: 20%; left: -10%; animation-delay: 1.5s; }
-        .comet-2 { top: 50%; left: -10%; animation-delay: 4s; animation-duration: 5s; }
-        .comet-3 { top: 80%; left: -10%; animation-delay: 2.5s; animation-duration: 6s; }
+        .star-1 { top: 10%; left: -10%; animation-delay: 1s; }
+        .star-2 { top: 45%; left: -10%; animation-delay: 4s; animation-duration: 5s; }
+        .star-3 { top: 75%; left: -10%; animation-delay: 2.5s; animation-duration: 6s; }
 
-        @keyframes shootComet {
-            0% { transform: translate(0, 0) rotate(-35deg); opacity: 1; }
-            40% { transform: translate(60vw, 60vh) rotate(-35deg); opacity: 0; }
-            100% { transform: translate(60vw, 60vh) rotate(-35deg); opacity: 0; }
+        @keyframes shoot {
+            0% { transform: translate(0, 0) rotate(-40deg); opacity: 1; }
+            35% { transform: translate(65vw, 65vh) rotate(-40deg); opacity: 0; }
+            100% { transform: translate(65vw, 65vh) rotate(-40deg); opacity: 0; }
         }
 
-        /* Champ d'étoiles statique et scintillant */
-        .particles {
+        /* Poussière spatiale scintillante */
+        .stardust {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image: radial-gradient(white 1px, transparent 0);
-            background-size: 70px 70px;
-            opacity: 0.3;
+            background-size: 60px 60px;
+            opacity: 0.35;
         }
 
-        /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
+        /* --- VAISSEAU SPATIAL FLOTTANT --- */
+        .spaceship {
+            position: fixed;
+            top: 0;
+            left: -150px;
+            width: 100px;
+            height: 50px;
+            z-index: 998;
+            pointer-events: none;
+            animation: flyShip 10s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+        .ship-icon {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            transform: rotate(45deg);
+            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.9));
+        }
+        .ship-trail {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            width: 140px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9));
+        }
+
+        @keyframes flyShip {
+            0% { transform: translate(-100px, 200px) rotate(-10deg); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
+        }
+
+        /* --- CURSEUR LUMINEUX & PROGRESSION --- */
         #cursor-light {
             position: fixed;
             top: 0;
             left: 0;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: -1;
-            transition: width 0.2s, height 0.2s;
         }
 
-        /* --- BARRE DE PROGRESSION --- */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -216,53 +221,6 @@
             width: 0%;
             z-index: 9999;
             box-shadow: 0 0 12px #38bdf8;
-        }
-
-        /* --- VAISSEAUX SPATIAUX EN VOL --- */
-        .plane-container {
-            position: fixed;
-            top: 0;
-            left: -150px;
-            width: 100px;
-            height: 50px;
-            z-index: 998;
-            pointer-events: none;
-            animation: flyAcross 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-        }
-
-        .plane-container.ship-2 {
-            animation: flyAcross2 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-            animation-delay: -4s;
-        }
-
-        .plane-icon {
-            font-size: 2.2rem;
-            color: #38bdf8;
-            transform: rotate(45deg);
-            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
-        }
-
-        .plane-trail {
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            width: 140px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9));
-        }
-
-        @keyframes flyAcross {
-            0% { transform: translate(-100px, 150px) rotate(-10deg); opacity: 0; }
-            15% { opacity: 1; }
-            85% { opacity: 1; }
-            100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
-        }
-
-        @keyframes flyAcross2 {
-            0% { transform: translate(110vw, 400px) rotate(-35deg); opacity: 0; }
-            15% { opacity: 0.7; }
-            85% { opacity: 0.7; }
-            100% { transform: translate(-100px, 100px) rotate(-25deg); opacity: 0; }
         }
 
         /* --- BOUTON RETOUR EN HAUT --- */
@@ -289,20 +247,15 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
             text-decoration: none;
         }
-
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        .back-to-top.show { opacity: 1; visibility: visible; }
         .back-to-top:hover {
             background: #38bdf8;
             color: #030712;
             transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
         }
 
-        /* --- BARRE DE NAVIGATION FLOTTANTE --- */
+        /* --- NAVIGATION --- */
         header {
             position: fixed;
             top: 20px;
@@ -330,12 +283,7 @@
             text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
         }
 
-        nav {
-            display: flex;
-            gap: 22px;
-            align-items: center;
-        }
-
+        nav { display: flex; gap: 22px; align-items: center; }
         nav a {
             text-decoration: none;
             color: #94a3b8;
@@ -343,7 +291,6 @@
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         nav a:hover, nav a.active {
             color: #38bdf8;
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
@@ -360,13 +307,12 @@
             box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
             transition: all 0.3s ease;
         }
-
         .badge-linkdn:hover {
             transform: scale(1.08) translateY(-2px);
             box-shadow: 0 0 30px rgba(56, 189, 248, 0.9);
         }
 
-        /* --- SECTIONS GÉNÉRALES --- */
+        /* --- SECTIONS --- */
         section {
             min-height: 100vh;
             padding: 140px 8% 80px 8%;
@@ -399,11 +345,8 @@
             text-align: center;
         }
 
-        /* --- 1. ACCUEIL (HERO) --- */
-        #accueil {
-            text-align: center;
-            align-items: center;
-        }
+        /* --- ACCUEIL (HERO) --- */
+        #accueil { text-align: center; align-items: center; }
 
         .status-badge {
             display: inline-flex;
@@ -421,21 +364,14 @@
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             background-color: #38bdf8;
             border-radius: 50%;
             box-shadow: 0 0 10px #38bdf8;
             animation: pulse 2s infinite;
         }
 
-        .hero-title-main {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
-
+        .hero-title-main { font-size: 3.5rem; font-weight: 800; color: #ffffff; margin-bottom: 15px; }
         .hero-subtitle-main {
             font-size: 1.2rem;
             background: linear-gradient(135deg, #38bdf8, #60a5fa);
@@ -447,26 +383,10 @@
             letter-spacing: 2px;
         }
 
-        .hero-desc {
-            color: #94a3b8;
-            font-size: 1.15rem;
-            max-width: 750px;
-            margin: 0 auto 35px auto;
-            line-height: 1.7;
-            transition: color 0.3s ease;
-        }
+        .hero-desc { color: #94a3b8; font-size: 1.15rem; max-width: 750px; margin: 0 auto 35px auto; line-height: 1.7; transition: color 0.3s; }
+        .hero-desc:hover { color: #ffffff; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
 
-        .hero-desc:hover {
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
         .btn {
             padding: 14px 28px;
@@ -486,7 +406,6 @@
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
             border: 1px solid rgba(56, 189, 248, 0.6);
         }
-
         .btn-primary:hover {
             transform: translateY(-5px) scale(1.04);
             box-shadow: 0 0 40px rgba(56, 189, 248, 0.9);
@@ -498,7 +417,6 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
         }
-
         .btn-secondary:hover {
             transform: translateY(-5px) scale(1.04);
             border-color: #38bdf8;
@@ -506,7 +424,7 @@
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
         }
 
-        /* --- BLOCS DE TEXTE INTERACTIFS (EFFET 3D AU HOVER) --- */
+        /* --- BLOCS DE TEXTE HAUTEMENT INTERACTIFS & 3D --- */
         .skills-grid, .projects-grid, .timeline-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -522,17 +440,18 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.35s, border-color 0.35s, box-shadow 0.35s;
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
 
+        /* Effet relief 3D accentué et lueur pure au survol */
         .skill-card:hover, .project-card:hover, .timeline-card:hover {
-            transform: translateY(-10px) scale(1.03) rotateX(3deg) rotateY(-3deg);
+            transform: translateY(-12px) scale(1.03) rotateX(4deg) rotateY(-4deg);
             background: rgba(30, 41, 59, 0.9);
             border-color: #38bdf8;
-            box-shadow: 0 15px 50px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 20px 60px rgba(56, 189, 248, 0.45), inset 0 0 30px rgba(56, 189, 248, 0.25);
         }
 
         .skill-card:hover p, .project-card:hover p, .timeline-card:hover li, .timeline-card:hover h4 {
@@ -546,10 +465,9 @@
             margin-bottom: 18px;
             transition: transform 0.4s ease, text-shadow 0.4s ease;
         }
-
         .skill-card:hover i, .project-card:hover i {
-            transform: scale(1.3) rotate(-10deg);
-            text-shadow: 0 0 20px #38bdf8;
+            transform: scale(1.35) rotate(-10deg);
+            text-shadow: 0 0 22px #38bdf8;
         }
 
         .skill-card h3, .project-card h3, .timeline-card h3 {
@@ -558,37 +476,17 @@
             color: #ffffff;
             transition: color 0.3s, text-shadow 0.3s;
         }
-
         .skill-card:hover h3, .project-card:hover h3, .timeline-card:hover h3 {
             color: #38bdf8;
             text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
         }
 
-        .skill-card span, .timeline-card h4 {
-            color: #38bdf8;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
+        .skill-card span, .timeline-card h4 { color: #38bdf8; font-size: 0.9rem; font-weight: 600; }
+        .timeline-card h4 { color: #94a3b8; margin-bottom: 20px; }
+        .timeline-card ul, .project-card p { color: #94a3b8; font-size: 0.95rem; transition: color 0.3s; }
+        .timeline-card li { margin-bottom: 10px; }
 
-        .timeline-card ul, .project-card p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .timeline-card li {
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 15px 0;
-        }
-
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
         .tag {
             background: rgba(56, 189, 248, 0.1);
             color: #38bdf8;
@@ -599,7 +497,6 @@
             border: 1px solid rgba(56, 189, 248, 0.2);
             transition: all 0.3s ease;
         }
-
         .project-card:hover .tag {
             background: #38bdf8;
             color: #030712;
@@ -619,11 +516,10 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s ease;
         }
-
         .contact-box:hover {
             transform: translateY(-6px) scale(1.02);
             border-color: #38bdf8;
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
+            box-shadow: 0 0 45px rgba(56, 189, 248, 0.4);
         }
 
         .contact-item {
@@ -635,18 +531,9 @@
             font-size: 1.1rem;
             color: #cbd5e1;
         }
+        .contact-item i { color: #38bdf8; font-size: 1.3rem; transition: transform 0.3s ease; }
+        .contact-item:hover i { transform: scale(1.3) rotate(10deg); }
 
-        .contact-item i {
-            color: #38bdf8;
-            font-size: 1.3rem;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover i {
-            transform: scale(1.3) rotate(10deg);
-        }
-
-        /* Animations clés */
         @keyframes pulse {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
@@ -655,57 +542,46 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-            .hero-title-main {
-                font-size: 2.5rem;
-            }
-            .solar-sun, .planet-mercury, .planet-mars, .planet-jupiter, .planet-saturn, .saturn-ring, .planet-neptune, .orbit-line, #cursor-light, .plane-container, .comet {
-                display: none;
-            }
+            nav { display: none; }
+            .hero-title-main { font-size: 2.5rem; }
+            .planet, .ring, .orbit, #cursor-light, .spaceship, .shooting-star { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FOND SYSTÈME SOLAIRE ANIMÉ ET ÉVOLUTIF AU DÉFILEMENT -->
-    <div class="cyber-bg">
-        <div class="orbit-line orbit-1"></div>
-        <div class="orbit-line orbit-2"></div>
-        <div class="orbit-line orbit-3"></div>
-        
-        <!-- Éléments du Système Solaire -->
-        <div class="solar-sun"></div>
-        <div class="planet-mercury"></div>
-        <div class="planet-mars"></div>
-        <div class="planet-jupiter"></div>
-        <div class="planet-saturn"></div>
-        <div class="saturn-ring"></div>
-        <div class="planet-neptune"></div>
+    <!-- FOND COSMIQUE VIVANT ET PLANÉTAIRE -->
+    <div class="cosmic-bg">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="orbit orbit-3"></div>
 
-        <!-- Comètes et astéroïdes filants -->
-        <div class="comet comet-1"></div>
-        <div class="comet comet-2"></div>
-        <div class="comet comet-3"></div>
-        
-        <div class="particles"></div>
+        <!-- Planètes colorées réparties sur la hauteur de la page -->
+        <div class="planet planet-azure"></div>
+        <div class="planet planet-copper"></div>
+        <div class="planet planet-ringed"></div>
+        <div class="ring"></div>
+        <div class="planet planet-emerald"></div>
+        <div class="planet planet-moon"></div>
+
+        <!-- Étoiles filantes / météores -->
+        <div class="shooting-star star-1"></div>
+        <div class="shooting-star star-2"></div>
+        <div class="shooting-star star-3"></div>
+
+        <div class="stardust"></div>
     </div>
 
-    <!-- Lumière suiveuse de curseur -->
+    <!-- Curseur lumineux -->
     <div id="cursor-light"></div>
 
     <!-- Barre de progression -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Vaisseaux spatiaux animés -->
-    <div class="plane-container">
-        <div class="plane-trail"></div>
-        <i class="fa-solid fa-plane plane-icon"></i>
-    </div>
-    <div class="plane-container ship-2">
-        <div class="plane-trail"></div>
-        <i class="fa-solid fa-rocket plane-icon" style="color: #c084fc;"></i>
+    <!-- Vaisseau spatial -->
+    <div class="spaceship">
+        <div class="ship-trail"></div>
+        <i class="fa-solid fa-space-shuttle ship-icon"></i>
     </div>
 
     <!-- Bouton Retour en haut -->
@@ -713,7 +589,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- BARRE DE NAVIGATION FLOTTANTE -->
+    <!-- BARRE DE NAVIGATION -->
     <header>
         <div class="logo">Q. BAILLOU</div>
         <nav>
@@ -871,7 +747,7 @@
         </div>
     </section>
 
-    <!-- Scripts JavaScript -->
+    <!-- Scripts -->
     <script>
         const backToTopBtn = document.getElementById("backToTop");
         
