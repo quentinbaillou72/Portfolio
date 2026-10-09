@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Mon Nom | BTS SIO SISR</title>
+    <title>Portfolio Quentin Baillou | BTS SIO SISR</title>
     <!-- Police Google Fonts moderne (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -245,7 +245,7 @@
             margin: 0;
         }
 
-        /* --- 2. PROJETS --- */
+        /* --- 2. PROJETS & COMPÉTENCES --- */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -293,31 +293,39 @@
             font-weight: 600;
         }
 
-        /* --- 3. ALTERNANCE --- */
+        /* --- 3. ALTERNANCE & PARCOURS --- */
         .alternance-box {
             background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 40px;
             border-radius: 12px;
+            margin-bottom: 20px;
         }
 
         .alternance-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
             color: #38bdf8;
         }
 
+        .alternance-box h4 {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
         .alternance-box ul {
-            margin-top: 20px;
+            margin-top: 15px;
             padding-left: 20px;
             color: #94a3b8;
         }
 
         .alternance-box li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        /* --- 4. VEILLE --- */
+        /* --- 4. VEILLE TECHNOLOGIQUE --- */
         .veille-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -395,11 +403,11 @@
 
     <!-- BARRE DE NAVIGATION -->
     <header>
-        <div class="logo">Portfolio.SISR</div>
+        <div class="logo">Quentin Baillou</div>
         <nav>
             <a href="#accueil" class="active">Accueil</a>
             <a href="#projets">Projets</a>
-            <a href="#alternance">Alternance</a>
+            <a href="#alternance">Parcours & Alternance</a>
             <a href="#veille">Veille IT</a>
             <a href="#contact" class="btn-nav">Contact</a>
         </nav>
@@ -408,85 +416,91 @@
     <!-- SECTION 1 : ACCUEIL -->
     <section id="accueil">
         <div class="hero-content">
-            <span class="badge">BTS SIO 2e année • Option SISR</span>
-            <h1>Alternant en <br><span class="highlight">Administration Systèmes & Réseaux</span></h1>
+            <span class="badge">BTS SIO 2e année • Option SISR (Lycée Carcouët)</span>
+            <h1>Quentin Baillou <br><span class="highlight">Alternant Système & Réseau</span></h1>
             <p>
-                Passionné par l'infrastructure, la virtualisation et la sécurité. Actuellement en alternance, je conçois, déploie et sécurise des environnements informatiques performants.
+                Actuellement en alternance chez <strong>BUISARD</strong>. Passionné par l'infrastructure, l'administration Windows/Linux, la virtualisation et la sécurité des réseaux.
             </p>
             <div class="hero-buttons">
                 <a href="#projets" class="btn primary"><i class="fa-solid fa-code"></i> Découvrir mes projets</a>
-                <a href="#" class="btn secondary"><i class="fa-solid fa-file-pdf"></i> Télécharger mon CV</a>
+                <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" class="btn secondary"><i class="fa-brands fa-linkedin"></i> Profil LinkedIn</a>
             </div>
             <div class="social-icons">
-                <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 <a href="https://github.com" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:ton.email@domain.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="mailto:quentin.baillou@domain.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
         <div class="hero-card">
             <div class="card-box">
                 <i class="fa-solid fa-server tech-icon"></i>
                 <h3>Infrastructure & Réseau</h3>
-                <p>Windows Server, Active Directory, VLAN, Routage, Cisco, Linux (Debian)</p>
+                <p>Cisco Systems, VLAN, Routage, Administration Windows & Linux, Active Directory</p>
             </div>
             <div class="card-box">
                 <i class="fa-solid fa-shield-halved tech-icon"></i>
-                <h3>Sécurité & Automatisation</h3>
-                <p>Scripting PowerShell, Pare-feu, Sauvegardes, Supervision (OCS Inventory)</p>
+                <h3>Assistance & Maintenance</h3>
+                <p>Support utilisateur, assistance en matériel informatique, gestion de parc</p>
             </div>
         </div>
     </section>
 
     <!-- SECTION 2 : PROJETS -->
     <section id="projets">
-        <h2 class="section-title">Mes <span>Projets</span></h2>
-        <p class="section-subtitle">Réalisations professionnelles et académiques (Épreuve E4 / E6)</p>
+        <h2 class="section-title">Mes <span>Projets & Compétences</span></h2>
+        <p class="section-subtitle">Réalisations techniques et compétences validées (Épreuve E4 / E6)</p>
         
         <div class="projects-grid">
             <div class="project-card">
                 <h3>Architecture Active Directory & GPO</h3>
                 <div class="tags">
-                    <span class="tag">Windows Server</span>
+                    <span class="tag">Administration Windows</span>
                     <span class="tag">Active Directory</span>
-                    <span class="tag">GPO</span>
                 </div>
-                <p>Déploiement d'un domaine sécurisé, structuration des Unités d'Organisation (OU), gestion des droits d'accès et application de stratégies de groupe ciblées.</p>
+                <p>Mise en place et gestion d'un domaine, structuration des unités d'organisation, application des stratégies de groupe (GPO) et gestion des droits d'accès.</p>
             </div>
 
             <div class="project-card">
-                <h3>Déploiement Serveur LAMP & Base de données</h3>
+                <h3>Réseaux & Commutation Cisco</h3>
                 <div class="tags">
-                    <span class="tag">Debian</span>
-                    <span class="tag">Apache</span>
-                    <span class="tag">MariaDB</span>
+                    <span class="tag">Cisco Systems</span>
+                    <span class="tag">VLAN</span>
                 </div>
-                <p>Mise en place d'un serveur web sous Debian, configuration de la pile LAMP, sécurisation des accès et automatisation de l'import de bases de données.</p>
+                <p>Configuration des équipements réseau, segmentation par VLAN, routage inter-VLAN et sécurisation des accès au sein de l'infrastructure.</p>
             </div>
 
             <div class="project-card">
-                <h3>Supervision du Parc Informatique</h3>
+                <h3>Support & Systèmes (Linux / Windows)</h3>
                 <div class="tags">
-                    <span class="tag">OCS Inventory</span>
-                    <span class="tag">Réseau</span>
-                    <span class="tag">Debian VM</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Assistance Informatique</span>
                 </div>
-                <p>Installation et configuration d'une solution de gestion et d'inventaire du parc matériel et logiciel au sein d'une machine virtuelle dédiée.</p>
+                <p>Déploiement de postes, gestion de la maintenance corrective et préventive, support technique et administration de serveurs sous environnements variés.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3 : ALTERNANCE -->
+    <!-- SECTION 3 : ALTERNANCE & FORMATION -->
     <section id="alternance">
-        <h2 class="section-title">Mon <span>Alternance</span></h2>
-        <p class="section-subtitle">Immersion professionnelle en administration systèmes et réseaux</p>
+        <h2 class="section-title">Mon Parcours & <span>Alternance</span></h2>
+        <p class="section-subtitle">Expérience professionnelle chez BUISARD et formation académique</p>
         
         <div class="alternance-box">
-            <h3>Administrateur Systèmes & Réseaux (Apprenti)</h3>
-            <p>Au sein de mon entreprise d'accueil, je participe activement à la gestion quotidienne et à l'évolution de l'infrastructure informatique.</p>
+            <h3>Alternance Système et réseau — BUISARD</h3>
+            <h4>Sablé-sur-Sarthe, Pays de la Loire</h4>
+            <p>Participation active à la gestion, l'optimisation et la sécurisation de l'infrastructure informatique de l'entreprise :</p>
             <ul>
-                <li><strong>Support et assistance technique :</strong> Résolution des incidents de niveau 1 et 2, traitement des demandes utilisateurs.</li>
-                <li><strong>Gestion des serveurs :</strong> Maintenance corrective et évolutive des environnements Windows et Linux.</li>
-                <li><strong>Sécurité & Réseau :</strong> Suivi des sauvegardes, configuration des équipements réseaux et application des politiques de sécurité internes.</li>
+                <li>Administration des serveurs et des environnements Windows / Linux.</li>
+                <li>Déploiement de systèmes, gestion du parc et assistance technique aux utilisateurs.</li>
+                <li>Suivi des réseaux, maintenance des équipements et mise en place des bonnes pratiques de sécurité.</li>
+            </ul>
+        </div>
+
+        <div class="alternance-box">
+            <h3>Formations & Diplômes</h3>
+            <ul>
+                <li><strong>BTS SIO (Services Informatiques aux Organisations) Option SISR :</strong> Lycée Carcouët (En cours, 2e année).</li>
+                <li><strong>Bac Pro Maintenance (TTR) :</strong> Lycée Public Polyvalent Raphaël Élizé (2019 - 2022).</li>
             </ul>
         </div>
     </section>
@@ -494,16 +508,16 @@
     <!-- SECTION 4 : VEILLE TECHNOLOGIQUE -->
     <section id="veille">
         <h2 class="section-title">Veille <span>Technologique</span></h2>
-        <p class="section-subtitle">Suivi des innovations et actualités de la cybersécurité</p>
+        <p class="section-subtitle">Suivi des innovations et actualités de la cybersécurité et des réseaux</p>
         
         <div class="veille-grid">
             <div class="veille-card">
                 <h3>Sujet de Veille</h3>
-                <p>Focus sur l'évolution des menaces de ransomware et les stratégies de résilience et de sauvegarde immuable pour les entreprises.</p>
+                <p>Focus sur la sécurisation des infrastructures industrielles et d'entreprise face aux nouvelles vagues de cyberattaques et menaces réseau.</p>
             </div>
             <div class="veille-card">
-                <h3>Outils de Veille</h3>
-                <p>Utilisation de flux RSS (Feedly), alertes Google Alerts, newsletters spécialisées et veille sur des plateformes comme CERT-FR.</p>
+                <h3>Outils & Méthodes</h3>
+                <p>Utilisation de flux RSS spécialisés, newsletters techniques, alertes de sécurité et veille active sur les recommandations des organismes officiels.</p>
             </div>
         </div>
     </section>
@@ -515,18 +529,18 @@
         
         <div class="contact-container">
             <div class="contact-info">
-                <p>Actuellement en recherche d'opportunités ou ouvert aux échanges dans le domaine des systèmes et réseaux, n'hésitez pas à me contacter directement.</p>
+                <p>Actuellement en alternance chez BUISARD et en fin de BTS SIO SISR, je reste ouvert aux opportunités pour la suite de mon parcours.</p>
                 <div class="contact-item">
                     <i class="fa-solid fa-envelope"></i>
-                    <span>ton.email@domain.com</span>
+                    <span>quentin.baillou@domain.com</span>
                 </div>
                 <div class="contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>+33 6 XX XX XX XX</span>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: #38bdf8; text-decoration: none;">Mon profil LinkedIn (Quentin Baillou)</a>
                 </div>
                 <div class="contact-item">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span>France (Mobilité alternance)</span>
+                    <span>Sablé-sur-Sarthe / Pays de la Loire (Mobilité)</span>
                 </div>
             </div>
         </div>
