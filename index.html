@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK SPATIAL PRO & ÉPURÉ --- */
+        /* --- STYLE DARK SPATIAL PRO & ÉPURÉ (TYPE GITHUB PAGES) --- */
         * {
             margin: 0;
             padding: 0;
@@ -43,7 +43,6 @@
             overflow: hidden;
         }
 
-        /* Planète Bleue Majeure (Arrière-plan) */
         .planet-blue {
             position: absolute;
             bottom: -200px;
@@ -62,7 +61,6 @@
             100% { transform: translate(-30px, -20px) scale(1.04); }
         }
 
-        /* Planète Cuivrée / Discrète */
         .planet-red {
             position: absolute;
             top: 15%;
@@ -81,7 +79,6 @@
             100% { transform: translate(40px, 30px); }
         }
 
-        /* Nébuleuses d'ambiance douces */
         .glow-orb {
             position: absolute;
             border-radius: 50%;
@@ -93,7 +90,6 @@
         .orb-1 { top: 15%; left: 25%; width: 500px; height: 500px; background: #0284c7; }
         .orb-2 { top: 55%; left: 65%; width: 550px; height: 550px; background: #7c3aed; }
 
-        /* Étoiles fines et fixes (pas de points brouillons) */
         .particles {
             position: absolute;
             top: 0;
@@ -105,7 +101,7 @@
             opacity: 0.2;
         }
 
-        /* --- LUMIÈRE SUIVEUSE DE CURSEUR DISCRÈTE --- */
+        /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
         #cursor-light {
             position: fixed;
             top: 0;
@@ -116,7 +112,6 @@
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: -1;
-            transition: width 0.2s, height 0.2s;
         }
 
         /* --- BARRE DE PROGRESSION --- */
@@ -168,7 +163,7 @@
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
         }
 
-        /* --- BARRE DE NAVIGATION FLOTTANTE --- */
+        /* --- NAVIGATION --- */
         header {
             position: fixed;
             top: 20px;
@@ -180,7 +175,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 14px 30px;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(16px);
             border-radius: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
@@ -207,13 +202,12 @@
             color: #94a3b8;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
 
         nav a:hover, nav a.active {
             color: #38bdf8;
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
-            transform: translateY(-2px);
         }
 
         .badge-linkdn {
@@ -228,11 +222,11 @@
         }
 
         .badge-linkdn:hover {
-            transform: scale(1.08) translateY(-2px);
+            transform: scale(1.05);
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.9);
         }
 
-        /* --- SECTIONS GÉNÉRALES --- */
+        /* --- SECTIONS --- */
         section {
             min-height: 100vh;
             padding: 140px 8% 80px 8%;
@@ -265,7 +259,7 @@
             text-align: center;
         }
 
-        /* --- 1. ACCUEIL (HERO) --- */
+        /* --- ACCUEIL --- */
         #accueil {
             text-align: center;
             align-items: center;
@@ -319,12 +313,6 @@
             max-width: 750px;
             margin: 0 auto 35px auto;
             line-height: 1.7;
-            transition: color 0.3s ease;
-        }
-
-        .hero-desc:hover {
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         .hero-btns {
@@ -339,7 +327,7 @@
             border-radius: 30px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             font-size: 1rem;
             display: inline-flex;
             align-items: center;
@@ -354,8 +342,8 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px) scale(1.04);
-            box-shadow: 0 0 35px rgba(56, 189, 248, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.7);
         }
 
         .btn-secondary {
@@ -366,86 +354,73 @@
         }
 
         .btn-secondary:hover {
-            transform: translateY(-5px) scale(1.04);
+            transform: translateY(-3px);
             border-color: #38bdf8;
             color: #38bdf8;
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
         }
 
-        /* --- BLOCS DE TEXTE PROFESSIONNELS (EFFET 3D AU HOVER) --- */
+        /* --- CARTES PRO (STYLE GITHUB / GLASSMORPHISM) --- */
         .skills-grid, .projects-grid, .timeline-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 20px;
-            perspective: 1000px;
         }
 
         .skill-card, .project-card, .timeline-card {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(16px);
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
             padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.12);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .skill-card:hover, .project-card:hover, .timeline-card:hover {
-            transform: translateY(-10px) scale(1.02) rotateX(2deg) rotateY(-2deg);
-            background: rgba(30, 41, 59, 0.9);
+            transform: translateY(-8px);
+            background: rgba(30, 41, 59, 0.85);
             border-color: #38bdf8;
-            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.3), inset 0 0 20px rgba(56, 189, 248, 0.15);
-        }
-
-        .skill-card:hover p, .project-card:hover p, .timeline-card:hover li, .timeline-card:hover h4 {
-            color: #ffffff;
-            text-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25);
         }
 
         .skill-card i, .project-card i {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             color: #38bdf8;
             margin-bottom: 18px;
-            transition: transform 0.4s ease, text-shadow 0.4s ease;
+            transition: transform 0.3s ease;
         }
 
         .skill-card:hover i, .project-card:hover i {
-            transform: scale(1.2) rotate(-5deg);
-            text-shadow: 0 0 15px #38bdf8;
+            transform: scale(1.1);
         }
 
         .skill-card h3, .project-card h3, .timeline-card h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
             color: #ffffff;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        .skill-card:hover h3, .project-card:hover h3, .timeline-card:hover h3 {
-            color: #38bdf8;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
         }
 
         .skill-card span, .timeline-card h4 {
             color: #38bdf8;
             font-size: 0.9rem;
             font-weight: 600;
-            transition: color 0.3s ease;
+        }
+
+        .timeline-card h4 {
+            color: #94a3b8;
+            margin-bottom: 15px;
         }
 
         .timeline-card ul, .project-card p {
             color: #94a3b8;
             font-size: 0.95rem;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .timeline-card li {
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
+            margin-bottom: 8px;
         }
 
         .tags {
@@ -458,38 +433,30 @@
         .tag {
             background: rgba(56, 189, 248, 0.1);
             color: #38bdf8;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: 600;
             border: 1px solid rgba(56, 189, 248, 0.2);
-            transition: all 0.3s ease;
         }
 
-        .project-card:hover .tag {
-            background: #38bdf8;
-            color: #030712;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
-        }
-
-        /* --- CONTACT & VEILLE --- */
+        /* --- CONTACT --- */
         .contact-box {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(16px);
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
             padding: 45px;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             max-width: 750px;
             margin: 0 auto;
             width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s ease;
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            transition: all 0.3s ease;
         }
 
         .contact-box:hover {
-            transform: translateY(-6px) scale(1.02);
             border-color: #38bdf8;
-            box-shadow: 0 0 35px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
         }
 
         .contact-item {
@@ -505,14 +472,8 @@
         .contact-item i {
             color: #38bdf8;
             font-size: 1.3rem;
-            transition: transform 0.3s ease;
         }
 
-        .contact-item:hover i {
-            transform: scale(1.3) rotate(10deg);
-        }
-
-        /* Animations clés */
         @keyframes pulse {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
@@ -521,21 +482,15 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-            .hero-title-main {
-                font-size: 2.5rem;
-            }
-            .planet-blue, .planet-red, #cursor-light, .glow-orb {
-                display: none;
-            }
+            nav { display: none; }
+            .hero-title-main { font-size: 2.5rem; }
+            .planet-blue, .planet-red, #cursor-light, .glow-orb { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FOND PROPRE ET CINÉMATIQUE -->
+    <!-- FOND CINÉMATIQUE PRO -->
     <div class="cyber-bg">
         <div class="planet-red"></div>
         <div class="planet-blue"></div>
@@ -544,7 +499,7 @@
         <div class="particles"></div>
     </div>
 
-    <!-- Lumière suiveuse de curseur -->
+    <!-- Lumière curseur -->
     <div id="cursor-light"></div>
 
     <!-- Barre de progression -->
@@ -555,7 +510,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- BARRE DE NAVIGATION FLOTTANTE -->
+    <!-- BARRE DE NAVIGATION -->
     <header>
         <div class="logo">Q. BAILLOU</div>
         <nav>
