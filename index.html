@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE DARK SPATIAL ULTIMATE & INTERACTIF --- */
+        /* --- STYLE DARK SPATIAL PRO & ÉPURÉ --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +31,7 @@
             position: relative;
         }
 
-        /* --- FOND SPATIAL AVEC PLANÈTES EN MOUVEMENT ET MÉTÉORITES --- */
+        /* --- FOND SPATIAL FIXE ET CINÉMATIQUE --- */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -39,125 +39,61 @@
             width: 100vw;
             height: 100vh;
             z-index: -2;
-            background: #030712;
+            background: radial-gradient(circle at 50% 20%, #0b1329 0%, #030712 60%, #010204 100%);
             overflow: hidden;
         }
 
-        /* 1. Planète Bleue (Géante) avec vraie animation de déplacement */
+        /* Planète Bleue Majeure (Arrière-plan) */
         .planet-blue {
             position: absolute;
-            bottom: -150px;
-            right: -100px;
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 40%, #030712 85%);
+            bottom: -200px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 45%, #030712 85%);
             border-radius: 50%;
-            box-shadow: inset -40px -40px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(56, 189, 248, 0.25);
-            opacity: 0.65;
-            animation: moveBluePlanet 25s ease-in-out infinite alternate;
+            box-shadow: inset -50px -50px 100px rgba(0, 0, 0, 0.95), 0 0 80px rgba(56, 189, 248, 0.2);
+            opacity: 0.5;
+            animation: moveBluePlanet 35s ease-in-out infinite alternate;
         }
 
         @keyframes moveBluePlanet {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(-40px, -30px) scale(1.05) rotate(5deg); }
-            100% { transform: translate(-20px, 20px) scale(0.98) rotate(-5deg); }
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-30px, -20px) scale(1.04); }
         }
 
-        /* 2. Planète Rouge / Cuivrée (Type Mars) en mouvement */
+        /* Planète Cuivrée / Discrète */
         .planet-red {
             position: absolute;
-            top: 20%;
-            left: 5%;
-            width: 220px;
-            height: 220px;
-            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 50%, #030712 90%);
+            top: 15%;
+            left: 8%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 55%, #030712 90%);
             border-radius: 50%;
-            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.85), 0 0 40px rgba(249, 115, 22, 0.3);
-            opacity: 0.55;
-            animation: moveRedPlanet 30s ease-in-out infinite alternate;
+            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(249, 115, 22, 0.2);
+            opacity: 0.4;
+            animation: moveRedPlanet 40s ease-in-out infinite alternate;
         }
 
         @keyframes moveRedPlanet {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(60px, 40px) scale(1.1); }
-            100% { transform: translate(20px, -30px) scale(0.95); }
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 30px); }
         }
 
-        /* 3. Petite Planète Violette / Néon en mouvement rapide */
-        .planet-purple {
-            position: absolute;
-            top: 60%;
-            left: 15%;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle at 30% 30%, #c084fc, #7c3aed 60%, #030712 90%);
-            border-radius: 50%;
-            box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.4);
-            opacity: 0.5;
-            animation: movePurplePlanet 18s ease-in-out infinite alternate;
-        }
-
-        @keyframes movePurplePlanet {
-            0% { transform: translate(0, 0) scale(0.9); }
-            100% { transform: translate(-50px, -60px) scale(1.15); }
-        }
-
-        /* Grille perspective spatiale */
-        .cyber-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridMove 30s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 60px 60px; }
-        }
-
-        /* Météorites / Étoiles filantes traversant l'espace */
-        .meteor {
-            position: absolute;
-            width: 120px;
-            height: 2px;
-            background: linear-gradient(90deg, rgba(255,255,255,1), transparent);
-            transform: rotate(-45deg);
-            opacity: 0;
-            animation: shootMeteor 6s linear infinite;
-            pointer-events: none;
-        }
-
-        .meteor-1 { top: 10%; left: -10%; animation-delay: 1s; }
-        .meteor-2 { top: 40%; left: -10%; animation-delay: 3.5s; animation-duration: 5s; }
-
-        @keyframes shootMeteor {
-            0% { transform: translate(0, 0) rotate(-45deg); opacity: 1; }
-            30% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
-            100% { transform: translate(50vw, 50vh) rotate(-45deg); opacity: 0; }
-        }
-
-        /* Nébuleuses d'ambiance */
+        /* Nébuleuses d'ambiance douces */
         .glow-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.25;
-            animation: floatOrb 15s ease-in-out infinite alternate;
+            filter: blur(120px);
+            opacity: 0.2;
+            pointer-events: none;
         }
 
-        .orb-1 { top: 10%; left: 30%; width: 500px; height: 500px; background: #0284c7; }
-        .orb-2 { top: 40%; left: 70%; width: 450px; height: 450px; background: #7c3aed; animation-delay: -5s; }
+        .orb-1 { top: 15%; left: 25%; width: 500px; height: 500px; background: #0284c7; }
+        .orb-2 { top: 55%; left: 65%; width: 550px; height: 550px; background: #7c3aed; }
 
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, -40px) scale(1.12); }
-        }
-
+        /* Étoiles fines et fixes (pas de points brouillons) */
         .particles {
             position: absolute;
             top: 0;
@@ -165,71 +101,18 @@
             width: 100%;
             height: 100%;
             background-image: radial-gradient(white 1px, transparent 0);
-            background-size: 80px 80px;
-            opacity: 0.25;
-            animation: twinkle 5s ease-in-out infinite alternate;
+            background-size: 100px 100px;
+            opacity: 0.2;
         }
 
-        @keyframes twinkle {
-            0% { opacity: 0.15; }
-            100% { opacity: 0.35; }
-        }
-
-        /* --- VAISSEAUX SPATIAUX EN VOL --- */
-        .plane-container {
-            position: fixed;
-            top: 0;
-            left: -150px;
-            width: 100px;
-            height: 50px;
-            z-index: 998;
-            pointer-events: none;
-            animation: flyAcross 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-        }
-
-        .plane-container.ship-2 {
-            animation: flyAcross2 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-            animation-delay: -4s;
-        }
-
-        .plane-icon {
-            font-size: 2.2rem;
-            color: #38bdf8;
-            transform: rotate(45deg);
-            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
-        }
-
-        .plane-trail {
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            width: 140px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9));
-        }
-
-        @keyframes flyAcross {
-            0% { transform: translate(-100px, 150px) rotate(-10deg); opacity: 0; }
-            15% { opacity: 1; }
-            85% { opacity: 1; }
-            100% { transform: translate(110vw, -100px) rotate(-15deg); opacity: 0; }
-        }
-
-        @keyframes flyAcross2 {
-            0% { transform: translate(110vw, 400px) rotate(-35deg); opacity: 0; }
-            15% { opacity: 0.7; }
-            85% { opacity: 0.7; }
-            100% { transform: translate(-100px, 100px) rotate(-25deg); opacity: 0; }
-        }
-
-        /* --- LUMIÈRE SUIVEUSE DE CURSEUR --- */
+        /* --- LUMIÈRE SUIVEUSE DE CURSEUR DISCRÈTE --- */
         #cursor-light {
             position: fixed;
             top: 0;
             left: 0;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(37, 99, 235, 0.03) 40%, transparent 70%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(37, 99, 235, 0.01) 40%, transparent 70%);
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: -1;
@@ -245,7 +128,7 @@
             background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
             width: 0%;
             z-index: 9999;
-            box-shadow: 0 0 12px #38bdf8;
+            box-shadow: 0 0 10px #38bdf8;
         }
 
         /* --- BOUTON RETOUR EN HAUT --- */
@@ -297,11 +180,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 14px 30px;
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(16px);
             border-radius: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.25);
             z-index: 1000;
         }
 
@@ -310,7 +193,7 @@
             color: #38bdf8;
             font-weight: 800;
             letter-spacing: 1px;
-            text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
         }
 
         nav {
@@ -346,7 +229,7 @@
 
         .badge-linkdn:hover {
             transform: scale(1.08) translateY(-2px);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.9);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.9);
         }
 
         /* --- SECTIONS GÉNÉRALES --- */
@@ -392,15 +275,15 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.4);
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             padding: 6px 16px;
             border-radius: 20px;
             color: #38bdf8;
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
         }
 
         .status-dot {
@@ -408,7 +291,7 @@
             height: 8px;
             background-color: #38bdf8;
             border-radius: 50%;
-            box-shadow: 0 0 10px #38bdf8;
+            box-shadow: 0 0 8px #38bdf8;
             animation: pulse 2s infinite;
         }
 
@@ -466,13 +349,13 @@
         .btn-primary {
             background: linear-gradient(135deg, #0284c7, #2563eb);
             color: white;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
-            border: 1px solid rgba(56, 189, 248, 0.6);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+            border: 1px solid rgba(56, 189, 248, 0.5);
         }
 
         .btn-primary:hover {
             transform: translateY(-5px) scale(1.04);
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.9);
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.8);
         }
 
         .btn-secondary {
@@ -486,10 +369,10 @@
             transform: translateY(-5px) scale(1.04);
             border-color: #38bdf8;
             color: #38bdf8;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
         }
 
-        /* --- BLOCS DE TEXTE ULTRA INTERACTIFS (EFFET 3D AU HOVER) --- */
+        /* --- BLOCS DE TEXTE PROFESSIONNELS (EFFET 3D AU HOVER) --- */
         .skills-grid, .projects-grid, .timeline-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -499,28 +382,28 @@
         }
 
         .skill-card, .project-card, .timeline-card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             padding: 35px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
 
         .skill-card:hover, .project-card:hover, .timeline-card:hover {
-            transform: translateY(-10px) scale(1.03) rotateX(3deg) rotateY(-3deg);
+            transform: translateY(-10px) scale(1.02) rotateX(2deg) rotateY(-2deg);
             background: rgba(30, 41, 59, 0.9);
             border-color: #38bdf8;
-            box-shadow: 0 15px 50px rgba(56, 189, 248, 0.4), inset 0 0 25px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.3), inset 0 0 20px rgba(56, 189, 248, 0.15);
         }
 
         .skill-card:hover p, .project-card:hover p, .timeline-card:hover li, .timeline-card:hover h4 {
             color: #ffffff;
-            text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+            text-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
         }
 
         .skill-card i, .project-card i {
@@ -531,8 +414,8 @@
         }
 
         .skill-card:hover i, .project-card:hover i {
-            transform: scale(1.3) rotate(-10deg);
-            text-shadow: 0 0 20px #38bdf8;
+            transform: scale(1.2) rotate(-5deg);
+            text-shadow: 0 0 15px #38bdf8;
         }
 
         .skill-card h3, .project-card h3, .timeline-card h3 {
@@ -544,7 +427,7 @@
 
         .skill-card:hover h3, .project-card:hover h3, .timeline-card:hover h3 {
             color: #38bdf8;
-            text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
         }
 
         .skill-card span, .timeline-card h4 {
@@ -586,12 +469,12 @@
         .project-card:hover .tag {
             background: #38bdf8;
             color: #030712;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
         }
 
         /* --- CONTACT & VEILLE --- */
         .contact-box {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             padding: 45px;
             border-radius: 25px;
@@ -606,7 +489,7 @@
         .contact-box:hover {
             transform: translateY(-6px) scale(1.02);
             border-color: #38bdf8;
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.3);
         }
 
         .contact-item {
@@ -631,7 +514,7 @@
 
         /* Animations clés */
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
         }
@@ -644,7 +527,7 @@
             .hero-title-main {
                 font-size: 2.5rem;
             }
-            .planet-blue, .planet-red, .planet-purple, #cursor-light, .glow-orb, .plane-container, .meteor {
+            .planet-blue, .planet-red, #cursor-light, .glow-orb {
                 display: none;
             }
         }
@@ -652,14 +535,10 @@
 </head>
 <body>
 
-    <!-- FOND SPATIAL RICHE AVEC PLANÈTES EN MOUVEMENT ET MÉTÉORITES -->
+    <!-- FOND PROPRE ET CINÉMATIQUE -->
     <div class="cyber-bg">
-        <div class="cyber-grid"></div>
         <div class="planet-red"></div>
         <div class="planet-blue"></div>
-        <div class="planet-purple"></div>
-        <div class="meteor meteor-1"></div>
-        <div class="meteor meteor-2"></div>
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
         <div class="particles"></div>
@@ -670,16 +549,6 @@
 
     <!-- Barre de progression -->
     <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Vaisseaux spatiaux animés -->
-    <div class="plane-container">
-        <div class="plane-trail"></div>
-        <i class="fa-solid fa-plane plane-icon"></i>
-    </div>
-    <div class="plane-container ship-2">
-        <div class="plane-trail"></div>
-        <i class="fa-solid fa-rocket plane-icon" style="color: #c084fc;"></i>
-    </div>
 
     <!-- Bouton Retour en haut -->
     <a href="#accueil" class="back-to-top" id="backToTop" title="Remonter tout en haut">
