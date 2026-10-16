@@ -3,82 +3,640 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil | Quentin Baillou - Portfolio BTS SIO SISR</title>
+    <title>Portfolio Quentin Baillou | BTS SIO SISR</title>
+    <!-- Favicone Planète en SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+    <!-- Police Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icônes FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: #030712; color: #f3f4f6; line-height: 1.6; overflow-x: hidden; position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
-        
-        .cyber-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: radial-gradient(circle at 50% 20%, #0b1329 0%, #030712 60%, #010204 100%); overflow: hidden; }
-        .planet-blue { position: absolute; bottom: -200px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 45%, #030712 85%); border-radius: 50%; opacity: 0.5; }
-        .planet-red { position: absolute; top: 15%; left: 8%; width: 200px; height: 200px; background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 55%, #030712 90%); border-radius: 50%; opacity: 0.4; }
-        .glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.2; pointer-events: none; }
-        .orb-1 { top: 15%; left: 25%; width: 500px; height: 500px; background: #0284c7; }
-        .particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(white 1px, transparent 0); background-size: 100px 100px; opacity: 0.2; }
+        /* --- STYLE MINIMALISTE & PRO (STYLE GITHUB PAGES) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-        header { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 14px 30px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border-radius: 50px; border: 1px solid rgba(56, 189, 248, 0.25); z-index: 1000; }
-        .logo { font-size: 1.2rem; color: #38bdf8; font-weight: 800; letter-spacing: 1px; }
-        nav { display: flex; gap: 20px; align-items: center; }
-        nav a { text-decoration: none; color: #94a3b8; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
-        nav a:hover, nav a.active { color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.8); }
-        .badge-linkdn { background: linear-gradient(135deg, #0284c7, #2563eb); color: white !important; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-        main { padding: 160px 8% 80px 8%; text-align: center; max-width: 900px; margin: 0 auto; z-index: 2; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .status-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); padding: 6px 16px; border-radius: 20px; color: #38bdf8; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
-        .status-dot { width: 8px; height: 8px; background-color: #38bdf8; border-radius: 50%; box-shadow: 0 0 8px #38bdf8; }
-        .hero-title-main { font-size: 3.5rem; font-weight: 800; color: #ffffff; margin-bottom: 15px; }
-        .hero-subtitle-main { font-size: 1.2rem; background: linear-gradient(135deg, #38bdf8, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
-        .hero-desc { color: #94a3b8; font-size: 1.15rem; margin-bottom: 35px; line-height: 1.7; }
-        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 14px 28px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px; }
-        .btn-primary { background: linear-gradient(135deg, #0284c7, #2563eb); color: white; border: 1px solid rgba(56, 189, 248, 0.5); }
-        .btn-secondary { background: rgba(15, 23, 42, 0.8); color: #f3f4f6; border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); }
-        .btn:hover { transform: translateY(-3px); }
+        /* --- FOND SPATIAL FIXE ET ÉPURÉ --- */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            background: radial-gradient(circle at 50% 20%, #0b1329 0%, #030712 60%, #010204 100%);
+            overflow: hidden;
+        }
 
-        footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.85rem; z-index: 2; }
+        .planet-blue {
+            position: absolute;
+            bottom: -200px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle at 30% 30%, #38bdf8, #0284c7 45%, #030712 85%);
+            border-radius: 50%;
+            box-shadow: inset -50px -50px 100px rgba(0, 0, 0, 0.95), 0 0 80px rgba(56, 189, 248, 0.2);
+            opacity: 0.4;
+        }
 
-        @media (max-width: 768px) { nav { display: none; } .hero-title-main { font-size: 2.5rem; } }
+        .planet-red {
+            position: absolute;
+            top: 15%;
+            left: 8%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 35% 35%, #f97316, #c2410c 55%, #030712 90%);
+            border-radius: 50%;
+            box-shadow: inset -25px -25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(249, 115, 22, 0.2);
+            opacity: 0.3;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(white 1px, transparent 0);
+            background-size: 100px 100px;
+            opacity: 0.15;
+        }
+
+        /* --- BARRE DE PROGRESSION --- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            width: 0%;
+            z-index: 9999;
+            box-shadow: 0 0 10px #38bdf8;
+        }
+
+        /* --- BOUTON RETOUR EN HAUT --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #38bdf8;
+            color: #030712;
+            transform: translateY(-3px);
+        }
+
+        /* --- NAVIGATION FLOTTANTE --- */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 30px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            color: #38bdf8;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #38bdf8;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+        }
+
+        .badge-linkdn {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .badge-linkdn:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            min-height: 100vh;
+            padding: 140px 8% 80px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: #94a3b8;
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        /* --- ACCUEIL --- */
+        #accueil {
+            text-align: center;
+            align-items: center;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            color: #38bdf8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #38bdf8;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #38bdf8;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title-main {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .hero-subtitle-main {
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #38bdf8, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-desc {
+            color: #94a3b8;
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+            line-height: 1.7;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: white;
+            border: 1px solid rgba(56, 189, 248, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(15, 23, 42, 0.8);
+            color: #f3f4f6;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            border-color: #38bdf8;
+            color: #38bdf8;
+        }
+
+        /* --- CARTES & GRILLES (STYLE GITHUB PRO) --- */
+        .skills-grid, .projects-grid, .timeline-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skill-card, .project-card, .timeline-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover, .project-card:hover, .timeline-card:hover {
+            transform: translateY(-6px);
+            background: rgba(30, 41, 59, 0.85);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+        }
+
+        .skill-card i, .project-card i {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            margin-bottom: 18px;
+        }
+
+        .skill-card h3, .project-card h3, .timeline-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .skill-card span, .timeline-card h4 {
+            color: #38bdf8;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .timeline-card h4 {
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .timeline-card ul, .project-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .timeline-card li {
+            margin-bottom: 8px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* --- CONTACT --- */
+        .contact-box {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            max-width: 750px;
+            margin: 0 auto;
+            width: 100%;
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .contact-item i {
+            color: #38bdf8;
+            font-size: 1.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero-title-main { font-size: 2.5rem; }
+            .planet-blue, .planet-red { display: none; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- FOND ÉPURÉ -->
     <div class="cyber-bg">
         <div class="planet-red"></div>
         <div class="planet-blue"></div>
-        <div class="glow-orb orb-1"></div>
         <div class="particles"></div>
     </div>
 
+    <!-- Barre de progression -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Bouton Retour en haut -->
+    <a href="#accueil" class="back-to-top" id="backToTop" title="Remonter tout en haut">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- BARRE DE NAVIGATION -->
     <header>
         <div class="logo">Q. BAILLOU</div>
         <nav>
-            <a href="index.html" class="active">Accueil</a>
-            <a href="competences.html">Compétences</a>
-            <a href="parcours.html">Parcours</a>
-            <a href="projets.html">Projets</a>
-            <a href="veille.html">Veille</a>
-            <a href="contact.html">Contact</a>
+            <a href="#accueil" class="active">Accueil</a>
+            <a href="#apropos">Compétences</a>
+            <a href="#parcours">Parcours</a>
+            <a href="#projets">Projets</a>
+            <a href="#veille">Veille</a>
+            <a href="#contact">Contact</a>
             <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" class="badge-linkdn">LinkedIn</a>
         </nav>
     </header>
 
-    <main>
-        <div class="status-badge"><span class="status-dot"></span> Alternance en cours chez BUISARD</div>
+    <!-- 1. ACCUEIL -->
+    <section id="accueil">
+        <div class="status-badge">
+            <span class="status-dot"></span> Alternance en cours chez BUISARD
+        </div>
         <span class="hero-subtitle-main">BTS SIO 2e année • Option SISR</span>
         <h1 class="hero-title-main">Quentin Baillou</h1>
         <p class="hero-desc">
             Alternant en Administration Systèmes & Réseaux chez BUISARD. Étudiant au Lycée Carcouët, je conçois et sécurise des environnements informatiques performants et évolutifs.
         </p>
         <div class="hero-btns">
-            <a href="competences.html" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Explorer mon profil</a>
-            <a href="projets.html" class="btn btn-secondary"><i class="fa-solid fa-code"></i> Voir mes projets</a>
+            <a href="#apropos" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Explorer mon profil</a>
+            <a href="#projets" class="btn btn-secondary"><i class="fa-solid fa-code"></i> Voir mes projets</a>
         </div>
-    </main>
+    </section>
 
-    <footer>&copy; 2026 Quentin Baillou • Tous droits réservés</footer>
+    <!-- 2. À PROPOS & COMPÉTENCES -->
+    <section id="apropos">
+        <h2 class="section-title">Mes <span>Compétences</span></h2>
+        <p class="section-subtitle">Domaines d'expertise technique</p>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Active Directory</h3>
+                <span>Administration Windows</span>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>Cisco Systems</h3>
+                <span>Réseaux & VLAN</span>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-terminal"></i>
+                <h3>Systèmes Linux</h3>
+                <span>Debian / Serveurs</span>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-headset"></i>
+                <h3>Support & Matériel</h3>
+                <span>Assistance technique</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PARCOURS & ALTERNANCE -->
+    <section id="parcours">
+        <h2 class="section-title">Mon <span>Parcours</span></h2>
+        <p class="section-subtitle">Expérience professionnelle et formations diplômantes</p>
+        
+        <div class="timeline-container">
+            <div class="timeline-card">
+                <h3>Alternance Système & Réseau</h3>
+                <h4>BUISARD • Sablé-sur-Sarthe</h4>
+                <ul>
+                    <li>Gestion et administration des serveurs Windows & Linux.</li>
+                    <li>Support utilisateur, maintenance et déploiement de postes.</li>
+                    <li>Sécurisation et suivi des équipements réseaux.</li>
+                </ul>
+            </div>
+            <div class="timeline-card">
+                <h3>Formations & Diplômes</h3>
+                <h4>Lycée Carcouët & Raphaël Élizé</h4>
+                <ul>
+                    <li><strong>BTS SIO SISR :</strong> Lycée Carcouët (En cours, 2e année).</li>
+                    <li><strong>Bac Pro Maintenance (TTR) :</strong> Lycée Raphaël Élizé (2019-2022).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROJETS -->
+    <section id="projets">
+        <h2 class="section-title">Mes <span>Projets</span></h2>
+        <p class="section-subtitle">Réalisations professionnelles et académiques (Épreuve E4 / E6)</p>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Architecture Active Directory & GPO</h3>
+                <div class="tags">
+                    <span class="tag">Windows Server</span>
+                    <span class="tag">GPO</span>
+                </div>
+                <p>Déploiement d'un domaine sécurisé, structuration des unités d'organisation et application de stratégies de groupe ciblées.</p>
+            </div>
+            <div class="project-card">
+                <i class="fa-solid fa-router"></i>
+                <h3>Commutation & Routage Cisco</h3>
+                <div class="tags">
+                    <span class="tag">Cisco</span>
+                    <span class="tag">VLAN</span>
+                </div>
+                <p>Configuration des équipements réseau, segmentation VLAN et routage inter-VLAN au sein de l'infrastructure.</p>
+            </div>
+            <div class="project-card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Support & Maintenance Système</h3>
+                <div class="tags">
+                    <span class="tag">Linux</span>
+                    <span class="tag">Support</span>
+                </div>
+                <p>Mise en place de solutions correctives, administration de serveurs de test et assistance technique de niveau 1 et 2.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. VEILLE TECHNOLOGIQUE -->
+    <section id="veille">
+        <h2 class="section-title">Veille <span>Technologique</span></h2>
+        <p class="section-subtitle">Suivi des innovations et actualités de la cybersécurité</p>
+        
+        <div class="contact-box" style="text-align: left;">
+            <h3 style="color: #38bdf8; margin-bottom: 12px;"><i class="fa-solid fa-radar"></i> Sécurisation des infrastructures & résilience</h3>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px;">
+                Focus sur l'évolution des cybermenaces et les bonnes pratiques de sauvegarde et de protection des réseaux d'entreprise.
+            </p>
+            <p style="color: #cbd5e1; font-size: 0.9rem;">
+                <strong>Outils :</strong> Flux RSS, newsletters spécialisées et veilles actives sur les alertes CERT-FR.
+            </p>
+        </div>
+    </section>
+
+    <!-- 6. CONTACT -->
+    <section id="contact">
+        <h2 class="section-title">Me <span>Contacter</span></h2>
+        <p class="section-subtitle">Échangons sur votre projet ou opportunité</p>
+        
+        <div class="contact-box" style="text-align: center;">
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:quentinbailloudu72@gmail.com" style="color: #38bdf8; text-decoration: none;">quentinbailloudu72@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fa-brands fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: #38bdf8; text-decoration: none;">Profil LinkedIn de Quentin Baillou</a>
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Sablé-sur-Sarthe / Pays de la Loire</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Quentin Baillou • Tous droits réservés
+    </footer>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+        
+        window.onscroll = function() {
+            let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+
+            if (winScroll > 400) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        };
+    </script>
 </body>
 </html>
