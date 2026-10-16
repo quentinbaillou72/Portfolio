@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Technologique | Quentin Baillou</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: #030712; color: #f3f4f6; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
+        .cyber-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: radial-gradient(circle at 50% 20%, #0b1329 0%, #030712 60%, #010204 100%); overflow: hidden; }
+        .particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(white 1px, transparent 0); background-size: 100px 100px; opacity: 0.2; }
+
+        header { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 14px 30px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border-radius: 50px; border: 1px solid rgba(56, 189, 248, 0.25); z-index: 1000; }
+        .logo { font-size: 1.2rem; color: #38bdf8; font-weight: 800; letter-spacing: 1px; }
+        nav { display: flex; gap: 20px; align-items: center; }
+        nav a { text-decoration: none; color: #94a3b8; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        nav a:hover, nav a.active { color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.8); }
+        .badge-linkdn { background: linear-gradient(135deg, #0284c7, #2563eb); color: white !important; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
+
+        main { padding: 140px 8% 80px 8%; max-width: 800px; margin: 0 auto; width: 100%; z-index: 2; flex: 1; }
+        .section-title { font-size: 2.5rem; margin-bottom: 10px; font-weight: 800; color: #ffffff; text-align: center; }
+        .section-title span { background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-subtitle { color: #94a3b8; margin-bottom: 50px; font-size: 1.05rem; text-align: center; }
+
+        .contact-box { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(12px); padding: 45px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.15); }
+        footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.85rem; z-index: 2; }
+        @media (max-width: 768px) { nav { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="cyber-bg"><div class="particles"></div></div>
+
+    <header>
+        <div class="logo">Q. BAILLOU</div>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="competences.html">Compétences</a>
+            <a href="parcours.html">Parcours</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html" class="active">Veille</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" class="badge-linkdn">LinkedIn</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="section-title">Veille <span>Technologique</span></h2>
+        <p class="section-subtitle">Suivi des innovations et actualités de la cybersécurité</p>
+        
+        <div class="contact-box" style="text-align: left;">
+            <h3 style="color: #38bdf8; margin-bottom: 12px;"><i class="fa-solid fa-radar"></i> Sécurisation des infrastructures & résilience</h3>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px;">
+                Focus sur l'évolution des cybermenaces et les bonnes pratiques de sauvegarde et de protection des réseaux d'entreprise.
+            </p>
+            <p style="color: #cbd5e1; font-size: 0.9rem;">
+                <strong>Outils :</strong> Flux RSS, newsletters spécialisées et veilles actives sur les alertes CERT-FR.
+            </p>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 Quentin Baillou</footer>
+</body>
+</html>
