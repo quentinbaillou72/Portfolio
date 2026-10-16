@@ -1,319 +1,374 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quentin Baillou | Administrateur systèmes et réseaux</title>
-<meta name="description" content="Portfolio de Quentin Baillou, étudiant BTS SIO option SISR et alternant systèmes et réseaux.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230f172a'/><text x='16' y='23' font-size='20' font-family='Arial' font-weight='700' text-anchor='middle' fill='%2334d399'>Q</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root{
-  --bg:#0f172a; --surface:#16213a; --line:#27344f;
-  --text:#e8edf5; --muted:#9aa8bf; --accent:#34d399; --accent-2:#38bdf8;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65;min-height:100vh}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:4px}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quentin Baillou — Administrateur Systèmes & Réseaux</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'><path d='M12 2L2 22h20L12 2zm0 3.8l6.8 14.2H5.2L12 5.8z'/></svg>">
+    
+    <!-- Polices Premium (Inter pour la clarté, JetBrains Mono pour l'aspect technique) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg-base: #000000;
+            --bg-surface: #0a0a0a;
+            --bg-card: rgba(20, 20, 20, 0.4);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --accent: #ffffff;
+        }
 
-header{position:sticky;top:0;z-index:10;background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.bar{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.logo{font-weight:700;font-size:1.05rem;color:var(--text)}
-.logo:hover{text-decoration:none}
-.tabs{display:flex;gap:4px;flex-wrap:wrap}
-.tab{background:none;border:0;color:var(--muted);font:500 .92rem 'Inter',sans-serif;padding:8px 14px;border-radius:8px;cursor:pointer;transition:color .2s,background .2s}
-.tab:hover{color:var(--text)}
-.tab[aria-selected="true"]{color:var(--text);background:var(--surface);box-shadow:inset 0 -2px 0 var(--accent)}
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-secondary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
 
-main{max-width:1080px;margin:0 auto;padding:56px 24px 40px}
-.panel{display:none}
-.panel.active{display:block;animation:fade .35s ease}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-h1{font-size:2.6rem;line-height:1.15;letter-spacing:-.02em;margin-bottom:10px}
-h2{font-size:1.8rem;letter-spacing:-.01em;margin-bottom:8px}
-.lead{color:var(--muted);max-width:62ch;margin-bottom:32px}
-h3{font-size:1.08rem;font-weight:600;margin-bottom:8px}
-p{color:var(--muted)}
+        h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.03em; }
 
-.hero{display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:center}
-.photo{width:240px;height:240px;border-radius:16px;border:1px solid var(--line);background:var(--surface) center/cover;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;text-align:center;padding:16px}
-.role{color:var(--accent);font-weight:600;margin-bottom:18px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:8px;font:600 .92rem 'Inter',sans-serif;border:1px solid var(--accent);color:var(--accent);background:none;cursor:pointer;transition:background .2s,color .2s}
-.btn:hover{background:var(--accent);color:var(--bg);text-decoration:none}
-.btn.plain{border-color:var(--line);color:var(--text)}
-.btn.plain:hover{background:var(--surface);color:var(--text)}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:48px}
-.fact{border-top:2px solid var(--line);padding-top:12px}
-.fact b{display:block;color:var(--text);font-weight:600}
-.fact span{color:var(--muted);font-size:.92rem}
+        /* --- FOND SUBTIL (Grille Vercel Style) --- */
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            z-index: -2; pointer-events: none;
+        }
+        
+        .glow-bg {
+            position: fixed; top: -20%; left: 50%; transform: translateX(-50%);
+            width: 80vw; height: 50vh;
+            background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.05), transparent 70%);
+            z-index: -1; pointer-events: none;
+        }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px;transform-style:preserve-3d;transition:border-color .3s}
-.card:hover{border-color:var(--accent)}
-.card-in{transform:translateZ(18px);pointer-events:none}
-.card i.ico{font-size:1.5rem;color:var(--accent-2);margin-bottom:14px;display:block}
-.card .date{font-size:.85rem;color:var(--muted);margin-bottom:4px}
-.card .org{color:var(--accent);font-weight:500;font-size:.92rem;margin-bottom:10px}
-.pill{display:inline-block;padding:3px 10px;margin:10px 6px 0 0;border:1px solid var(--line);border-radius:999px;font-size:.78rem;color:var(--muted)}
-ul.list{list-style:none;margin-top:10px}
-ul.list li{position:relative;padding-left:18px;margin-bottom:7px;font-size:.94rem;color:var(--muted)}
-ul.list li::before{content:'';position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.sub{margin:44px 0 18px;font-size:1.2rem}
-.todo{border-style:dashed}
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 100px; padding: 12px 24px;
+            display: flex; gap: 32px; align-items: center;
+            z-index: 1000; transition: border-color 0.3s;
+        }
+        header:hover { border-color: rgba(255, 255, 255, 0.2); }
 
-.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
-.contact .row{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
-.contact .row i{width:20px;color:var(--accent-2);margin-top:5px}
-.contact small{display:block;color:var(--muted);font-size:.82rem}
+        .logo { font-weight: 700; color: var(--text-primary); text-decoration: none; font-size: 0.95rem; letter-spacing: -0.02em; }
+        
+        nav { display: flex; gap: 24px; }
+        nav a {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.85rem; font-weight: 500; transition: color 0.2s;
+        }
+        nav a:hover { color: var(--text-primary); }
 
-footer{max-width:1080px;margin:0 auto;padding:28px 24px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+        .btn-linkedin {
+            background: var(--text-primary); color: var(--bg-base);
+            padding: 6px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+            text-decoration: none; transition: transform 0.2s, background 0.2s;
+        }
+        .btn-linkedin:hover { background: #e5e5e5; transform: scale(1.02); }
 
-@media(max-width:760px){
-  .hero{grid-template-columns:1fr}
-  .photo{width:160px;height:160px;order:-1}
-  h1{font-size:2rem}
-  .bar{padding:10px 16px}
-  .tab{padding:7px 10px;font-size:.85rem}
-  main{padding-top:36px}
-}
-@media(prefers-reduced-motion:reduce){.panel.active{animation:none}.card{transition:none}}
-</style>
+        /* --- LAYOUT DES SECTIONS --- */
+        section {
+            max-width: 1000px; margin: 0 auto;
+            padding: 160px 24px 80px 24px;
+        }
+
+        .section-header { margin-bottom: 48px; }
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em;
+            margin-bottom: 16px; display: block;
+        }
+        .section-title { font-size: 2rem; }
+
+        /* --- ACCUEIL --- */
+        #accueil { padding-top: 240px; padding-bottom: 120px; }
+        .hero-title {
+            font-size: 4rem; line-height: 1.1; margin-bottom: 24px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #71717A 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle { font-size: 1.25rem; max-width: 600px; margin-bottom: 40px; }
+        
+        .hero-links { display: flex; gap: 16px; }
+        .btn-primary {
+            background: var(--text-primary); color: var(--bg-base);
+            padding: 12px 24px; border-radius: 8px; font-weight: 500;
+            text-decoration: none; transition: background 0.2s;
+        }
+        .btn-primary:hover { background: #e5e5e5; }
+        .btn-secondary {
+            background: transparent; color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 12px 24px; border-radius: 8px; font-weight: 500;
+            text-decoration: none; transition: background 0.2s, border-color 0.2s;
+        }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); }
+
+        /* --- CARTES PREMIUM (EFFET SPOTLIGHT) --- */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+
+        #cards-container:hover .card::after { opacity: 1; }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1px; /* Pour la bordure lumineuse */
+            position: relative;
+            display: flex; flex-direction: column;
+            text-decoration: none; color: inherit;
+        }
+
+        /* La bordure lumineuse qui suit la souris */
+        .card::before, .card::after {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 12px; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+        }
+        .card::before {
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.15), transparent 40%);
+            z-index: 1;
+        }
+        .card::after {
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40%);
+            z-index: -1;
+        }
+        .card:hover::before { opacity: 1; }
+
+        /* Contenu interne de la carte */
+        .card-inner {
+            background: var(--bg-surface);
+            border-radius: 11px; padding: 32px;
+            height: 100%; width: 100%;
+            position: relative; z-index: 2;
+        }
+
+        .card-icon { font-size: 1.5rem; color: var(--text-primary); margin-bottom: 24px; }
+        .card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+        .card p { font-size: 0.95rem; }
+
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+        .tech-pill {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+            color: var(--text-secondary); background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border-color);
+        }
+
+        /* --- LISTES EXPÉRIENCE --- */
+        .xp-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px; display: block; }
+        .xp-list { list-style: none; margin-top: 16px; }
+        .xp-list li {
+            position: relative; padding-left: 16px; margin-bottom: 8px; font-size: 0.9rem;
+        }
+        .xp-list li::before {
+            content: ''; position: absolute; left: 0; top: 10px;
+            width: 4px; height: 4px; border-radius: 50%; background: var(--text-secondary);
+        }
+
+        /* --- ANIMATIONS AU SCROLL --- */
+        .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color); padding: 40px 24px;
+            text-align: center; margin-top: 80px; font-size: 0.85rem;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+
+        @media (max-width: 768px) {
+            header nav { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            section { padding-top: 100px; padding-bottom: 40px; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="bar">
-    <a href="#accueil" class="logo">Quentin Baillou</a>
-    <nav class="tabs" role="tablist" aria-label="Sections du portfolio">
-      <button class="tab" role="tab" id="t-accueil" aria-controls="accueil" aria-selected="true">Accueil</button>
-      <button class="tab" role="tab" id="t-competences" aria-controls="competences" aria-selected="false" tabindex="-1">Compétences</button>
-      <button class="tab" role="tab" id="t-parcours" aria-controls="parcours" aria-selected="false" tabindex="-1">Parcours</button>
-      <button class="tab" role="tab" id="t-projets" aria-controls="projets" aria-selected="false" tabindex="-1">Projets</button>
-      <button class="tab" role="tab" id="t-veille" aria-controls="veille" aria-selected="false" tabindex="-1">Veille</button>
-      <button class="tab" role="tab" id="t-contact" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button>
-    </nav>
-  </div>
-</header>
+    <!-- Fond architectural minimaliste -->
+    <div class="grid-bg"></div>
+    <div class="glow-bg"></div>
 
-<main>
+    <!-- Navigation Pilule -->
+    <header>
+        <a href="#accueil" class="logo">Quentin Baillou</a>
+        <nav>
+            <a href="#expertise">Expertise</a>
+            <a href="#experience">Expérience</a>
+            <a href="#projets">Projets</a>
+            <a href="mailto:quentinbailloudu72@gmail.com">Contact</a>
+        </nav>
+        <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" class="btn-linkedin">LinkedIn</a>
+    </header>
 
-<!-- ACCUEIL -->
-<section class="panel active" id="accueil" role="tabpanel" aria-labelledby="t-accueil">
-  <div class="hero">
-    <div>
-      <h1>Quentin Baillou</h1>
-      <p class="role">Étudiant BTS SIO option SISR · Alternant systèmes et réseaux</p>
-      <p>Je me forme à l'administration de systèmes et de réseaux, en cours à Sablé-sur-Sarthe et en entreprise chez BUISARD. Au quotidien, je gère des serveurs Windows et Linux, j'assure le support utilisateurs et je participe à la maintenance du réseau. La cybersécurité guide mes choix techniques : droits minimaux, segmentation, configuration documentée.</p>
-      <p style="margin-top:12px">Je recherche un poste ou une poursuite d'études en administration systèmes et réseaux à l'issue de mon BTS.</p>
-      <div class="actions">
-        <button class="btn" data-go="projets"><i class="fa-solid fa-diagram-project"></i> Voir mes projets</button>
-        <a class="btn plain" href="CV-Quentin-Baillou.pdf" download><i class="fa-solid fa-download"></i> Télécharger mon CV</a>
-      </div>
-    </div>
-    <div class="photo" role="img" aria-label="Emplacement de la photo de profil">Ajoutez votre photo ici (photo.jpg)</div>
-  </div>
-  <div class="facts">
-    <div class="fact"><b>BTS SIO SISR</b><span>Lycée Carcouët, 2024 – 2026</span></div>
-    <div class="fact"><b>Alternance</b><span>BUISARD, depuis 2024</span></div>
-    <div class="fact"><b>Disponibilité</b><span>Après l'obtention du BTS, 2026</span></div>
-    <div class="fact"><b>Mobilité</b><span>Pays de la Loire</span></div>
-  </div>
-</section>
+    <main id="cards-container">
+        
+        <!-- ACCUEIL -->
+        <section id="accueil" class="fade-up">
+            <h1 class="hero-title">Ingénierie &<br>Infrastructures Systèmes.</h1>
+            <p class="hero-subtitle">
+                Étudiant en BTS SIO SISR et alternant chez <strong>BUISARD</strong>. Je construis, déploie et sécurise des environnements informatiques professionnels performants et résilients.
+            </p>
+            <div class="hero-links">
+                <a href="mailto:quentinbailloudu72@gmail.com" class="btn-primary">Démarrer une discussion</a>
+                <a href="#projets" class="btn-secondary">Explorer les projets</a>
+            </div>
+        </section>
 
-<!-- COMPÉTENCES -->
-<section class="panel" id="competences" role="tabpanel" aria-labelledby="t-competences" hidden>
-  <h2>Compétences</h2>
-  <p class="lead">Les outils et technologies que j'utilise en cours et en entreprise.</p>
-  <div class="grid">
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-brands fa-windows"></i><h3>Systèmes Windows</h3>
-      <p>Administration d'un domaine Active Directory, stratégies de groupe (GPO) et gestion des comptes et des droits.</p>
-      <span class="pill">Windows Server</span><span class="pill">Active Directory</span><span class="pill">GPO</span><span class="pill">DNS / DHCP</span>
-    </div></div>
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-solid fa-network-wired"></i><h3>Réseaux</h3>
-      <p>Conception logique et physique, segmentation en VLAN, routage inter-VLAN et sécurisation des équipements Cisco.</p>
-      <span class="pill">Cisco IOS</span><span class="pill">VLAN</span><span class="pill">Routage</span><span class="pill">Packet Tracer</span>
-    </div></div>
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-brands fa-linux"></i><h3>Systèmes Linux</h3>
-      <p>Déploiement de serveurs Debian, services web en LAMP et administration de bases de données.</p>
-      <span class="pill">Debian</span><span class="pill">Apache</span><span class="pill">MariaDB</span><span class="pill">Bash</span>
-    </div></div>
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-solid fa-headset"></i><h3>Support et exploitation</h3>
-      <p>Assistance aux utilisateurs de niveaux 1 et 2, maintenance préventive et curative, suivi des incidents.</p>
-      <span class="pill">Ticketing</span><span class="pill">Diagnostic</span><span class="pill">Documentation</span>
-    </div></div>
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-solid fa-shield-halved"></i><h3>Sécurité</h3>
-      <p>Principe du moindre privilège, durcissement des postes et serveurs, sensibilisation des utilisateurs.</p>
-      <span class="pill">Moindre privilège</span><span class="pill">Durcissement</span><span class="pill">Sauvegardes</span>
-    </div></div>
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-solid fa-users"></i><h3>Compétences transversales</h3>
-      <ul class="list"><li>Autonomie et rigueur</li><li>Rédaction de documentation technique</li><li>Travail en équipe</li><li>Anglais technique : <em>niveau à préciser</em></li></ul>
-    </div></div>
-  </div>
-</section>
+        <!-- EXPERTISE -->
+        <section id="expertise" class="fade-up">
+            <div class="section-header">
+                <span class="section-tag">01 // Compétences fondamentales</span>
+                <h2 class="section-title">Expertise Technique</h2>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-inner">
+                        <i class="fa-brands fa-windows card-icon"></i>
+                        <h3>Écosystème Microsoft</h3>
+                        <p>Architecture de domaines Active Directory. Sécurisation des accès et gestion fine du parc informatique via les stratégies de groupe (GPO).</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Windows Server</span>
+                            <span class="tech-pill">Active Directory</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <i class="fa-solid fa-server card-icon"></i>
+                        <h3>Infrastructures Réseaux</h3>
+                        <p>Déploiement matériel et logiciel. Segmentation des flux (VLAN), protocoles de routage inter-VLAN et maintien en condition opérationnelle.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Cisco IOS</span>
+                            <span class="tech-pill">Switching/Routing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <i class="fa-brands fa-linux card-icon"></i>
+                        <h3>Serveurs Open Source</h3>
+                        <p>Administration d'environnements Linux pour l'hébergement de services. Déploiement de serveurs web, bases de données et outils de supervision.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Debian</span>
+                            <span class="tech-pill">LAMP / MariaDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- PARCOURS -->
-<section class="panel" id="parcours" role="tabpanel" aria-labelledby="t-parcours" hidden>
-  <h2>Parcours</h2>
-  <p class="lead">Mon expérience en entreprise et ma formation.</p>
-  <h3 class="sub" style="margin-top:0">Expérience professionnelle</h3>
-  <div class="grid">
-    <div class="card js-tilt"><div class="card-in">
-      <div class="date">2024 – aujourd'hui</div><h3>Alternant systèmes et réseaux</h3>
-      <div class="org">BUISARD, Sablé-sur-Sarthe</div>
-      <ul class="list">
-        <li>Administration du parc de serveurs Windows et Linux</li>
-        <li>Support informatique et assistance utilisateurs N1/N2</li>
-        <li>Maintenance préventive et curative du réseau</li>
-      </ul>
-    </div></div>
-  </div>
-  <h3 class="sub">Formation</h3>
-  <div class="grid">
-    <div class="card js-tilt"><div class="card-in">
-      <div class="date">2024 – 2026</div><h3>BTS SIO option SISR</h3>
-      <div class="org">Lycée Carcouët</div>
-      <ul class="list"><li>Conception et maintenance d'infrastructures</li><li>Cybersécurité et gestion des risques</li></ul>
-    </div></div>
-    <div class="card js-tilt"><div class="card-in">
-      <div class="date">Diplôme précédent</div><h3>Bac Pro TTR</h3>
-      <div class="org">Établissement et année à préciser</div>
-      <p>Première approche des réseaux et des télécommunications.</p>
-    </div></div>
-  </div>
-  <h3 class="sub">Langues et centres d'intérêt</h3>
-  <div class="grid">
-    <div class="card js-tilt"><div class="card-in"><h3>Langues</h3><ul class="list"><li>Français : langue maternelle</li><li>Anglais : à préciser</li></ul></div></div>
-    <div class="card js-tilt"><div class="card-in"><h3>Centres d'intérêt</h3><p>Homelab, virtualisation, actualité cybersécurité. À adapter à votre profil.</p></div></div>
-  </div>
-</section>
+        <!-- EXPÉRIENCE -->
+        <section id="experience" class="fade-up">
+            <div class="section-header">
+                <span class="section-tag">02 // Parcours</span>
+                <h2 class="section-title">Expérience & Formation</h2>
+            </div>
 
-<!-- PROJETS -->
-<section class="panel" id="projets" role="tabpanel" aria-labelledby="t-projets" hidden>
-  <h2>Projets</h2>
-  <p class="lead">Réalisations menées en formation. Chaque projet précise le contexte, mes actions et les outils utilisés.</p>
-  <div class="grid">
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-solid fa-shield-halved"></i><h3>Structure Active Directory sécurisée</h3>
-      <p><b style="color:var(--text)">Contexte :</b> mettre en place un domaine pour une entreprise fictive avec des profils métiers distincts.</p>
-      <ul class="list"><li>Création du domaine et des unités d'organisation</li><li>Groupes de sécurité et délégation de droits</li><li>GPO restrictives adaptées à chaque profil</li></ul>
-      <span class="pill">Windows Server</span><span class="pill">AD DS</span><span class="pill">GPO</span>
-    </div></div>
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-solid fa-route"></i><h3>Topologie réseau d'entreprise</h3>
-      <p><b style="color:var(--text)">Contexte :</b> modéliser le réseau d'une entreprise multi-services.</p>
-      <ul class="list"><li>Plan d'adressage et segmentation en VLAN</li><li>Routage inter-VLAN et service DHCP</li><li>Isolation complète des départements</li></ul>
-      <span class="pill">Cisco Packet Tracer</span><span class="pill">VLAN</span><span class="pill">DHCP</span>
-    </div></div>
-    <div class="card js-tilt todo"><div class="card-in">
-      <i class="ico fa-solid fa-server"></i><h3>Serveur web LAMP sous Debian</h3>
-      <p>Projet à compléter : installation d'Apache, PHP et MariaDB, sécurisation et documentation. Ajoutez ici vos captures et un lien vers la documentation PDF.</p>
-      <span class="pill">Debian</span><span class="pill">Apache</span><span class="pill">MariaDB</span>
-    </div></div>
-  </div>
-  <p style="margin-top:26px;font-size:.92rem">Astuce : ajoutez pour chaque projet un lien vers sa documentation (PDF) ou son dépôt GitHub.</p>
-</section>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-inner">
+                        <span class="xp-date">Sep. 2024 — Présent</span>
+                        <h3>Administrateur Systèmes (Alternance)</h3>
+                        <p style="color: var(--text-primary);">Entreprise BUISARD</p>
+                        <ul class="xp-list">
+                            <li>Gestion quotidienne de l'infrastructure réseau et serveurs.</li>
+                            <li>Support technique N1/N2 et accompagnement des collaborateurs.</li>
+                            <li>Participation active à la politique de sécurité informatique.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <span class="xp-date">Sep. 2024 — Juin 2026</span>
+                        <h3>BTS SIO option SISR</h3>
+                        <p style="color: var(--text-primary);">Lycée Carcouët</p>
+                        <ul class="xp-list">
+                            <li>Solutions d'infrastructure, systèmes et réseaux.</li>
+                            <li>Analyse des risques et cybersécurité.</li>
+                            <li>Précédé par l'obtention d'un Bac Pro Maintenance (TTR).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- VEILLE -->
-<section class="panel" id="veille" role="tabpanel" aria-labelledby="t-veille" hidden>
-  <h2>Veille technologique</h2>
-  <p class="lead">Comment je me tiens informé des évolutions techniques et des menaces de sécurité.</p>
-  <div class="grid">
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-solid fa-newspaper"></i><h3>Sources suivies</h3>
-      <ul class="list"><li><a href="https://www.cert.ssi.gouv.fr" target="_blank" rel="noopener" style="pointer-events:auto">CERT-FR</a> : alertes de sécurité</li><li><a href="https://www.cybermalveillance.gouv.fr" target="_blank" rel="noopener" style="pointer-events:auto">Cybermalveillance.gouv.fr</a></li><li>Ajoutez vos autres sources (blogs, chaînes, flux RSS)</li></ul>
-    </div></div>
-    <div class="card js-tilt"><div class="card-in">
-      <i class="ico fa-solid fa-magnifying-glass"></i><h3>Thèmes de veille</h3>
-      <ul class="list"><li>Sécurité d'Active Directory</li><li>Ransomwares et sauvegardes</li><li>Évolutions de Windows Server et Debian</li></ul>
-    </div></div>
-    <div class="card js-tilt todo"><div class="card-in">
-      <i class="ico fa-solid fa-circle-info"></i><h3>Note de synthèse</h3>
-      <p>Ajoutez ici votre dernier compte rendu de veille avec sa date, par exemple « Veille de mars 2026 ».</p>
-    </div></div>
-  </div>
-  <h3 class="sub">Certifications et attestations</h3>
-  <div class="grid">
-    <div class="card js-tilt todo"><div class="card-in"><h3>À compléter</h3><p>SecNumacadémie, PIX, TOEIC ou toute autre attestation obtenue, avec la date.</p></div></div>
-  </div>
-</section>
+        <!-- PROJETS -->
+        <section id="projets" class="fade-up">
+            <div class="section-header">
+                <span class="section-tag">03 // Cas pratiques</span>
+                <h2 class="section-title">Déploiements Réalisés</h2>
+            </div>
 
-<!-- CONTACT -->
-<section class="panel" id="contact" role="tabpanel" aria-labelledby="t-contact" hidden>
-  <h2>Contact</h2>
-  <p class="lead">Je recherche un poste en administration systèmes et réseaux. N'hésitez pas à me écrire.</p>
-  <div class="contact">
-    <div class="card"><div>
-      <div class="row"><i class="fa-solid fa-envelope"></i><div><small>E-mail</small><a href="mailto:quentinbailloudu72@gmail.com">quentinbailloudu72@gmail.com</a></div></div>
-      <div class="row"><i class="fa-brands fa-linkedin"></i><div><small>LinkedIn</small><a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/" target="_blank" rel="noopener">linkedin.com/in/quentin-baillou</a></div></div>
-      <div class="row"><i class="fa-solid fa-location-dot"></i><div><small>Zone</small>Sablé-sur-Sarthe, Pays de la Loire</div></div>
-      <div class="row"><i class="fa-solid fa-file-pdf"></i><div><small>CV</small><a href="CV-Quentin-Baillou.pdf" download>Télécharger mon CV (PDF)</a></div></div>
-    </div></div>
-    <div class="card"><div>
-      <h3>Informations utiles</h3>
-      <ul class="list"><li>Type de contrat recherché : à préciser (CDI, alternance, poursuite d'études)</li><li>Disponible à partir de : été 2026</li><li>Permis B : à préciser</li></ul>
-    </div></div>
-  </div>
-</section>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-inner">
+                        <i class="fa-solid fa-shield-halved card-icon"></i>
+                        <h3>Durcissement Active Directory</h3>
+                        <p>Conception d'un environnement d'entreprise complet : arborescence organisationnelle stricte, délégation des droits administratifs et sécurisation globale via GPO.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <i class="fa-solid fa-route card-icon"></i>
+                        <h3>Architecture Réseau Segmentée</h3>
+                        <p>Modélisation et implémentation sur matériel Cisco. Création de zones de sécurité isolées (VLAN), configuration DHCP centralisée et routage inter-VLAN sécurisé.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-</main>
+    </main>
 
-<footer>
-  <span>© 2026 Quentin Baillou</span>
-  <span>Portfolio BTS SIO SISR</span>
-</footer>
+    <footer>
+        <p>Conçu et développé par Quentin Baillou</p>
+        <p style="color: #555;">© 2026. Tous droits réservés.</p>
+    </footer>
 
-<script>
-// Onglets
-const tabs=[...document.querySelectorAll('.tab')];
-const panels=[...document.querySelectorAll('.panel')];
-function show(id,push=true){
-  if(!document.getElementById(id))id='accueil';
-  tabs.forEach(t=>{const on=t.getAttribute('aria-controls')===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
-  panels.forEach(p=>{const on=p.id===id;p.classList.toggle('active',on);p.hidden=!on});
-  if(push)history.replaceState(null,'','#'+id);
-  window.scrollTo({top:0});
-}
-tabs.forEach((t,i)=>{
-  t.addEventListener('click',()=>show(t.getAttribute('aria-controls')));
-  t.addEventListener('keydown',e=>{
-    if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
-    const n=tabs[(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];
-    n.focus();show(n.getAttribute('aria-controls'));
-  });
-});
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.go)));
-document.querySelector('.logo').addEventListener('click',e=>{e.preventDefault();show('accueil')});
-window.addEventListener('hashchange',()=>show(location.hash.slice(1),false));
-show(location.hash.slice(1)||'accueil',false);
+    <!-- SCRIPTS MINEURS (Effets visuels pro) -->
+    <script>
+        // 1. Animation Fade-Up au défilement (Intersection Observer)
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-// Effet 3D sur les cartes
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  document.querySelectorAll('.js-tilt').forEach(card=>{
-    card.addEventListener('mouseenter',()=>card.style.transition='none');
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`perspective(1000px) rotateX(${-y*14}deg) rotateY(${x*14}deg) scale3d(1.01,1.01,1.01)`;
-    });
-    card.addEventListener('mouseleave',()=>{
-      card.style.transition='transform .5s ease,border-color .3s';
-      card.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)';
-    });
-  });
-}
-</script>
+        document.querySelectorAll('.fade-up').forEach(section => { observer.observe(section); });
+
+        // 2. Effet Spotlight Vercel-style sur les cartes
+        document.getElementById("cards-container").addEventListener("mousemove", e => {
+            for(const card of document.querySelectorAll(".card")) {
+                const rect = card.getBoundingClientRect(),
+                      x = e.clientX - rect.left,
+                      y = e.clientY - rect.top;
+
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+        });
+    </script>
 </body>
 </html>
