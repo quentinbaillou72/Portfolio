@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quentin Baillou | Terminal SISR</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f0ff'><path d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 14H6V6h12v12zm-4.5-4l1.5-1.5-3-3 3-3-1.5-1.5-4.5 4.5 4.5 4.5z'/></svg>">
+    <title>Quentin Baillou | Admin Sys & Réseaux</title>
+    <!-- Favicon Émeraude -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310b981'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
     
-    <!-- Polices (Fira Code pour le terminal, Inter pour la lecture) -->
+    <!-- Polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- VARIABLES CYBER --- */
+        /* --- NOUVELLE DA : DEEP BLUE & EMERALD GREEN --- */
         :root {
-            --bg-base: #02000f;
-            --neon-cyan: #00f0ff;
-            --neon-purple: #7000ff;
-            --text-main: #e2e8f0;
-            --text-muted: #8492a6;
-            --glass-bg: rgba(10, 10, 25, 0.6);
-            --glass-border: rgba(0, 240, 255, 0.2);
+            --bg-base: #0f172a; /* Slate 900 - Bleu nuit profond */
+            --neon-primary: #10b981; /* Vert Émeraude */
+            --neon-secondary: #0ea5e9; /* Bleu Océan/Ciel */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(30, 41, 59, 0.65); /* Slate 800 transparent */
+            --glass-border: rgba(16, 185, 129, 0.25);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Cache le curseur par défaut */ }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
         html { scroll-behavior: smooth; }
         
         body {
@@ -32,203 +33,190 @@
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* --- CURSEUR PERSONNALISÉ --- */
+        /* --- CURSEUR ÉMERAUDE --- */
         .cursor-dot {
-            width: 8px; height: 8px;
-            background: var(--neon-cyan);
+            width: 6px; height: 6px;
+            background: var(--neon-primary);
             border-radius: 50%;
             position: fixed; top: 0; left: 0;
             pointer-events: none; z-index: 9999;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px var(--neon-cyan);
+            box-shadow: 0 0 12px var(--neon-primary);
         }
         .cursor-outline {
-            width: 40px; height: 40px;
-            border: 1px solid var(--neon-cyan);
+            width: 36px; height: 36px;
+            border: 1px solid rgba(16, 185, 129, 0.5);
             border-radius: 50%;
             position: fixed; top: 0; left: 0;
             pointer-events: none; z-index: 9998;
             transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
         }
 
-        /* --- FOND CYBER-GRILLE 3D --- */
+        /* --- FOND GRILLE SUBTILE & LUEURS --- */
         .cyber-grid-container {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -3; overflow: hidden;
-            background: radial-gradient(circle at center, #0a0020 0%, var(--bg-base) 100%);
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-base) 80%);
         }
         .cyber-grid {
-            position: absolute; bottom: -50%; left: -50%;
-            width: 200%; height: 200%;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            transform: perspective(600px) rotateX(60deg);
-            animation: gridMove 10s linear infinite;
-            mask-image: linear-gradient(to top, black 20%, transparent 80%);
-            -webkit-mask-image: linear-gradient(to top, black 20%, transparent 80%);
-        }
-        @keyframes gridMove {
-            0% { transform: perspective(600px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(600px) rotateX(60deg) translateY(50px); }
+                linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        /* --- AMBIANCE LUMINEUSE --- */
         .ambient-light {
-            position: fixed; top: -20%; right: -10%;
+            position: fixed; top: -10%; left: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            filter: blur(100px); z-index: -2; pointer-events: none;
+            animation: pulseLight 10s infinite alternate;
+        }
+        .ambient-light-2 {
+            position: fixed; bottom: -20%; right: -10%;
             width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 60%);
-            filter: blur(80px); z-index: -2; pointer-events: none;
-            animation: pulseLight 8s infinite alternate;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+            filter: blur(100px); z-index: -2; pointer-events: none;
+            animation: pulseLight 12s infinite alternate-reverse;
         }
         @keyframes pulseLight {
-            0% { opacity: 0.5; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.2); }
+            0% { opacity: 0.6; transform: scale(1) translate(0, 0); }
+            100% { opacity: 1; transform: scale(1.1) translate(5%, 5%); }
         }
 
-        /* --- BARRE DE NAVIGATION --- */
+        /* --- BARRE DE NAVIGATION SOBRE --- */
         header {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
             width: 90%; max-width: 1000px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px; padding: 15px 30px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px; padding: 14px 32px;
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 1000; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
         }
 
-        /* Effet Glitch sur le Logo */
         .logo {
-            font-family: 'Fira Code', monospace;
-            font-size: 1.2rem; font-weight: 700; color: var(--text-main);
-            position: relative; text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem; font-weight: 800; color: var(--text-main);
+            text-decoration: none; letter-spacing: -0.5px;
         }
-        .logo:hover { animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite; color: var(--neon-cyan); }
-        @keyframes glitch {
-            0% { transform: translate(0) }
-            20% { transform: translate(-2px, 2px) }
-            40% { transform: translate(-2px, -2px) }
-            60% { transform: translate(2px, 2px) }
-            80% { transform: translate(2px, -2px) }
-            100% { transform: translate(0) }
-        }
+        .logo span { color: var(--neon-primary); }
 
-        nav { display: flex; gap: 25px; align-items: center; }
+        nav { display: flex; gap: 28px; align-items: center; }
         nav a {
-            font-family: 'Fira Code', monospace; font-size: 0.9rem;
+            font-family: 'Fira Code', monospace; font-size: 0.85rem;
             color: var(--text-muted); text-decoration: none;
-            transition: 0.3s; position: relative;
+            transition: color 0.3s;
         }
-        nav a:hover { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
+        nav a:hover { color: var(--neon-primary); }
         .badge-linkdn {
-            border: 1px solid var(--neon-cyan); color: var(--neon-cyan) !important;
-            padding: 8px 15px; border-radius: 6px;
-            background: rgba(0, 240, 255, 0.05);
+            background: var(--text-main); color: var(--bg-base) !important;
+            padding: 8px 18px; border-radius: 8px; font-family: 'Inter', sans-serif;
+            font-weight: 600; font-size: 0.85rem; border: none;
         }
-        .badge-linkdn:hover { background: var(--neon-cyan); color: #000 !important; }
+        .badge-linkdn:hover { background: var(--neon-primary); color: #fff !important; }
 
         /* --- SECTIONS --- */
         section {
-            min-height: 100vh; padding: 150px 8% 80px 8%;
-            max-width: 1200px; margin: 0 auto;
+            min-height: 100vh; padding: 160px 8% 80px 8%;
+            max-width: 1100px; margin: 0 auto;
             display: flex; flex-direction: column; justify-content: center;
         }
 
-        .section-num { font-family: 'Fira Code', monospace; color: var(--neon-cyan); font-size: 1rem; margin-bottom: 10px; }
-        .section-title { font-size: 3rem; font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
+        .section-num { font-family: 'Fira Code', monospace; color: var(--neon-secondary); font-size: 0.9rem; margin-bottom: 12px; font-weight: 500; }
+        .section-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; color: var(--text-main); }
 
         /* --- TERMINAL (ACCUEIL) --- */
         .terminal-box {
-            background: rgba(5, 5, 15, 0.8);
-            border: 1px solid var(--glass-border);
-            border-radius: 10px; padding: 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            max-width: 800px;
+            background: #020617; /* Slate 950 */
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px; padding: 35px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 850px; position: relative;
         }
         .terminal-header {
-            display: flex; gap: 8px; margin-bottom: 20px;
-            padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; gap: 8px; margin-bottom: 25px;
+            padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27c93f; }
+        .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
         
-        .terminal-text { font-family: 'Fira Code', monospace; font-size: 1.1rem; color: var(--neon-cyan); }
-        .typewriter span { border-right: 2px solid var(--neon-cyan); animation: blink 1s step-end infinite; }
+        .terminal-text { font-family: 'Fira Code', monospace; font-size: 1.05rem; color: var(--neon-primary); line-height: 1.8; }
+        .typewriter span { border-right: 2px solid var(--neon-primary); animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { border-color: transparent; } }
 
         .btn-cyber {
-            margin-top: 30px; display: inline-block; padding: 12px 30px;
-            background: transparent; color: var(--neon-cyan);
-            border: 1px solid var(--neon-cyan); font-family: 'Fira Code', monospace;
-            text-decoration: none; text-transform: uppercase; font-weight: bold;
-            position: relative; overflow: hidden; transition: 0.3s;
+            margin-top: 35px; display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 32px; background: rgba(16, 185, 129, 0.1); color: var(--neon-primary);
+            border: 1px solid var(--neon-primary); border-radius: 8px; font-family: 'Inter', sans-serif;
+            text-decoration: none; font-weight: 600; font-size: 1rem;
+            transition: all 0.3s ease;
         }
-        .btn-cyber:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); }
+        .btn-cyber:hover { background: var(--neon-primary); color: #fff; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); transform: translateY(-3px); }
 
-        /* --- CARTES 3D (TILT) --- */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* --- CARTES 3D GLASSMORPHISM --- */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         
         .card-3d {
-            background: var(--glass-bg); border: 1px solid var(--glass-border);
-            border-radius: 15px; padding: 40px 30px;
-            transform-style: preserve-3d; /* Pour l'effet 3D en JS */
-            transition: border-color 0.3s;
+            background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px; padding: 40px 30px;
+            transform-style: preserve-3d;
+            transition: border-color 0.4s, background 0.4s;
         }
-        /* Contenu de la carte repoussé vers l'avant pour accentuer l'effet 3D */
-        .card-content { transform: translateZ(30px); pointer-events: none; }
+        .card-content { transform: translateZ(20px); pointer-events: none; }
         
-        .card-3d:hover { border-color: var(--neon-cyan); }
-        .card-icon { font-size: 2.5rem; color: var(--neon-purple); margin-bottom: 20px; }
-        .card-3d h3 { font-size: 1.4rem; margin-bottom: 15px; color: #fff; }
-        .card-3d p { color: var(--text-muted); font-size: 0.95rem; }
+        .card-3d:hover { border-color: var(--neon-primary); background: rgba(30, 41, 59, 0.85); }
+        .card-icon { font-size: 2.2rem; color: var(--neon-secondary); margin-bottom: 20px; }
+        .card-3d h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; font-weight: 600; }
+        .card-3d p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
         .tech-pill {
-            display: inline-block; padding: 5px 12px; margin: 5px 5px 0 0;
-            background: rgba(112, 0, 255, 0.15); border: 1px solid var(--neon-purple);
-            border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #fff;
+            display: inline-block; padding: 4px 12px; margin: 6px 6px 0 0;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--text-muted);
         }
 
-        /* --- LISTES STYLE TERMINAL --- */
+        /* --- LISTES ET CONTACT --- */
         .cmd-list { list-style: none; margin-top: 15px; }
-        .cmd-list li { margin-bottom: 10px; font-size: 0.95rem; padding-left: 20px; position: relative; }
-        .cmd-list li::before { content: '>'; position: absolute; left: 0; color: var(--neon-cyan); font-family: 'Fira Code'; font-weight: bold; }
+        .cmd-list li { margin-bottom: 10px; font-size: 0.95rem; padding-left: 20px; position: relative; color: var(--text-muted); }
+        .cmd-list li::before { content: '→'; position: absolute; left: 0; color: var(--neon-primary); font-family: 'Inter'; font-weight: bold; }
 
-        footer { text-align: center; padding: 40px; font-family: 'Fira Code', monospace; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
+        footer { text-align: center; padding: 40px; font-family: 'Fira Code', monospace; color: #475569; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             header nav { display: none; }
-            section { padding-top: 120px; }
+            section { padding-top: 130px; }
             .section-title { font-size: 2.2rem; }
-            * { cursor: auto; } /* Désactive le curseur perso sur mobile */
+            * { cursor: auto; }
             .cursor-dot, .cursor-outline { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- CURSEUR PERSONNALISÉ (Souris) -->
+    <!-- CURSEUR PERSONNALISÉ -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
 
     <!-- FOND CYBER -->
     <div class="cyber-grid-container"><div class="cyber-grid"></div></div>
     <div class="ambient-light"></div>
+    <div class="ambient-light-2"></div>
 
     <header>
-        <a href="#accueil" class="logo">QBaillou<span style="color:var(--neon-purple)">_</span></a>
+        <a href="#accueil" class="logo">Quentin<span>.</span></a>
         <nav>
-            <a href="#accueil">~/home</a>
-            <a href="#competences">~/skills</a>
-            <a href="#parcours">~/experience</a>
-            <a href="#projets">~/projects</a>
+            <a href="#accueil">/home</a>
+            <a href="#competences">/skills</a>
+            <a href="#parcours">/experience</a>
+            <a href="#projets">/projects</a>
             <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" class="badge-linkdn">LinkedIn</a>
         </nav>
     </header>
@@ -239,51 +227,49 @@
             <div class="terminal-header">
                 <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
             </div>
-            <div class="terminal-text" id="typewriter-text">
-                <!-- Rempli par le script JS -->
-            </div>
+            <div class="terminal-text" id="typewriter-text"></div>
         </div>
         <div>
-            <a href="#projets" class="btn-cyber">Lancer l'exécution</a>
+            <a href="#projets" class="btn-cyber"><i class="fa-solid fa-server"></i> Découvrir l'infrastructure</a>
         </div>
     </section>
 
     <!-- 2. COMPÉTENCES (CARTES 3D) -->
     <section id="competences">
-        <div class="section-num">01. ./skills.sh</div>
-        <h2 class="section-title">Systèmes & Infrastructures</h2>
+        <div class="section-num">01. Compétences Techniques</div>
+        <h2 class="section-title">Administration & Sécurité</h2>
         
         <div class="grid-3">
             <div class="card-3d js-tilt">
                 <div class="card-content">
                     <i class="fa-brands fa-windows card-icon"></i>
-                    <h3>Windows Server / AD</h3>
-                    <p>Déploiement, gestion des forêts Active Directory, configuration avancée des GPO et sécurisation des accès utilisateurs.</p>
+                    <h3>Microsoft Active Directory</h3>
+                    <p>Gestion avancée de domaine, configuration sécurisée des stratégies de groupe (GPO) et administration des identités.</p>
                     <div style="margin-top: 15px;">
-                        <span class="tech-pill">Active Directory</span>
+                        <span class="tech-pill">Windows Server</span>
                         <span class="tech-pill">GPO</span>
                     </div>
                 </div>
             </div>
             <div class="card-3d js-tilt">
                 <div class="card-content">
-                    <i class="fa-solid fa-server card-icon"></i>
-                    <h3>Réseaux Cisco</h3>
-                    <p>Routage, commutation, création et isolation de VLANs. Topologies réseaux sécurisées et dépannage matériel.</p>
+                    <i class="fa-solid fa-network-wired card-icon"></i>
+                    <h3>Infrastructures Réseaux</h3>
+                    <p>Conception logique et physique. Segmentation VLAN, routage inter-VLAN et sécurisation des équipements Cisco.</p>
                     <div style="margin-top: 15px;">
                         <span class="tech-pill">Cisco IOS</span>
-                        <span class="tech-pill">VLAN</span>
+                        <span class="tech-pill">VLAN / Routage</span>
                     </div>
                 </div>
             </div>
             <div class="card-3d js-tilt">
                 <div class="card-content">
                     <i class="fa-brands fa-linux card-icon"></i>
-                    <h3>Environnement Linux</h3>
-                    <p>Administration serveurs Debian. Scripting, mise en place de bases de données et services web (LAMP).</p>
+                    <h3>Écosystème Open Source</h3>
+                    <p>Déploiement de serveurs Linux (Debian). Gestion des services web (LAMP) et administration des bases de données.</p>
                     <div style="margin-top: 15px;">
                         <span class="tech-pill">Debian</span>
-                        <span class="tech-pill">Bash</span>
+                        <span class="tech-pill">MariaDB</span>
                     </div>
                 </div>
             </div>
@@ -292,31 +278,31 @@
 
     <!-- 3. PARCOURS -->
     <section id="parcours">
-        <div class="section-num">02. cat /var/log/experience.log</div>
-        <h2 class="section-title">Expérience Pro</h2>
+        <div class="section-num">02. Historique Professionnel</div>
+        <h2 class="section-title">Parcours & Évolution</h2>
         
         <div class="grid-3">
             <div class="card-3d js-tilt">
                 <div class="card-content">
-                    <h4 style="color:var(--neon-cyan); font-family:'Fira Code'; margin-bottom: 10px;">[2024 - Présent]</h4>
-                    <h3>Alternant Sys & Réseau</h3>
-                    <p style="font-weight: bold; color: #fff;">BUISARD</p>
+                    <h4 style="color:var(--text-main); font-family:'Fira Code'; font-size:0.9rem; margin-bottom: 8px;">2024 - Présent</h4>
+                    <h3>Alternant Système & Réseau</h3>
+                    <p style="font-weight: 500; color: var(--neon-primary); margin-bottom: 12px;">BUISARD (Sablé-sur-Sarthe)</p>
                     <ul class="cmd-list">
-                        <li>Administration serveurs Windows/Linux</li>
-                        <li>Support N1/N2 et gestion de parc</li>
-                        <li>Sécurisation des équipements réseaux</li>
+                        <li>Administration parc serveurs Windows/Linux.</li>
+                        <li>Support informatique et assistance utilisateurs N1/N2.</li>
+                        <li>Maintenance préventive et curative du réseau.</li>
                     </ul>
                 </div>
             </div>
             <div class="card-3d js-tilt">
                 <div class="card-content">
-                    <h4 style="color:var(--neon-cyan); font-family:'Fira Code'; margin-bottom: 10px;">[2024 - 2026]</h4>
+                    <h4 style="color:var(--text-main); font-family:'Fira Code'; font-size:0.9rem; margin-bottom: 8px;">2024 - 2026</h4>
                     <h3>BTS SIO SISR</h3>
-                    <p style="font-weight: bold; color: #fff;">Lycée Carcouët</p>
+                    <p style="font-weight: 500; color: var(--neon-secondary); margin-bottom: 12px;">Lycée Carcouët</p>
                     <ul class="cmd-list">
-                        <li>Architecture des infrastructures</li>
-                        <li>Cybersécurité et gestion des risques</li>
-                        <li>Anciennement: Bac Pro TTR (Raphaël Élizé)</li>
+                        <li>Conception et maintenance d'infrastructures.</li>
+                        <li>Sensibilisation forte à la cybersécurité.</li>
+                        <li>Diplôme précédent : Bac Pro TTR.</li>
                     </ul>
                 </div>
             </div>
@@ -325,48 +311,48 @@
 
     <!-- 4. PROJETS -->
     <section id="projets">
-        <div class="section-num">03. ls -la /projects</div>
-        <h2 class="section-title">Déploiements Majeurs</h2>
+        <div class="section-num">03. Cas Pratiques</div>
+        <h2 class="section-title">Projets d'Architecture</h2>
         
         <div class="grid-3">
             <div class="card-3d js-tilt">
                 <div class="card-content">
                     <i class="fa-solid fa-shield-halved card-icon"></i>
-                    <h3>Archi Active Directory Sécurisée</h3>
-                    <p>Construction d'un domaine d'entreprise fictif : isolation des OUs, délégation de privilèges et durcissement via GPO.</p>
+                    <h3>Structure AD Sécurisée</h3>
+                    <p>Création d'un environnement domaine complet. Définition des Unités d'Organisation et sécurisation via des GPO restrictives adaptées aux profils métiers.</p>
                 </div>
             </div>
             <div class="card-3d js-tilt">
                 <div class="card-content">
-                    <i class="fa-solid fa-network-wired card-icon"></i>
-                    <h3>Segmentation VLAN & Routage</h3>
-                    <p>Déploiement sous Packet Tracer d'une infrastructure avec routage inter-VLAN, sécurisation des ports et services DHCP.</p>
+                    <i class="fa-solid fa-route card-icon"></i>
+                    <h3>Topologie Réseau Virtuelle</h3>
+                    <p>Modélisation d'un réseau d'entreprise sous Cisco Packet Tracer. Mise en place du routage, DHCP, et isolation complète des départements par VLANs.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 5. CONTACT -->
-    <section id="contact" style="min-height: 70vh;">
-        <div class="section-num">04. ping contact.baillou</div>
-        <h2 class="section-title">Établir la connexion</h2>
-        <div class="terminal-box" style="background: transparent; box-shadow: none;">
-            <p style="font-size: 1.1rem; margin-bottom: 20px; color: var(--text-muted);">
-                Vous cherchez un profil technique passionné pour renforcer vos infrastructures ? La liaison est ouverte.
+    <section id="contact" style="min-height: 75vh;">
+        <div class="section-num">04. Ping Endpoint</div>
+        <h2 class="section-title">Me Contacter</h2>
+        <div class="terminal-box" style="background: var(--glass-bg); border-color: rgba(255,255,255,0.1); box-shadow: none;">
+            <p style="font-size: 1.1rem; margin-bottom: 25px; color: var(--text-main);">
+                À la recherche de nouveaux défis en administration systèmes et réseaux. <br>Le port de communication est ouvert.
             </p>
-            <ul class="cmd-list" style="font-size: 1.1rem;">
-                <li>Email: <a href="mailto:quentinbailloudu72@gmail.com" style="color: var(--neon-cyan); text-decoration: none;">quentinbailloudu72@gmail.com</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: var(--neon-cyan); text-decoration: none;">/in/quentin-baillou</a></li>
-                <li>Localisation: Sablé-sur-Sarthe / Pays de la Loire</li>
+            <ul class="cmd-list" style="font-size: 1.05rem;">
+                <li><span style="color: var(--text-muted);">Mail:</span> <a href="mailto:quentinbailloudu72@gmail.com" style="color: var(--neon-primary); text-decoration: none;">quentinbailloudu72@gmail.com</a></li>
+                <li><span style="color: var(--text-muted);">Réseau:</span> <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: var(--neon-primary); text-decoration: none;">LinkedIn /quentin-baillou</a></li>
+                <li><span style="color: var(--text-muted);">Zone:</span> Sablé-sur-Sarthe / Pays de la Loire</li>
             </ul>
         </div>
     </section>
 
     <footer>
-        root@portfolio:~# echo "Design by Quentin Baillou © 2026"
+        <i class="fa-solid fa-code" style="margin-right: 5px;"></i> Build by Quentin Baillou &copy; 2026
     </footer>
 
-    <!-- SCRIPTS MAGIQUES -->
+    <!-- SCRIPTS -->
     <script>
         // 1. Curseur Souris Personnalisé
         const dot = document.getElementById("cursor-dot");
@@ -379,36 +365,36 @@
             dot.style.left = `${posX}px`;
             dot.style.top = `${posY}px`;
             
-            // L'outline suit avec un léger retard (effet smooth)
             outline.animate({
                 left: `${posX}px`,
                 top: `${posY}px`
             }, { duration: 150, fill: "forwards" });
         });
 
-        // Agrandir le curseur sur les liens
-        document.querySelectorAll('a, .js-tilt').forEach(link => {
+        document.querySelectorAll('a, .btn-cyber, .js-tilt').forEach(link => {
             link.addEventListener('mouseenter', () => {
-                outline.style.width = '60px';
-                outline.style.height = '60px';
-                outline.style.backgroundColor = 'rgba(0, 240, 255, 0.1)';
+                outline.style.width = '50px';
+                outline.style.height = '50px';
+                outline.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
+                outline.style.borderColor = 'rgba(16, 185, 129, 0.8)';
             });
             link.addEventListener('mouseleave', () => {
-                outline.style.width = '40px';
-                outline.style.height = '40px';
+                outline.style.width = '36px';
+                outline.style.height = '36px';
                 outline.style.backgroundColor = 'transparent';
+                outline.style.borderColor = 'rgba(16, 185, 129, 0.5)';
             });
         });
 
-        // 2. Effet Machine à écrire (Terminal)
+        // 2. Machine à écrire (Couleur Émeraude)
         const textToType = [
-            "login: qbaillou",
-            "password: ***********",
-            "Access Granted.",
+            "root@qbaillou:~\$ ./start_portfolio.sh",
+            "[OK] Initialisation des protocoles...",
+            "[OK] Chargement de l'infrastructure...",
             " ",
-            "Bienvenue sur mon portfolio SISR.",
-            "Étudiant en BTS SIO & Alternant SysAdmin chez BUISARD.",
-            "> Chargement des compétences réseaux... [OK]"
+            "Connexion établie.",
+            "Bienvenue. Je suis Quentin Baillou.",
+            "Alternant SysAdmin & Étudiant BTS SIO SISR."
         ];
         
         let lineIndex = 0;
@@ -420,25 +406,23 @@
                 if (charIndex === 0) {
                     typeContainer.innerHTML += `<div id="line-${lineIndex}"></div>`;
                 }
-                
                 const currentLine = document.getElementById(`line-${lineIndex}`);
                 
                 if (charIndex < textToType[lineIndex].length) {
                     currentLine.innerHTML = textToType[lineIndex].substring(0, charIndex + 1) + '<span class="typewriter"><span></span></span>';
                     charIndex++;
-                    setTimeout(typeWriter, Math.random() * 50 + 20); // Vitesse de frappe aléatoire
+                    setTimeout(typeWriter, Math.random() * 40 + 20);
                 } else {
-                    currentLine.innerHTML = textToType[lineIndex]; // Enlever le curseur de la ligne finie
+                    currentLine.innerHTML = textToType[lineIndex]; 
                     lineIndex++;
                     charIndex = 0;
-                    setTimeout(typeWriter, 400); // Pause entre les lignes
+                    setTimeout(typeWriter, 350);
                 }
             } else {
-                // Ajouter le curseur clignotant final
-                typeContainer.innerHTML += '<div>> <span class="typewriter"><span></span></span></div>';
+                typeContainer.innerHTML += '<div>root@qbaillou:~\$ <span class="typewriter"><span></span></span></div>';
             }
         }
-        setTimeout(typeWriter, 1000); // Démarrer après 1 seconde
+        setTimeout(typeWriter, 800);
 
         // 3. Effet 3D Tilt sur les cartes
         const cards = document.querySelectorAll('.js-tilt');
@@ -446,27 +430,24 @@
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; // Position x de la souris dans la carte
-                const y = e.clientY - rect.top;  // Position y de la souris dans la carte
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
                 
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                // Calcul de l'inclinaison (limité à 10 degrés max)
-                const rotateX = ((y - centerY) / centerY) * -10;
-                const rotateY = ((x - centerX) / centerX) * 10;
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
                 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
             });
             
             card.addEventListener('mouseleave', () => {
-                // Retour à la normale fluide
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
                 card.style.transition = 'transform 0.5s ease';
             });
             
             card.addEventListener('mouseenter', () => {
-                // Enlever la transition pendant le mouvement pour que ce soit réactif
                 card.style.transition = 'none';
             });
         });
