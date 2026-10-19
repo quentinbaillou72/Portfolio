@@ -14,17 +14,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- VARIABLES DE THÈME (Clair / Sombre dynamique) --- */
+        /* --- VARIABLES DE THÈME --- */
         :root[data-theme="light"] {
             --bg-body: #f8fafc;
             --bg-surface: #ffffff;
-            --bg-card: #ffffff;
             --border-color: #e2e8f0;
-            --border-hover: #e11d48;
             --text-primary: #0f172a;
             --text-secondary: #475569;
             --text-muted: #64748b;
-            --accent: #e11d48; /* Rouge écarlate dynamique comme dans la vidéo */
+            --accent: #e11d48; 
             --accent-hover: #be123c;
             --accent-light: rgba(225, 29, 72, 0.08);
             --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
@@ -34,9 +32,7 @@
         :root[data-theme="dark"] {
             --bg-body: #090d16;
             --bg-surface: #111827;
-            --bg-card: #1f2937;
             --border-color: #374151;
-            --border-hover: #f43f5e;
             --text-primary: #f9fafb;
             --text-secondary: #d1d5db;
             --text-muted: #9ca3af;
@@ -60,13 +56,9 @@
         h1, h2, h3, h4 { color: var(--text-primary); font-weight: 700; }
         .code-font { font-family: 'Fira Code', monospace; }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-        /* --- NAVIGATION FIXE --- */
+        /* --- NAVIGATION --- */
         header {
             position: fixed; top: 0; left: 0; width: 100%;
             background: var(--bg-surface);
@@ -98,19 +90,15 @@
         }
         nav a:hover, nav a.active { color: var(--accent); }
 
-        .nav-actions { display: flex; align-items: center; gap: 16px; }
-
         .theme-toggle-btn {
-            background: var(--accent-light);
-            border: 1px solid var(--border-color);
-            color: var(--accent);
-            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--accent-light); border: 1px solid var(--border-color);
+            color: var(--accent); width: 40px; height: 40px; border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
             cursor: pointer; font-size: 1.1rem; transition: all 0.3s;
         }
         .theme-toggle-btn:hover { transform: rotate(15deg) scale(1.05); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION AVEC PHOTO --- */
         .hero-section {
             padding: 160px 0 90px 0;
             display: grid; grid-template-columns: 1.2fr 0.8fr;
@@ -125,265 +113,152 @@
             font-size: 0.85rem; font-weight: 700; margin-bottom: 20px;
         }
 
-        .hero-title {
-            font-size: 3.2rem; line-height: 1.15;
-            letter-spacing: -1px; margin-bottom: 20px;
-        }
+        .hero-title { font-size: 3.2rem; line-height: 1.15; letter-spacing: -1px; margin-bottom: 20px; }
         .hero-title .highlight { color: var(--accent); }
-
-        .hero-desc {
-            font-size: 1.15rem; color: var(--text-muted);
-            margin-bottom: 35px; max-width: 600px;
-        }
+        .hero-desc { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 35px; max-width: 600px; }
 
         .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
 
         .btn {
-            padding: 14px 28px; border-radius: 10px;
-            font-weight: 700; font-size: 0.95rem;
-            text-decoration: none; display: inline-flex;
-            align-items: center; gap: 10px; cursor: pointer;
-            transition: all 0.25s ease; border: none;
+            padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 0.95rem;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+            cursor: pointer; transition: all 0.25s ease; border: none;
         }
 
-        .btn-primary {
-            background: var(--accent); color: #ffffff;
-            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.25);
-        }
+        .btn-primary { background: var(--accent); color: #ffffff; box-shadow: 0 8px 20px rgba(225, 29, 72, 0.25); }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
-        .btn-outline {
-            background: transparent; color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-        .btn-outline:hover {
-            border-color: var(--accent); color: var(--accent);
-            background: var(--accent-light); transform: translateY(-2px);
-        }
+        .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border-color); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); transform: translateY(-2px); }
 
         .hero-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 24px; padding: 30px;
-            box-shadow: var(--shadow); position: relative; text-align: center;
+            background: var(--bg-surface); border: 1px solid var(--border-color);
+            border-radius: 24px; padding: 30px; box-shadow: var(--shadow);
+            position: relative; text-align: center;
         }
 
+        /* Style Pro pour intégrer la photo IMG_2622.jpeg en supprimant visuellement le fond */
         .avatar-frame {
-            width: 140px; height: 140px; margin: 0 auto 20px auto;
+            width: 180px; height: 180px; margin: 0 auto 20px auto;
             border-radius: 50%; background: var(--accent-light);
             border: 4px solid var(--accent);
             display: flex; justify-content: center; align-items: center;
-            font-size: 3.5rem; color: var(--accent);
+            overflow: hidden;
+            position: relative;
         }
 
-        .hero-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+        .avatar-frame img {
+            width: 100%; height: 100%; object-fit: cover;
+            object-position: top; /* Garder le visage centré */
+            filter: contrast(1.1) brightness(1.05); /* Améliore la clarté */
+        }
+        
+        /* En mode sombre, on ajoute un filtre pour atténuer le fond bleu de la photo */
+        :root[data-theme="dark"] .avatar-frame img {
+            mix-blend-mode: luminosity; 
+            opacity: 0.9;
+        }
+
+        .hero-card h3 { font-size: 1.5rem; margin-bottom: 6px; }
         .hero-card p { font-size: 0.9rem; color: var(--text-muted); }
 
-        /* --- SECTIONS COMMUNES --- */
+        /* --- SECTIONS --- */
         section { padding: 90px 0; border-top: 1px solid var(--border-color); }
         .section-header { margin-bottom: 50px; text-align: left; }
         .section-tag { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
         .section-title { font-size: 2.3rem; margin-top: 6px; }
 
-        /* --- ABOUT & DOMAIN CARDS (INSPIRÉ DE LA VIDÉO) --- */
-        .about-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-            margin-bottom: 50px;
-        }
+        /* --- ABOUT --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .about-box { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; box-shadow: var(--shadow); }
 
-        .about-box {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 20px; padding: 32px;
-            box-shadow: var(--shadow);
-        }
-
-        .domain-cards-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;
-        }
-
+        .domain-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
         .domain-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 24px;
-            transition: all 0.3s ease; position: relative;
+            background: var(--bg-surface); border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 24px; transition: all 0.3s ease;
         }
-
-        .domain-card:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-50px);
-            color: #ffffff;
-        }
-
-        .domain-card:hover h4,
-        .domain-card:hover p,
-        .domain-card:hover i { color: #ffffff !important; }
-
-        .domain-card i {
-            font-size: 1.8rem; color: var(--accent); margin-bottom: 16px;
-            transition: color 0.3s;
-        }
+        .domain-card:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-10px); color: #ffffff; }
+        .domain-card:hover h4, .domain-card:hover p, .domain-card:hover i { color: #ffffff !important; }
+        .domain-card i { font-size: 1.8rem; color: var(--accent); margin-bottom: 16px; transition: color 0.3s; }
         .domain-card h4 { font-size: 1.1rem; margin-bottom: 8px; transition: color 0.3s; }
         .domain-card p { font-size: 0.88rem; color: var(--text-muted); transition: color 0.3s; }
 
-        /* --- PROJECTS WITH FILTER TABS & MODALS --- */
-        .filter-tabs {
-            display: flex; gap: 10px; margin-bottom: 35px; flex-wrap: wrap;
-        }
-
+        /* --- PROJECTS & FILTERS --- */
+        .filter-tabs { display: flex; gap: 10px; margin-bottom: 35px; flex-wrap: wrap; }
         .tab-btn {
-            padding: 8px 18px; border-radius: 8px;
-            background: var(--bg-surface); border: 1px solid var(--border-color);
-            color: var(--text-muted); font-weight: 600; font-size: 0.88rem;
-            cursor: pointer; transition: all 0.2s;
+            padding: 8px 18px; border-radius: 8px; background: var(--bg-surface); border: 1px solid var(--border-color);
+            color: var(--text-muted); font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: all 0.2s;
         }
+        .tab-btn:hover, .tab-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
 
-        .tab-btn:hover, .tab-btn.active {
-            background: var(--accent); color: white; border-color: var(--accent);
-        }
-
-        .projects-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px;
-        }
-
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; }
         .project-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 18px; overflow: hidden;
-            box-shadow: var(--shadow); display: flex; flex-direction: column;
-            transition: transform 0.3s, border-color 0.3s;
+            background: var(--bg-surface); border: 1px solid var(--border-color);
+            border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);
+            display: flex; flex-direction: column; transition: transform 0.3s, border-color 0.3s;
         }
-
         .project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-
         .project-thumb {
-            height: 180px; background: var(--accent-light);
-            display: flex; justify-content: center; align-items: center;
-            font-size: 3rem; color: var(--accent); position: relative;
+            height: 180px; background: var(--accent-light); display: flex; justify-content: center;
+            align-items: center; font-size: 3rem; color: var(--accent);
         }
-
         .project-body { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
         .project-title { font-size: 1.2rem; margin-bottom: 10px; }
         .project-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; flex-grow: 1; }
-
         .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-        .tag {
-            font-size: 0.75rem; padding: 4px 10px; border-radius: 6px;
-            background: var(--accent-light); color: var(--accent); font-weight: 600;
-        }
+        .tag { font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; background: var(--accent-light); color: var(--accent); font-weight: 600; }
 
-        /* --- MODAL DE DÉTAIL DES PROJETS --- */
+        /* --- MODALS --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: var(--modal-overlay); backdrop-filter: blur(5px);
             z-index: 2000; display: flex; justify-content: center; align-items: center;
-            opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            padding: 20px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 20px;
         }
-
         .modal-overlay.active { opacity: 1; visibility: visible; }
-
         .modal-container {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 20px; width: 100%; max-width: 700px;
-            max-height: 85vh; overflow-y: auto; padding: 35px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            background: var(--bg-surface); border: 1px solid var(--border-color);
+            border-radius: 20px; width: 100%; max-width: 700px; max-height: 85vh;
+            overflow-y: auto; padding: 35px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
             position: relative; transform: translateY(20px); transition: transform 0.3s ease;
         }
-
         .modal-overlay.active .modal-container { transform: translateY(0); }
-
         .modal-close {
-            position: absolute; top: 20px; right: 20px;
-            background: var(--accent-light); border: none; color: var(--accent);
-            width: 36px; height: 36px; border-radius: 50%;
-            cursor: pointer; font-size: 1.1rem; display: flex;
-            justify-content: center; align-items: center; transition: 0.2s;
+            position: absolute; top: 20px; right: 20px; background: var(--accent-light); border: none; color: var(--accent);
+            width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;
+            display: flex; justify-content: center; align-items: center; transition: 0.2s;
         }
         .modal-close:hover { background: var(--accent); color: white; }
 
-        .modal-section { margin-top: 20px; }
-        .modal-section h4 { color: var(--accent); font-size: 0.95rem; margin-bottom: 6px; }
-
         /* --- SKILLS --- */
-        .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
-        }
-
-        .skill-box {
-            background: var(--bg-surface); border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 24px; transition: 0.3s;
-        }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .skill-box { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; transition: 0.3s; }
         .skill-box:hover { border-color: var(--accent); box-shadow: var(--shadow); }
         .skill-box i { font-size: 2rem; color: var(--accent); margin-bottom: 12px; }
 
-        /* --- EXPERIENCE & BUISARD FOCUS --- */
-        .experience-card {
-            background: var(--bg-surface); border: 1px solid var(--border-color);
-            border-radius: 20px; padding: 32px; margin-bottom: 25px;
-            box-shadow: var(--shadow);
-        }
-
-        .exp-header {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            margin-bottom: 15px; flex-wrap: wrap; gap: 10px;
-        }
-
+        /* --- EXPERIENCE & BUISARD --- */
+        .experience-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; margin-bottom: 25px; box-shadow: var(--shadow); }
+        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
         .exp-role { font-size: 1.3rem; }
         .exp-company { color: var(--accent); font-weight: 700; font-size: 1rem; }
         .exp-date { font-size: 0.85rem; color: var(--text-muted); background: var(--accent-light); padding: 4px 12px; border-radius: 20px; }
-
         .exp-list { list-style: none; margin-top: 15px; }
-        .exp-list li {
-            position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.95rem;
-        }
-        .exp-list li::before {
-            content: "•"; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; line-height: 1;
-        }
+        .exp-list li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.95rem; }
+        .exp-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; line-height: 1; }
 
-        /* --- CONTACT SECTION --- */
-        .contact-grid {
-            display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px;
-        }
-
-        .contact-info {
-            background: var(--bg-surface); border: 1px solid var(--border-color);
-            border-radius: 20px; padding: 35px;
-        }
-
-        .contact-item {
-            display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
-        }
-        .contact-item i {
-            width: 45px; height: 45px; border-radius: 12px;
-            background: var(--accent-light); color: var(--accent);
-            display: flex; justify-content: center; align-items: center; font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background: var(--bg-surface); border: 1px solid var(--border-color);
-            border-radius: 20px; padding: 35px;
-        }
-
+        /* --- CONTACT --- */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
+        .contact-info, .contact-form { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 35px; }
+        .contact-item { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+        .contact-item i { width: 45px; height: 45px; border-radius: 12px; background: var(--accent-light); color: var(--accent); display: flex; justify-content: center; align-items: center; font-size: 1.2rem; }
+        
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
-        .form-control {
-            width: 100%; padding: 12px 16px; border-radius: 10px;
-            border: 1px solid var(--border-color); background: var(--bg-body);
-            color: var(--text-primary); font-family: inherit; font-size: 0.95rem;
-            outline: none; transition: 0.2s;
-        }
+        .form-control { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-body); color: var(--text-primary); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.2s; }
         .form-control:focus { border-color: var(--accent); }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 40px 0; border-top: 1px solid var(--border-color);
-            text-align: center; font-size: 0.9rem; color: var(--text-muted);
-        }
+        footer { padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.9rem; color: var(--text-muted); }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
             .hero-section, .about-grid, .contact-grid { grid-template-columns: 1fr; }
             nav { display: none; }
@@ -393,235 +268,191 @@
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION FIXE -->
+    <!-- NAVIGATION -->
     <header>
         <div class="container nav-wrapper">
-            <a href="#hero" class="brand-logo">
-                Quentin Baillou <span>SISR</span>
-            </a>
+            <a href="#hero" class="brand-logo">Quentin Baillou <span>SISR</span></a>
             <nav>
                 <a href="#about">À Propos</a>
                 <a href="#projects">Projets</a>
                 <a href="#skills">Compétences</a>
-                <a href="#experience">Parcours & Buisard</a>
+                <a href="#experience">Parcours</a>
                 <a href="#contact">Contact</a>
             </nav>
             <div class="nav-actions">
-                <button class="theme-toggle-btn" id="themeToggle" title="Changer de thème">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
+                <button class="theme-toggle-btn" id="themeToggle" title="Changer de thème"><i class="fa-solid fa-moon"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- ACCUEIL / HERO -->
+    <!-- HERO AVEC PHOTO -->
     <div class="container">
         <section class="hero-section" id="hero">
             <div>
-                <div class="hero-badge">
-                    <i class="fa-solid fa-briefcase"></i> Alternant SysAdmin chez BUISARD
-                </div>
-                <h1 class="hero-title">
-                    Infrastructures Systèmes & Réseaux <span class="highlight">Sécurisées.</span>
-                </h1>
-                <p class="hero-desc">
-                    Étudiant en 2e année de BTS SIO (Option SISR) au Lycée Carcouët. Je gère, administre et sécurise les architectures réseau et le parc informatique d'entreprise.
-                </p>
+                <div class="hero-badge"><i class="fa-solid fa-briefcase"></i> Recherche d'Alternance (Infra/Réseau)</div>
+                <h1 class="hero-title">Infrastructures Systèmes & Réseaux <span class="highlight">Sécurisées.</span></h1>
+                <p class="hero-desc">Étudiant en BTS SIO (Option SISR) basé à Sablé-sur-Sarthe / Nantes. J'administre, automatise et sécurise les architectures réseau et le parc informatique d'entreprise.</p>
                 <div class="hero-cta">
                     <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Me contacter</a>
-                    <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-folder-open"></i> Voir mes projets</a>
+                    <!-- Lien vers ton CV PDF -->
+                    <a href="CVPRO.pdf" target="_blank" class="btn btn-outline"><i class="fa-solid fa-download"></i> Télécharger mon CV</a>
                 </div>
             </div>
             
             <div class="hero-card">
                 <div class="avatar-frame">
-                    <i class="fa-solid fa-user-gear"></i>
+                    <!-- Photo intégrée avec le bon nom de fichier -->
+                    <img src="IMG_2622.jpeg" alt="Quentin Baillou">
                 </div>
                 <h3>Quentin Baillou</h3>
                 <p>Administrateur Systèmes & Réseaux</p>
-                <p style="margin-top: 10px; font-size: 0.85rem;" class="code-font">
-                    <i class="fa-solid fa-location-dot"></i> Sablé-sur-Sarthe / Nantes
-                </p>
+                <p style="margin-top: 10px; font-size: 0.85rem;" class="code-font"><i class="fa-solid fa-location-dot"></i> Sablé-sur-Sarthe (72)</p>
             </div>
         </section>
 
-        <!-- SECTION À PROPOS & DOMAINES -->
+        <!-- ABOUT -->
         <section id="about">
             <div class="section-header">
                 <span class="section-tag">Présentation</span>
                 <h2 class="section-title">Profil & Domaines d'Expertise</h2>
             </div>
-
             <div class="about-grid">
                 <div class="about-box">
                     <h3 style="margin-bottom: 15px;">Aperçu du Profil</h3>
-                    <p style="margin-bottom: 15px;">
-                        Passionné par les technologies réseau et l'administration système, je réalise mon alternance au sein de l'entreprise <strong>BUISARD</strong>. 
-                    </p>
-                    <p>
-                        Mon rôle englobe le maintien en condition opérationnelle du SI, l'administration Active Directory, le déploiement de serveurs Linux et le support informatique aux collaborateurs.
-                    </p>
+                    <p style="margin-bottom: 15px;">Rigoureux et ambitieux, je suis passionné par l'administration des infrastructures informatiques et le travail en équipe.</p>
+                    <p>Mes expériences, notamment en tant que stagiaire IT chez BUISARD, m'ont permis d'acquérir une forte autonomie dans la gestion des serveurs, l'automatisation des déploiements et le support technique.</p>
                 </div>
                 <div class="about-box">
                     <h3 style="margin-bottom: 15px;">Informations Clés</h3>
-                    <p><strong>Formation :</strong> BTS SIO SISR (Lycée Carcouët, Nantes)</p>
-                    <p><strong>Entreprise :</strong> BUISARD (Sablé-sur-Sarthe)</p>
-                    <p><strong>Spécialités :</strong> Active Directory, Cisco IOS, Debian, Support N1/N2</p>
-                    <p><strong>Diplôme Précédent :</strong> Bac Pro Maintenance (Raphaël Élizé)</p>
+                    <p><strong>Âge :</strong> Né le 07/07/2004</p>
+                    <p><strong>Mobilité :</strong> Permis A2, Permis B, Véhicule personnel</p>
+                    <p><strong>Modalité :</strong> Télétravail ou présentiel possible</p>
+                    <p><strong>Formation actuelle :</strong> BTS SIO SISR (Lycée Carcouët)</p>
                 </div>
             </div>
 
-            <!-- Cartes interactives rouges/accentuées au survol comme dans la vidéo -->
             <div class="domain-cards-grid">
                 <div class="domain-card">
                     <i class="fa-brands fa-windows"></i>
                     <h4>Administration Windows</h4>
-                    <p>Gestion AD DS, stratégies GPO, DNS, DHCP et déploiement de serveurs.</p>
+                    <p>Gestion AD DS, stratégies GPO, DNS, DHCP et serveur WDS pour déploiement.</p>
                 </div>
                 <div class="domain-card">
                     <i class="fa-solid fa-network-wired"></i>
                     <h4>Infrastructures Cisco</h4>
-                    <p>Configuration de switchs/routeurs, segmentation VLAN et routage inter-VLAN.</p>
+                    <p>Configuration IP, adressage DHCP, routage réseau et segmentation VLAN.</p>
                 </div>
                 <div class="domain-card">
-                    <i class="fa-brands fa-linux"></i>
-                    <h4>Serveurs Linux</h4>
-                    <p>Déploiement Debian, serveurs web LAMP, MariaDB et scripts Bash/PowerShell.</p>
+                    <i class="fa-solid fa-desktop"></i>
+                    <h4>Virtualisation</h4>
+                    <p>Déploiement et tests sur machines virtuelles avec VMware Workstation & VirtualBox.</p>
                 </div>
                 <div class="domain-card">
                     <i class="fa-solid fa-headset"></i>
                     <h4>Support & MCO</h4>
-                    <p>Gestion d'incidents N1/N2, déploiement de postes et maintenance matérielle.</p>
+                    <p>Gestion d'incidents via GLPI, déploiement de postes et assistance utilisateurs.</p>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION PROJETS AVEC FILTRES ET MODALES (REPRODUCTION VIDÉO) -->
+        <!-- PROJETS -->
         <section id="projects">
             <div class="section-header">
                 <span class="section-tag">Réalisations</span>
                 <h2 class="section-title">Projets d'Infrastructure</h2>
             </div>
 
-            <!-- Onglets de filtrage -->
             <div class="filter-tabs">
                 <button class="tab-btn active" data-filter="all">Tous</button>
-                <button class="tab-btn" data-filter="ad">Active Directory & Windows</button>
-                <button class="tab-btn" data-filter="network">Réseau & Cisco</button>
-                <button class="tab-btn" data-filter="linux">Linux & Web</button>
+                <button class="tab-btn" data-filter="ad">Active Directory & WDS</button>
+                <button class="tab-btn" data-filter="network">Réseau CISCO</button>
+                <button class="tab-btn" data-filter="virtu">Virtualisation</button>
             </div>
 
             <div class="projects-grid">
-                <!-- Projet 1 -->
                 <div class="project-card" data-category="ad">
                     <div class="project-thumb"><i class="fa-solid fa-shield-halved"></i></div>
                     <div class="project-body">
-                        <h3 class="project-title">Durcissement & Architecture Active Directory</h3>
-                        <p class="project-desc">Conception d'une arborescence d'Unités d'Organisation sécurisée avec politiques de groupe (GPO) avancées.</p>
-                        <div class="project-tags">
-                            <span class="tag">Windows Server</span><span class="tag">GPO</span><span class="tag">Active Directory</span>
-                        </div>
-                        <button class="btn btn-outline modal-trigger" data-modal="modal-1">
-                            <i class="fa-solid fa-circle-info"></i> Détails du projet
-                        </button>
+                        <h3 class="project-title">Déploiement Automatisé via Serveur WDS</h3>
+                        <p class="project-desc">Mise en place d'un serveur WDS pour automatiser le déploiement de systèmes d'exploitation Windows sur de nouveaux postes.</p>
+                        <div class="project-tags"><span class="tag">Windows Server</span><span class="tag">WDS</span><span class="tag">Automatisation</span></div>
+                        <button class="btn btn-outline modal-trigger" data-modal="modal-1"><i class="fa-solid fa-circle-info"></i> Détails du projet</button>
                     </div>
                 </div>
 
-                <!-- Projet 2 -->
-                <div class="project-card" data-category="network">
-                    <div class="project-thumb"><i class="fa-solid fa-route"></i></div>
+                <div class="project-card" data-category="ad">
+                    <div class="project-thumb"><i class="fa-solid fa-users-gear"></i></div>
                     <div class="project-body">
-                        <h3 class="project-title">Segmentation Réseau VLAN Cisco</h3>
-                        <p class="project-desc">Modélisation sous Packet Tracer d'une topologie réseau segmentée avec routage inter-VLAN et DHCP.</p>
-                        <div class="project-tags">
-                            <span class="tag">Cisco Packet Tracer</span><span class="tag">VLAN</span><span class="tag">Routage</span>
-                        </div>
-                        <button class="btn btn-outline modal-trigger" data-modal="modal-2">
-                            <i class="fa-solid fa-circle-info"></i> Détails du projet
-                        </button>
+                        <h3 class="project-title">Administration Active Directory & GPO</h3>
+                        <p class="project-desc">Création et configuration de comptes utilisateurs/postes informatiques avec un déploiement strict des stratégies de groupe (GPO).</p>
+                        <div class="project-tags"><span class="tag">Active Directory</span><span class="tag">GPO</span><span class="tag">Sécurité</span></div>
+                        <button class="btn btn-outline modal-trigger" data-modal="modal-2"><i class="fa-solid fa-circle-info"></i> Détails du projet</button>
                     </div>
                 </div>
 
-                <!-- Projet 3 -->
-                <div class="project-card" data-category="linux">
+                <div class="project-card" data-category="virtu">
                     <div class="project-thumb"><i class="fa-solid fa-server"></i></div>
                     <div class="project-body">
-                        <h3 class="project-title">Déploiement Serveur Web & OCS Inventory</h3>
-                        <p class="project-desc">Mise en place d'un serveur Debian pour l'inventaire réseau et la gestion centralisée du parc.</p>
-                        <div class="project-tags">
-                            <span class="tag">Debian</span><span class="tag">LAMP</span><span class="tag">OCS Inventory</span>
-                        </div>
-                        <button class="btn btn-outline modal-trigger" data-modal="modal-3">
-                            <i class="fa-solid fa-circle-info"></i> Détails du projet
-                        </button>
+                        <h3 class="project-title">Laboratoire de Tests Virtuels (VMware)</h3>
+                        <p class="project-desc">Utilisation intensive de VMware Workstation et VirtualBox pour la validation et les phases de test des déploiements OS avant production.</p>
+                        <div class="project-tags"><span class="tag">VMware Workstation</span><span class="tag">VirtualBox</span></div>
+                        <button class="btn btn-outline modal-trigger" data-modal="modal-3"><i class="fa-solid fa-circle-info"></i> Détails du projet</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- COMPÉTENCES INTERACTIVES -->
+        <!-- SKILLS -->
         <section id="skills">
             <div class="section-header">
                 <span class="section-tag">Compétences</span>
                 <h2 class="section-title">Stack Technique</h2>
             </div>
-
             <div class="skills-grid">
-                <div class="skill-box">
-                    <i class="fa-brands fa-windows"></i>
-                    <h3>Systèmes</h3>
-                    <p>Windows Server 2019/2022, Active Directory, GPO, DNS, DHCP, Debian Linux, PowerShell.</p>
-                </div>
-                <div class="skill-box">
-                    <i class="fa-solid fa-network-wired"></i>
-                    <h3>Réseaux</h3>
-                    <p>Commutation Cisco, VLANs, Routage IPv4, Subnetting, Packet Tracer, Wireshark.</p>
-                </div>
-                <div class="skill-box">
-                    <i class="fa-solid fa-gears"></i>
-                    <h3>Services & Outils</h3>
-                    <p>OCS Inventory, GLPI, Apache2, MariaDB, VirtualBox / VMware, Support N1/N2.</p>
-                </div>
+                <div class="skill-box"><i class="fa-brands fa-windows"></i><h3>Systèmes</h3><p>Windows Server, Active Directory, GPO, WDS, Systèmes d'exploitation Linux.</p></div>
+                <div class="skill-box"><i class="fa-solid fa-network-wired"></i><h3>Réseaux</h3><p>Adressage IP, DHCP, Routage CISCO, Configuration VLAN.</p></div>
+                <div class="skill-box"><i class="fa-solid fa-gears"></i><h3>Services & Outils</h3><p>GLPI (Gestion de parc), VMware Workstation, VirtualBox.</p></div>
             </div>
         </section>
 
-        <!-- SECTION EXPÉRIENCE & BUISARD -->
+        <!-- EXPERIENCE -->
         <section id="experience">
             <div class="section-header">
                 <span class="section-tag">Parcours</span>
-                <h2 class="section-title">Expérience Professionnelle & Formation</h2>
+                <h2 class="section-title">Expériences Professionnelles</h2>
             </div>
 
             <div class="experience-card">
                 <div class="exp-header">
-                    <div>
-                        <h3 class="exp-role">Alternant Administrateur Systèmes & Réseaux</h3>
-                        <span class="exp-company">BUISARD • Sablé-sur-Sarthe</span>
-                    </div>
-                    <span class="exp-date">Septembre 2024 — Présent</span>
+                    <div><h3 class="exp-role">Stage Solution Infrastructure, Systèmes et Réseaux</h3><span class="exp-company">BUISARD • Sablé-sur-Sarthe</span></div>
+                    <span class="exp-date">Mai 2026 — Juin 2026</span>
                 </div>
-                <p><strong>Contexte :</strong> Gestion et optimisation des infrastructures informatiques d'un site industriel.</p>
                 <ul class="exp-list">
-                    <li>Administration quotidienne des serveurs Windows et Linux.</li>
-                    <li>Planification de la salle serveurs S001 (équipements Dell, switchs PoE, NAS).</li>
-                    <li>Support technique aux utilisateurs et déploiement des postes informatiques.</li>
-                    <li>Automatisation de tâches via scripts PowerShell et maintenance du réseau.</li>
+                    <li>Mise en place d'un serveur WDS afin d'automatiser le déploiement de systèmes Windows sur de nouveaux postes.</li>
+                    <li>Utilisation de VMware pour les phases de test sur machines virtuelles.</li>
+                    <li>Administration Active Directory : création et configuration de comptes utilisateurs et de postes informatiques.</li>
+                    <li>Déploiement et gestion des stratégies de groupe (GPO).</li>
                 </ul>
             </div>
 
             <div class="experience-card">
                 <div class="exp-header">
-                    <div>
-                        <h3 class="exp-role">BTS SIO Option SISR</h3>
-                        <span class="exp-company">Lycée Carcouët • Nantes</span>
-                    </div>
-                    <span class="exp-date">2024 — 2026</span>
+                    <div><h3 class="exp-role">Magasinier</h3><span class="exp-company">Morst Smitt • Sablé-sur-Sarthe</span></div>
+                    <span class="exp-date">Jan. 2024 — Juin 2025</span>
                 </div>
-                <p>Spécialisation en solutions d'infrastructures, systèmes et réseaux. (Précédé par l'obtention du Bac Pro Maintenance TTR au Lycée Raphaël Élizé).</p>
+                <p>Développement de qualités essentielles en entreprise (sens du service, rigueur, travail en équipe) avant la reprise de mes études en BTS SIO.</p>
+            </div>
+
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div><h3 class="exp-role">Stage en Entreprise (Maintenance Industrielle)</h3><span class="exp-company">Poclain • Sablé-sur-Sarthe</span></div>
+                    <span class="exp-date">Avril 2022 — Mai 2022</span>
+                </div>
+                <p>Stage de perfectionnement dans le cadre de mon Baccalauréat Professionnel MEI, renforçant mon autonomie et mon approche logique du dépannage matériel.</p>
             </div>
         </section>
 
-        <!-- SECTION CONTACT -->
+        <!-- CONTACT & FORMULAIRE -->
         <section id="contact">
             <div class="section-header">
                 <span class="section-tag">Contact</span>
@@ -633,44 +464,37 @@
                     <h3 style="margin-bottom: 20px;">Me Contacter</h3>
                     <div class="contact-item">
                         <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <p style="font-size: 0.8rem;" class="code-font">EMAIL</p>
-                            <a href="mailto:quentinbailloudu72@gmail.com" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">quentinbailloudu72@gmail.com</a>
-                        </div>
+                        <div><p style="font-size: 0.8rem;" class="code-font">EMAIL</p><a href="mailto:quentinbaillou01@gmail.com" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">quentinbaillou01@gmail.com</a></div>
                     </div>
                     <div class="contact-item">
-                        <i class="fa-brands fa-linkedin"></i>
-                        <div>
-                            <p style="font-size: 0.8rem;" class="code-font">LINKEDIN</p>
-                            <a href="https://www.linkedin.com/in/quentin-baillou-1299a4402/?isSelfProfile=true" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">Profil LinkedIn de Quentin Baillou</a>
-                        </div>
+                        <i class="fa-solid fa-phone"></i>
+                        <div><p style="font-size: 0.8rem;" class="code-font">TÉLÉPHONE</p><p style="color: var(--text-primary); font-weight: 600;">07 89 83 61 87</p></div>
                     </div>
                     <div class="contact-item">
                         <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <p style="font-size: 0.8rem;" class="code-font">LOCALISATION</p>
-                            <p style="color: var(--text-primary); font-weight: 600;">Sablé-sur-Sarthe / Nantes</p>
-                        </div>
+                        <div><p style="font-size: 0.8rem;" class="code-font">LOCALISATION</p><p style="color: var(--text-primary); font-weight: 600;">Sablé-sur-Sarthe (72300) / Nantes (44300)</p></div>
                     </div>
                     
-                    <a href="mailto:quentinbailloudu72@gmail.com" class="btn btn-outline" style="width: 100%; margin-top: 10px; justify-content: center;">
+                    <a href="CVPRO.pdf" target="_blank" class="btn btn-outline" style="width: 100%; margin-top: 10px; justify-content: center;">
                         <i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV (PDF)
                     </a>
                 </div>
 
                 <div class="contact-form">
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message envoyé avec succès !');">
+                    <!-- Formulaire connecté avec Formspree pour qu'il MARCHE VRAIMENT -->
+                    <!-- Remplace "TON_ID_FORMSPREE" par l'ID que Formspree te donnera quand tu créeras un compte gratuit -->
+                    <form action="https://formspree.io/f/TON_ID_FORMSPREE" method="POST">
                         <div class="form-group">
                             <label>Nom Complet</label>
-                            <input type="text" class="form-control" placeholder="Votre nom" required>
+                            <input type="text" name="name" class="form-control" placeholder="Votre nom" required>
                         </div>
                         <div class="form-group">
                             <label>Adresse E-mail</label>
-                            <input type="email" class="form-control" placeholder="votre.email@exemple.com" required>
+                            <input type="email" name="_replyto" class="form-control" placeholder="votre.email@exemple.com" required>
                         </div>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea class="form-control" rows="4" placeholder="Votre message..." required></textarea>
+                            <textarea name="message" class="form-control" rows="4" placeholder="Votre message..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
                             <i class="fa-solid fa-paper-plane"></i> Envoyer le message
@@ -681,66 +505,40 @@
         </section>
     </div>
 
-    <!-- MODALES DE DÉTAIL DES PROJETS (STYLE VIDÉO) -->
+    <!-- MODALES DE DÉTAIL -->
     <div class="modal-overlay" id="modal-1">
         <div class="modal-container">
             <button class="modal-close" onclick="closeModals()"><i class="fa-solid fa-xmark"></i></button>
-            <h3>Durcissement Active Directory (Projet E4)</h3>
-            <div class="modal-section">
-                <h4>CONTEXTE</h4>
-                <p>Déploiement et sécurisation d'un domaine Active Directory sous Windows Server pour une structure d'entreprise simulée.</p>
-            </div>
-            <div class="modal-section">
-                <h4>MISSIONS ET OUTILS</h4>
-                <p>Création de la structure d'Unités d'Organisation (OU), définition des groupes de sécurité, et déploiement de stratégies de groupe (GPO) pour le contrôle des accès et postes de travail.</p>
-            </div>
-            <div class="modal-section">
-                <h4>RÉSULTATS</h4>
-                <p>Infra prête à l'emploi avec application stricte du principe de moindre privilège.</p>
-            </div>
+            <h3>Déploiement Automatisé via Serveur WDS</h3>
+            <div class="modal-section"><h4>CONTEXTE</h4><p>Nécessité de déployer rapidement et uniformément des systèmes Windows sur un parc informatique croissant (Expérience BUISARD).</p></div>
+            <div class="modal-section"><h4>MISSIONS</h4><p>Installation du rôle WDS (Windows Deployment Services), configuration des images de démarrage et d'installation, et automatisation du processus d'installation par le réseau (PXE).</p></div>
         </div>
     </div>
 
     <div class="modal-overlay" id="modal-2">
         <div class="modal-container">
             <button class="modal-close" onclick="closeModals()"><i class="fa-solid fa-xmark"></i></button>
-            <h3>Segmentation Réseau Cisco</h3>
-            <div class="modal-section">
-                <h4>CONTEXTE</h4>
-                <p>Isolation des flux réseau d'un bâtiment d'entreprise pour des raisons de sécurité et d'optimisation de bande passante.</p>
-            </div>
-            <div class="modal-section">
-                <h4>MISSIONS ET OUTILS</h4>
-                <p>Création des VLANs sur commutateurs Cisco, configuration des ports Trunk/Access, et routage inter-VLAN sur routeur Cisco avec Packet Tracer.</p>
-            </div>
+            <h3>Administration Active Directory & GPO</h3>
+            <div class="modal-section"><h4>CONTEXTE</h4><p>Gestion sécurisée des identités et des politiques de sécurité sur le parc informatique.</p></div>
+            <div class="modal-section"><h4>MISSIONS</h4><p>Création d'OUs, gestion des droits utilisateurs, et déploiement de stratégies de groupe (GPO) pour brider les accès réseau, cartographier les lecteurs réseaux et configurer les paramètres de sécurité locaux.</p></div>
         </div>
     </div>
 
     <div class="modal-overlay" id="modal-3">
         <div class="modal-container">
             <button class="modal-close" onclick="closeModals()"><i class="fa-solid fa-xmark"></i></button>
-            <h3>Serveur OCS Inventory sur Debian</h3>
-            <div class="modal-section">
-                <h4>CONTEXTE</h4>
-                <p>Mise en place d'une solution d'inventaire automatique du parc informatique.</p>
-            </div>
-            <div class="modal-section">
-                <h4>MISSIONS ET OUTILS</h4>
-                <p>Installation d'une pile LAMP (Linux, Apache, MariaDB, PHP) sur Debian, déploiement d'OCS Inventory Server et remontée des agents.</p>
-            </div>
+            <h3>Laboratoire de Tests Virtuels (VMware)</h3>
+            <div class="modal-section"><h4>CONTEXTE</h4><p>Besoin de tester les déploiements de serveurs et les GPO sans impacter le réseau de production.</p></div>
+            <div class="modal-section"><h4>MISSIONS</h4><p>Configuration de réseaux virtuels isolés sur VMware Workstation. Création de snapshots pour tester les correctifs systèmes et déploiement sécurisé de VMs Windows/Linux.</p></div>
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Quentin Baillou • Portfolio BTS SIO SISR</p>
-        </div>
+        <div class="container"><p>&copy; 2026 Quentin Baillou • Portfolio BTS SIO SISR</p></div>
     </footer>
 
-    <!-- JAVASCRIPT : THÈME, FILTRES ET MODALES -->
+    <!-- JAVASCRIPT -->
     <script>
-        // 1. CHANGER DE THÈME (CLAIR / SOMBRE)
         const themeToggleBtn = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
 
@@ -751,7 +549,6 @@
             themeToggleBtn.innerHTML = newTheme === 'light' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
         });
 
-        // 2. FILTRAGE DES PROJETS PAR ONGLETS
         const tabBtns = document.querySelectorAll('.tab-btn');
         const projectCards = document.querySelectorAll('.project-card');
 
@@ -759,40 +556,24 @@
             btn.addEventListener('click', () => {
                 tabBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
                 const filter = btn.getAttribute('data-filter');
-
                 projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? 'flex' : 'none';
                 });
             });
         });
 
-        // 3. GESTION DES MODALES DÉTAILS
         const modalTriggers = document.querySelectorAll('.modal-trigger');
         const modalOverlays = document.querySelectorAll('.modal-overlay');
 
         modalTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
-                const modalId = trigger.getAttribute('data-modal');
-                const modal = document.getElementById(modalId);
-                if (modal) modal.classList.add('active');
+                document.getElementById(trigger.getAttribute('data-modal')).classList.add('active');
             });
         });
 
-        function closeModals() {
-            modalOverlays.forEach(overlay => overlay.classList.remove('active'));
-        }
-
-        modalOverlays.forEach(overlay => {
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) closeModals();
-            });
-        });
+        function closeModals() { modalOverlays.forEach(overlay => overlay.classList.remove('active')); }
+        modalOverlays.forEach(overlay => { overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModals(); }); });
     </script>
 </body>
 </html>
